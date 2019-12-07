@@ -199,35 +199,62 @@ function pokazm($liniao){
 function generowanieTablicy($liniao){
 				
     $linia=str_split($liniao);
-    foreach ($linia as $lin)
-    {
-        echo($lin);    
-    }
-    echo("</br>");
-    $slowo="";
+    // $slowo=str_split("");
+    $k=0;
+    $s=0;
     $k=0;
     $m=0;
-    $s=0;
-    $dane;
+    // $dane;
+
+    // $ar = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    // echo implode($ar); // abcdefg
     
-    while($k < count($linia)){//6
-        if($linia[$k]!="," && $linia[$k]!="(" && $linia[$k]!=")"){
-            if($linia[$k]=="'"){
-                echo "|";
-                $k++;
+    foreach ($linia as $lin)
+    {
+        if($lin!="(" && $lin!=")"&& $lin!=";"){
+            if($lin=="'" && $k==0){
+                // echo("<1>");
+                $k=1;
                 $m=0;
-                while($linia[$k]!="'"){
-                    echo $linia[$k++];
-                    // $slowo[$m++]=$linia[$k++];
-                }
-                // $dane[$s++]=implode($slowo);
-                // echo "</br>|".$dane[$s-1]."|</br>";
-                
-                $m=0;
-            }	
+                continue;
+            }
+            else
+            if($lin == "'" && $k==1){
+                // echo("<2>|($m)");
+                $k=0;
+                // echo($lin);
+                $dane[$s++]=fun($slowo, $m);
+                // echo($dane[$s-1]);
+                // echo("|");
+                continue;
+            }
+
+            if($k==1){
+                // echo($lin);
+                $slowo[$m]=$lin;
+                $m++;
+            }
         }
-        $k++;
     }
+    foreach ($dane as $d){
+        echo("$d</br>");
+    }
+// Mushka
+// 23
+// Wielka Brytania
+// mushkaborys@gmail.com
+// C,Java
+// Visa
+
+// $index=["nazwisko", "wiek", "panstwo", "email", "checkboxes", "oplata"];
+}
+
+function fun($slowo, $m)
+{
+    for($i=0; $i<$m; $i++){
+        $wynik[$i] = $slowo[$i];
+    }
+    return implode($wynik);
 }
 
 function create_dane(){
@@ -298,7 +325,9 @@ function create_line($dane)
 function create_line_filtr($dane)
 {
     $linia="('";
-     
+    
+    // $dane ==
+    //
     // array(6) {
     //     ["nazwisko"]=> string(6) "Mushka" 
     //     ["wiek"]=> int(20) 
