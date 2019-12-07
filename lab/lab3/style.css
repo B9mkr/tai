@@ -1,0 +1,18 @@
+h1, h2, h4{
+    color: black;
+    /* text-align: center; */
+}
+
+p{
+    color: red;
+    text-align: end;
+    size: 40px;
+}
+
+table {
+				
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}

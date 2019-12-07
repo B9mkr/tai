@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+		<title> formularz </title>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+	</head>
+	<body >
+        <div>
+            <form action = "odbierz2.php" method = "POST">
+                <table>
+                    <tr>
+                        <td><label for = "nazwisk">Nazwisko:</label></td>
+                        <td><input type="text" name="nazwisko"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for = "wie">Wiek:</label></td>
+                        <td><input type="text" name="wiek"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for = "Panstw">Państwo:</label></td>
+                        <td>
+                            <select name="panstwo">
+                                <option value="p">Polska</option>
+                                <option value="u">Ukraina</option>
+                                <option value="n">Niemiecki</option>
+                                <option value="i">Inne</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for = "adresmail">Adres e-mail:</label></td>
+                        <td><input type="text" name="email"/></td>
+                    </tr>
+                </table>
+
+                <div id="baner"> <h4>Zamawiam tutorial z jęsyka:</h4> </div>
+                
+                <label for="php"> <input type="checkbox" name="PHP" value="PHP" id="php" /> PHP </label>
+                <label for="c/c++"> <input type="checkbox" name="C" value="C" id="c/c++" /> C/C++ </label>
+                <label for="java"> <input type="checkbox" name="Java" value="Java" id="java" /> Java </label> <br />
+
+                <div id="baner"> <h4> Sposób  zapłaty:</h4> </div> 
+                <label for="ecard"> <input type="radio" name="oplata" value="Euro card" id="ecard" /> eurocard </label>
+                <label for="visa"> <input type="radio" name="oplata" value="Visa" id="visa" /> visa </label>
+                <label for="prbank"> <input type="radio" name="oplata" value="Przelew bankowy" id="prbank" /> przelew bankowy </label> <br />
+                
+                <input type="submit" name="wyslij" value="Wyślij" />
+                <input type="reset" name="reset" value="Wyczyść formularz" />
+
+                <br />
+            </form>
+        </div>
+	</body>
+</html>

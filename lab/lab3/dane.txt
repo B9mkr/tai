@@ -1,0 +1,2 @@
+('Mushka', '23', 'Wielka Brytania', 'mushkaborys@gmail.com', 'C,Java', 'Visa');
+('Mushka', '20', 'Polska', 'mushkaborys@gmail.com', 'C,Java', 'Przelew bankowy');

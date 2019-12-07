@@ -1,0 +1,1 @@
+('Mushka', '23', 'Wielka Brytania', 'mushkaborys@gmail.com', 'C,Java', 'Visa');
