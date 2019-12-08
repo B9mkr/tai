@@ -14,11 +14,12 @@
             drukuj_form();
             if (filter_input(INPUT_GET, "submit"))
 			{
+				$nazwa_pliku = "dane.txt";
 				$akcja = filter_input(INPUT_GET, "submit");
                 switch ($akcja) 
                 {
-                    case "Dodaj":dodaj();break;
-                    case "Pokaz":pokaz();break;
+                    case "Dodaj":dodaj($nazwa_pliku); break;
+                    case "Pokaz":pokaz($nazwa_pliku); break;
                     // case "Java":pokaz_zamowienie($akcja);break;
 					// case "PHP":pokaz_zamowienie($akcja);break;
 					// case "CPP":pokaz_zamowienie($akcja);break;
@@ -32,6 +33,7 @@
 </html>
 
 <!-- dane
+('Mushka', '20', 'Polska', 'borysmushka@i.ua', 'PHP,Java', 'Przelew bankowy');
 ('Mushka', '20', 'Polska', 'mushkaborys@gmail.com', 'C,Java', 'Przelew bankowy');
 ('Mushka', '20', 'Polska', 'mushkaborys@gmail.com', 'Java', 'Visa');
 ('Karol', '21', 'Polska', 'karol@gmail.com', 'PHP,Java', 'Euro card');

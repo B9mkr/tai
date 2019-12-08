@@ -81,3 +81,8 @@ Pokazuje dane z pliku "dane.txt" w formacie:
 Tworzy z tablicy dannych($dane) po formatowaniu ciąg znaków w formacie:
 
 > ('Nazwisko', 'wiek', 'Wielka Brytania', 'nazwisko@gmail.com', 'C,Java', 'Visa');
+
+```php
+$ar = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+echo implode($ar); // abcdefg
+```

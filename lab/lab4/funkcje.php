@@ -56,8 +56,7 @@ function drukuj_form() {
 
 <?php }
 
-function dodaj() {
-    $nazwa_pliku = "dane.txt";
+function dodaj($nazwa_pliku) {
     echo "<h3>Dodawanie do pliku:</h3>";
     walidacja($nazwa_pliku);
 }
@@ -139,10 +138,8 @@ function dopliku($nazwa_pliku, $tablicaDanych)
     fclose($wp);
 }
 
-function pokaz() 
+function pokaz($nazwa_pliku) 
 {
-    $nazwa_pliku = "dane.txt";
-
     $plik = fopen($nazwa_pliku,'r');
     if (!$plik){ 
         echo "<p>nie udało się odtworzyć</p></body></html>";
@@ -150,15 +147,18 @@ function pokaz()
     }
 
     $linia="";
-    // print("<ol>");
+    print("<ol>");
     while(!feof($plik))
     {
-        // print("<li>");
+        print("<li>");
+
         $linia = fgets($plik);
-        generowanieTablicy($linia);
-        // print("</li>");
+        $dane = generowanieTablicy($linia);
+        pokazm($dane);
+
+        print("</li>");
     }
-    // print("</ol>");
+    print("</ol>");
     fclose($plik);
 }
 
@@ -167,48 +167,83 @@ function pokaz()
     //w których zamówiono $lang (np. $lang="Java"
 //}
 
-function pokazm($liniao){
-				
-    $linia=str_split($liniao);
-    $slowo;
-    $k=0;
-    $m=0;
-    $s=0;
-    $dane;
-    
-    while($k < count($linia)){//6
-        if($linia[$k]!="," && $linia[$k]!="(" && $linia[$k]!=")"){
-            if($linia[$k]=="'"){
-                echo " ";
-                $k++;
-                $m=0;
-                while($linia[$k]!="'"){
-                    echo $linia[$k++];
-                    // $slowo[$m++]=$linia[$k++];
-                }
-                // $dane[$s++]=implode($slowo);
-                // echo "</br>|".$dane[$s-1]."|</br>";
-                
-                $m=0;
-            }	
-        }
-        $k++;
+function pokazm($dane){
+    // print("<ul>");
+    foreach ($dane as $d){
+        // print("<li>");
+        echo("$d; ");
+        // print("</li>");
     }
+    // print("</ul>");
+    // echo("</br>");
+
+    //------------------------------------------------
+    // $dane ==
+    //
+    // array(6) {
+    //     ["nazwisko"]=> string(6) "Mushka" 
+    //     ["wiek"]=> int(20) 
+    //     ["panstwo"]=> string(1) "p" 
+    //     ["email"]=> string(21) "mushkaborys@gmail.com" 
+    //     ["checkboxes"]=> array(3) 
+    //     { 
+    //         [0]=> int(1) 
+    //         [1]=> int(2) 
+    //         [2]=> int(3) } 
+    //     ["oplata"]=> string(4) "Visa" 
+    // }
+
+    //    function create_line_filtr($dane)
+
+
+    // $linia="('";
+    
+
+    // $linia .= $dane["nazwisko"];
+    // $linia .= "', '";
+    // $linia .= $dane["wiek"];
+    // $linia .= "', '";
+    // switch($dane["panstwo"])
+    // {
+    //     case "p":	$linia .= "Polska";         break;
+    //     case "n":	$linia .= "Niemcy";         break;
+    //     case "w":	$linia .= "Wielka Brytania";break;
+    //     case "c":	$linia .= "Czechy";         break;
+    //     case "m":	$linia .= "Moldawia";       break;
+    //     default:    $linia .= "NULL";
+    // }
+    // $linia .= "', '";
+    // $linia .= $dane["email"];
+    // $linia .= "', '";
+
+    // $kurs = ["PHP", "C", "Java"];
+
+    // for ($i = 0; $i < count($dane["checkboxes"]); $i++) 
+    // { 
+    //     switch($dane["checkboxes"][$i])
+    //     {
+    //         case 1: $linia .= $kurs[0]; break;
+    //         case 2: $linia .= $kurs[1]; break;
+    //         case 3: $linia .= $kurs[2]; break;
+    //         default: $linia .= "NULL";
+    //     }
+        
+    //     if($i < (count($dane["checkboxes"])-1))
+    //         $linia .= ",";
+    //     // if(($i+1) < )
+            
+    // }
 }
 
 function generowanieTablicy($liniao){
-				
+
+    // $index=["nazwisko", "wiek", "panstwo", "email", "checkboxes", "oplata"];
     $linia=str_split($liniao);
-    // $slowo=str_split("");
     $k=0;
     $s=0;
     $k=0;
     $m=0;
-    // $dane;
 
-    // $ar = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
-    // echo implode($ar); // abcdefg
-    
     foreach ($linia as $lin)
     {
         if($lin!="(" && $lin!=")"&& $lin!=";"){
@@ -223,9 +258,12 @@ function generowanieTablicy($liniao){
                 // echo("<2>|($m)");
                 $k=0;
                 // echo($lin);
+                // $dane[$index[$s++]]=fun($slowo, $m);
                 $dane[$s++]=fun($slowo, $m);
+                // fun2($slowo);
                 // echo($dane[$s-1]);
                 // echo("|");
+                
                 continue;
             }
 
@@ -236,9 +274,6 @@ function generowanieTablicy($liniao){
             }
         }
     }
-    foreach ($dane as $d){
-        echo("$d</br>");
-    }
 // Mushka
 // 23
 // Wielka Brytania
@@ -246,7 +281,41 @@ function generowanieTablicy($liniao){
 // C,Java
 // Visa
 
-// $index=["nazwisko", "wiek", "panstwo", "email", "checkboxes", "oplata"];
+    return $dane;
+}
+
+function fun2($linia){
+    $k=0;
+    $s=0;
+    $k=0;
+    $m=0;
+    foreach ($linia as $lin)
+    {
+        if($lin=="," && $k==0){
+            // echo("<1>");
+            $k=1;
+            $m=0;
+            continue;
+        }
+        else
+        if($lin == "'" && $k==1){
+            // echo("<2>|($m)");
+            $k=0;
+            // echo($lin);
+            $dane[$s++]=fun($slowo, $m);
+            // echo($dane[$s-1]);
+            // echo("|");
+            
+            continue;
+        }
+
+        if($k==1){
+            // echo($lin);
+            $slowo[$m]=$lin;
+            $m++;
+        }
+    }
+
 }
 
 function fun($slowo, $m)

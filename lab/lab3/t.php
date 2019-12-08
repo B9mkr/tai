@@ -302,4 +302,108 @@ function walidacja()
         //
         echo "<p>Zapisano: <br /> $dane</p>";
     }
+
+
+
+
+
+print("<table>
+            <tr>
+                <td><label>Nazwisko:</label></td>
+                <td><label>");
+
+if($dane[0] == "NULL" || $dane[0] == "") 
+    echo 'Nie wpisano nazwiska';
+else
+    echo $dane[0];
+
+print("</label></td>
+        </tr>
+        <tr>
+            <td><label>Wiek:</label></td>
+            <td><label>");
+
+if($dane[1] == "NULL" || $dane[1] == "") 
+    echo 'Nie wpisano wieku';
+else
+    echo $dane[1];
+
+print("</label></td>
+        </tr>
+        <tr>
+            <td><label>Państwo:</label></td>
+            <td><label>");
+
+if ($dane[2]!="") 
+{
+    echo $dane[2];
+}
+print("</label></td>
+        </tr>
+        <tr>
+            <td><label>Adres e-mail:</label></td>
+            <td><label>");
+
+if($dane[3] == "NULL" || $dane[3] == "") 
+    echo 'Nie wpisano emailu';
+else
+    echo $dane[3];
+
+$kurs = ["PHP", "C", "Java"];
+$k = 0;
+for ($i = 0; $i < count($kurs); $i++) 
+    if(isset($_REQUEST[$kurs[$i]]))
+    {
+        $k++;
+    }
+
+if($k == 0)
+    print("</label></td>
+        </tr>
+        <tr>
+            <td><label>Zamawiane produkty:</label></td>
+            <td>Nie zamówiono produktów</td>");
+else
+{
+    print("</label></td>
+        </tr>
+        <tr>
+            <td rowspan=".$k."><label>Zamawiane produkty:</label></td>
+            <td>");
+    $m = 0;
+    $k = 0;
+    for ($i = 0; $i < count($kurs); $i++) 
+    {
+        if($dane[4+$i] != "NULL")
+        {
+            if($m == 1)
+                print("<tr><td>");
+            print("<label> - ".$kurs[$i]."</label>");
+            if($m == 1)
+                print("</tr></td>");
+            
+            $k++;
+        }
+        if($k == 1 && $m != 1)
+        {
+            $m = 1;
+            print("</td></tr>");
+        }
+    }
+}
+
+print("</td>
+        </tr>
+        <tr>
+            <td><label>Sposób zapłaty:</label></td>
+            <td>");
+
+if($dane[7] == "NULL" || $dane[7] == "") 
+    echo 'Nie wpisano sposobu opłaty';
+else
+    echo $dane[7];
+
+print("</td>
+        </tr>
+    </table>");
 ?>
