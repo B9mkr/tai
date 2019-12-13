@@ -6,10 +6,10 @@ class Strona //początek definicji klasy
     protected $tytul = "FIRMA DYD&INT - strona główna";
     // protected $slowa_kluczowe = "Szkolenia, kursy, internet";
     protected $przyciski = array(
-        "Strona główna" => "/DYD&INT/index.php?strona=glowna", 
-        "Aktualności" => "/DYD&INT/skrypty/aktualnosci.php", 
-        "Galeria" => "/DYD&INT/skrypty/galeria.php", 
-        "Kontakt" => "/DYD&INT/index.php?strona=kontakt");
+        "Strona główna" => "../index.php?strona=glowna", 
+        "Aktualności" => "../skrypty/aktualnosci.php", 
+        "Galeria" => "../skrypty/galeria.php", 
+        "Kontakt" => "../index.php?strona=kontakt");
     protected $style_url;
     //interfejs klasy – funkcje modyfikujące fragmenty strony
     function ustaw_zawartosc($nowa_zawartosc)
