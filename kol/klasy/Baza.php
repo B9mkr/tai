@@ -33,7 +33,7 @@ class Baza
                     $p = $pola[$i];
                     $tresc .= "<td>" . $row->$p . "</td>";
                 }
-                $tresc .= "</tr>";
+                $tresc .= "</td></tr>";
             }
             $tresc .= "</table></tbody>";
             $result->close();

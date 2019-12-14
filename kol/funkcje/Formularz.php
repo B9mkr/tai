@@ -1,35 +1,26 @@
 <?php
-// include_once("Baza.php");
-
 function drukuj_form($dane){
-?>
-    <h3>Drukuj form</h3>
-    <p>
-        <form action="index.php" method="GET">
+    $formularz = "<h3>Drukuj form</h3>"."<form action=\"".$dane->get_action()."\" method=\"".$dane->get_method()."\">";
+    $formularz .= gen_tresc_form($dane, 0);
 
-<?php
-    echo gen_tresc_form($dane, 0);
-?>
-            <!-- Nazwisko: <br/><input type="text" name="nazwisko" /><br/>
-            PESEL: <br/><input type="text" name="pesel" /><br/>
-            Stan konta: <br/><input type="text" name="stan_konta" /><br/>
-            Posiadanie karty: <br/><input type="text" name="posiadanie_karty" /><br/> -->
-
-            <input type="submit" name="submit" value="Pokaz" />
-            <input type="submit" name="submit" value="Wybierz" />
-            <input type="submit" name="submit" value="Dodaj" />
-        </form>
-    </p>
-<?php    
+            // <!-- Nazwisko: <br/><input type="text" name="nazwisko" /><br/>
+            // PESEL: <br/><input type="text" name="pesel" /><br/>
+            // Stan konta: <br/><input type="text" name="stan_konta" /><br/>
+            // Posiadanie karty: <br/><input type="text" name="posiadanie_karty" /><br/> -->
+    $formularz .= "<input type=\"submit\" name=\"submit\" value=\"Pokaz\" />
+                <input type=\"submit\" name=\"submit\" value=\"Wybierz\" /> 
+                <input type=\"submit\" name=\"submit\" value=\"Dodaj\" /></form>";
+    echo $formularz;
 }
 function gen_tresc_form($dane, $skip=0){
     $tresc="";
-    $poled=$dane->get_pola_d();
-    foreach($dane->get_pola_t() as $key => $polet){
+    
+    for($key=0; $key < count($dane->get_pola_t()); $key++)
+    {
         if($key==$skip)
             continue;
         
-        $tresc.=$poled[$key].": <br/><input type=\""."text"."\" name=\"".$polet."\" /><br/>";
+        $tresc .= gen_in_form($dane, $key);
     }
     return $tresc;
 }
@@ -54,23 +45,20 @@ function pokaz($dane){
 function dodaj($dane){
     walidacja($dane);
 }
-function walidacja($daneG)
+function walidacja($dane)
 {
-    $args = array(
-        'nazwisko' => FILTER_DEFAULT,
-        'pesel' => FILTER_DEFAULT,
-        'stan_konta' => FILTER_DEFAULT,
-        'posiadanie_karty' => FILTER_DEFAULT,
-    );
     //przefiltruj dane z GET (lub z POST) zgodnie z ustawionymi w $args filtrami:
-    $dane = filter_input_array(INPUT_GET, $args);
+    if($dane->get_method()=="GET")
+        $danel = filter_input_array(INPUT_GET, $dane->get_args());
+    elseif($dane->get_method()=="POST")
+        $danel = filter_input_array(INPUT_POST, $dane->get_args());
 
     //pokaż tablicę po przefiltrowaniu - sprawdź wyniki filtrowania:
     // var_dump($dane);
     
     //Sprawdź czy dane w tablicy $dane nie zawierają błędów walidacji:
     $errors = "";
-    foreach ($dane as $key => $val)
+    foreach ($danel as $key => $val)
     {
         if ($val === false or $val === NULL)
         {
@@ -82,7 +70,7 @@ function walidacja($daneG)
         //Dane poprawne - zapisz do pliku
         //wykorzystaj pomocniczą funkcję:
         // print("</br><p>GOOD walidation!</p>");
-        dobazy($daneG, $dane);
+        dobazy($dane, $danel);
         // var_dump($dane);
     }
     else
@@ -92,16 +80,8 @@ function walidacja($daneG)
 }
 function dobazy($dane, $tablicaDanych)
 {
-    // $linia = "";
-    
-    // $linia = create_line_filtr($tablicaDanych, $dane);
-    // echo $linia;
-    // $daneArray = create_dane($dane);
     $sql=create_dodaj_sql($tablicaDanych, $dane);
-    // echo $sql;
-    
     $dane->get_baza()->answer($sql);
-    
 }
 
 function create_dodaj_sql($tablicaDanych, $dane){
@@ -123,10 +103,6 @@ function create_dodaj_sql($tablicaDanych, $dane){
 //     ["stan_konta"]=> string(7) "aktywny" 
 //     ["posiadanie_karty"]=> string(1) "1" 
 //} 
-
-//OUT
-//    (NULL,'Mushka','47072843544','aktywny','1');
-
 function create_line_filtr($dane, $daneG)
 {
     // var_dump($dane);
@@ -145,6 +121,8 @@ function create_line_filtr($dane, $daneG)
 
     return $linia;
 }
+//OUT
+//    (NULL,'Mushka','47072843544','aktywny','1');
 
 // -----wybierz--------------------
 
@@ -155,9 +133,10 @@ function wybierz($dane){
 function drukuj_find($dane){
     $key=$dane->get_poszuk();
     $tresc="<h3>Podaj ".$dane->get_pole_t($key)."</h3>";
-    $tresc.="<p><form action=\"index.php\" method=\"GET\">";
     
-    $tresc.=$dane->get_pole_d($key).": <br/><input type=\""."text"."\" name=\"".$dane->get_pole_t($key)."\" /><br/>";
+    $tresc.="<p><form action=\"".$dane->get_action()."\" method=\"".$dane->get_method()."\">";
+    
+    $tresc.=gen_in_form($dane, $key);
 
     $tresc.="<input type=\"submit\" name=\"submit\" value=\"Podaj\" />";
     $tresc.="</form></p>";
@@ -180,4 +159,12 @@ function pomoc($dane){
     return $wyn;
 }
 // --------------------------------
+
+function gen_in_form($dane, $key){
+    // $key=$dane->get_poszuk();
+    $wyn = "".$dane->get_pole_d($key).": <br/><input type=\"".$dane->get_typ($key)."\" name=\"".$dane->get_pole_t($key)."\" /><br/>";
+    // echo $wyn;
+    return $wyn;
+}
+
 ?>
