@@ -10,23 +10,24 @@ Strona główna aplikacji udostępnia trzy przyciski Pokaż, Wybiera, Dodaj.
 Pierwsze uruchomienie aplikacji dzałanie prycisku Pokaz.
 konieczna jest walidacja danych przed zapisem. Wskazane jest wykorzystanie klas pomocniczych.
 
-## kol
+# Struktura projektu
 
-* css
-  * style.css
-* funkcje
-  * Formularz.php
-* klasy
-  * Baza.php
-  * Dane.php
-<!-- * szablony -->
-* index.php
-* information.md
+* kol
+  * css
+    * style.css
+  * funkcje
+    * Formularz.php
+  * klasy
+    * Baza.php
+    * Dane.php
+  * index.php
+  * information.md
 
 ### css
 ### Formularz.php
 ### Baza.php
-### Dane.php
+
+# Dane.php
 
 Klasa w której są taki przywatne pola:
 
@@ -110,14 +111,14 @@ function set_type($type){
 
 ---
 
-### get_pole_t
+## get_pole_t
 
 get_pole_t - Pobiera wartość typu `int` (indexu).
 
 ### Opis
 
 ```php
-get_pole_t ( $i = 0 ) : string
+get_pole_t ( int $i = 0 ) : string
 ```
 
 Zwraca wartość tablicy w zmienej `$pola_t` o podanym indexie.
@@ -128,39 +129,199 @@ Zwraca wartość `$pole_t`. Jeśli niczego nie podawać domyślnie zwraca warto�
 
 ### Przykłady
 
+#### Przykład #1 przykład wykorzystania funkcji get_pole_t()
+
 ```php
 <?php
 
 //$pola_t=["id","nazwisko","pesel","stan_konta","posiadanie_karty"];
 
-$key = 2;
-
-$tresc = "<p>Otrzymasz dla klucza $key " . $dane -> get_pole_t( $key ) . "</p>";
+$tresc = "<p>Bez klucza otrzymasz \"" . $dane -> get_pole_t( ) . "\".</p>";
 
 echo $tresc;
 
 $key = -4;
 
-$tresc = "<p>Otrzymasz dla klucza $key " . $dane -> get_pole_t( $key ) . "</p>";
+$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_pole_t( $key ) . "\".</p>";
 
 echo $tresc;
 
 $key = 30;
 
-$tresc = "<p>Otrzymasz dla klucza $key " . $dane -> get_pole_t( $key ) . "</p>";
+$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_pole_t( $key ) . "\".</p>";
 
 echo $tresc;
+
+$key = 2;
+
+$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_pole_t( $key ) . "\".</p>";
+
+echo $tresc;
+
 ?>
 ```
 
 Wynikiem wykonywania danego przykładu będzie:
 
 ```html
-Otrzymasz dla klucza 2 pesel
+Bez klucza otrzymasz "id".
 
-Otrzymasz dla klucza -4 id
+Otrzymasz dla klucza "-4" => "id".
 
-Otrzymasz dla klucza 30 id
+Otrzymasz dla klucza "30" => "id".
+
+Otrzymasz dla klucza "2" => "pesel".
+```
+
+---
+
+## get_pole_d
+
+get_pole_d - Pobiera jedną wartość typu calkowitego.
+
+### Opis
+
+```php
+get_pole_d ( int $i = 0 ) : string
+```
+
+Zwraca wartość zapisaną w tablice `$pole_d` pod indexem `$i`.
+
+### Zwracane dane
+
+Zwraca wartość zapisaną w tablice `$pole_d` pod indexem `$i`. Jeśli niczego nie podawać domyślnie zwraca wartość o zerowym indexie tz. `$pole_d[0]`. 
+
+### Przykłady
+
+#### Przykład #1 przykład wykorzystania funkcji get_pole_d()
+
+```php
+<?php
+
+//$pola_d = ["id", "Nazwisko", "PESEL", "Stan konta", "Posiadanie karty"];
+
+$tresc = "<p>Bez klucza otrzymasz \"" . $dane -> get_pole_d( ) . "\".</p>";
+
+echo $tresc;
+
+$key = -4;
+
+$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_pole_d( $key ) . "\".</p>";
+
+echo $tresc;
+
+$key = 30;
+
+$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_pole_d( $key ) . "\".</p>";
+
+echo $tresc;
+
+$key = 2;
+
+$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_pole_d( $key ) . "\".</p>";
+
+echo $tresc;
+
+?>
+```
+
+Wynikiem wykonywania danego przykładu będzie:
+
+```html
+Bez klucza otrzymasz "id".
+
+Otrzymasz dla klucza "-4" => "id".
+
+Otrzymasz dla klucza "30" => "id".
+
+Otrzymasz dla klucza "2" => "PESEL".
+```
+
+---
+
+## get_typ
+
+get_typ - Pobiera jedną liczbę typu calkowitego.
+
+### Opis
+
+```php
+get_typ ( int $i = 0 ) : string
+```
+
+Zwraca wartość zapisaną w tablice `$type` pod indexem `$i`.
+
+### Zwracane dane
+
+Zwraca wartość zapisaną w tablice `$type` pod indexem `$i`. Jeśli niczego nie podawać domyślnie zwraca wartość o zerowym indexie tz. `$type[0]`. Jeżeli liczba `$i` są mniejsza od `0` lub większa od liczby zmienych w tablice(`count($type)`) to funkcja zwruci wartość o zerowym indexie.
+
+### Przykłady
+
+#### Przykład #1 przykład wykorzystania funkcji get_typ()
+
+```php
+<?php
+
+// $type = ["int", "text", "text", "text", "text"];
+
+$tresc = "<p>Bez klucza otrzymasz \"" . $dane -> get_typ( ) . "\".</p>";
+
+echo $tresc;
+
+$key = -4;
+
+$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_typ( $key ) . "\".</p>";
+
+echo $tresc;
+
+$key = 30;
+
+$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_typ( $key ) . "\".</p>";
+
+echo $tresc;
+
+$key = 2;
+
+$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_typ( $key ) . "\".</p>";
+
+echo $tresc;
+
+?>
+```
+
+Wynikiem wykonywania danego przykładu będzie:
+
+```html
+Bez klucza otrzymasz "int".
+
+Otrzymasz dla klucza "-4" => "int".
+
+Otrzymasz dla klucza "30" => "int".
+
+Otrzymasz dla klucza "2" => "text".
+```
+
+---
+## create_url
+
+### Opis
+
+```php
+```
+
+
+### Zwracane dane
+
+### Przykłady
+
+Przykład #1 przykład wykorzystania funkcji 
+
+```php
+```
+
+Wynikiem wykonywania danego przykładu będzie:
+
+```html
 ```
 
 ---
@@ -170,3 +331,29 @@ function get_typ($i=0)
 private function create_url()
 
 ### index.php
+
+<!-- ---
+
+## 
+
+### Opis
+
+```php
+```
+
+
+### Zwracane dane
+
+### Przykłady
+
+Przykład #1 przykład wykorzystania funkcji 
+
+```php
+```
+
+Wynikiem wykonywania danego przykładu będzie:
+
+```html
+```
+
+--- -->

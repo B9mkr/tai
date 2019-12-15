@@ -86,7 +86,7 @@ class Dane
     }
 // --------------------------------
 
-    function get_pole_t($i=0){
+    function get_pole_t($i = 0){
         if(($i > count($this->pola_t)) || ($i < 0))
             $i = 0;
         return $this->pola_t[$i];
