@@ -23,7 +23,7 @@ class Dane
         $this->poszuk=$poszuk;
         $this->method=$method;
         $this->args=$args;
-        $this->action = $this->create_url();//"/www/tai/kol/index.php";
+        $this->action = $this->create_url("htdocs");//"/www/tai/kol/index.php";
     } //koniec funkcji konstruktora
     // function __destruct(){}
 
@@ -86,28 +86,28 @@ class Dane
     }
 // --------------------------------
 
-    function get_pole_t($i = 0){
-        if(($i > count($this->pola_t)) || ($i < 0))
-            $i = 0;
-        return $this->pola_t[$i];
+    function get_pole_t($index = 0){
+        if(($index > count($this->pola_t)) || ($index < 0))
+            $index = 0;
+        return $this->pola_t[$index];
     }
-    function get_pole_d($i=0){
-        if(($i > count($this->pola_d)) || ($i < 0))
-            $i = 0;
+    function get_pole_d($index=0){
+        if(($index > count($this->pola_d)) || ($index < 0))
+            $index = 0;
         
-        return $this->pola_d[$i];
+        return $this->pola_d[$index];
     }
-    function get_typ($i=0){
-        if(($i > count($this->type)) || ($i < 0))
-            $i = 0;
+    function get_typ($index=0){
+        if(($index > count($this->type)) || ($index < 0))
+            $index = 0;
         
-        return $this->type[$i];
+        return $this->type[$index];
     }
 
-    private function create_url()
+    function create_url($od="htdocs")
     {
-        // echo getcwd()."</br>";
-        $url = str_split(getcwd()."/");
+        $url = getcwd();
+        $url = str_split($url."/");
         
         $k=0;
         $s=0;
@@ -136,21 +136,22 @@ class Dane
         $zm=0;
         $wyn="/";
         foreach($array as $key => $ar){
-            if($ar=="htdocs"){
+            if($ar==$od){
                 $zm=1;
-
             }
             elseif($zm==1)
                 $wyn.=$ar."/";
         }
+        if($zm == 0)
+            $wyn = "ERROR";
         // echo $wyn."index.php";
 
         return $wyn;//"/www/tai/kol/index.php";
     }
     private function fun($slowo, $m)
     {
-        for($i=0; $i<$m; $i++){
-            $wynik[$i] = $slowo[$i];
+        for($index=0; $index<$m; $index++){
+            $wynik[$index] = $slowo[$index];
         }
         return implode($wynik);
     }

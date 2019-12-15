@@ -88,28 +88,12 @@ http://localhost/www/tai/kol/index.php
         }
         
 function test($dane){
-// $key;
-$tresc = "<p>Bez klucza otrzymasz \"" . $dane -> get_typ( ) . "\".</p>";
-
-echo $tresc;
-
-$key = -4;
-
-$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_typ( $key ) . "\".</p>";
-
-echo $tresc;
-
-$key = 30;
-
-$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_typ( $key ) . "\".</p>";
-
-echo $tresc;
-
-$key = 2;
-
-$tresc = "<p>Otrzymasz dla klucza \"$key\" => \"" . $dane -> get_typ( $key ) . "\".</p>";
-
-echo $tresc;
+    echo getcwd()."</br>";
+    echo $dane->create_url("htdocs");
+    echo "</br>";
+    echo $dane->create_url();
+    echo "</br>";
+    echo $dane->create_url("ktdocs");
 }
         ?>
 	</div>
