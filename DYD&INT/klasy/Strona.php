@@ -6,11 +6,12 @@ class Strona //początek definicji klasy
     protected $tytul = "FIRMA DYD&INT - strona główna";
     // protected $slowa_kluczowe = "Szkolenia, kursy, internet";
     protected $przyciski = array(
-        "Strona główna" => "../index.php?strona=glowna", 
-        "Aktualności" => "../skrypty/aktualnosci.php", 
-        "Galeria" => "../skrypty/galeria.php", 
-        "Kontakt" => "../index.php?strona=kontakt");
+        "Strona główna" => "/www/tai/DYD&INT/index.php?strona=glowna", 
+        "Aktualności" => "/www/tai/DYD&INT/skrypty/aktualnosci.php", 
+        "Galeria" => "/www/tai/DYD&INT/skrypty/galeria.php", 
+        "Kontakt" => "/www/tai/DYD&INT/index.php?strona=kontakt");
     protected $style_url;
+
     //interfejs klasy – funkcje modyfikujące fragmenty strony
     function ustaw_zawartosc($nowa_zawartosc)
     {
@@ -29,6 +30,7 @@ class Strona //początek definicji klasy
     {
         $this->style_url = $url;
     }
+
     //interfejs klasy – funkcje wyświetlające stronę
     function wyswietl()
     {
@@ -51,11 +53,11 @@ class Strona //początek definicji klasy
     function wyswietl_naglowek()
     {
 ?> 
-<!DOCTYPE html>
-<html> 
-    <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!DOCTYPE html>
+        <html> 
+            <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php
         echo '<link rel="stylesheet" href=' . $this->style_url . ' type="text/css" />';
         echo "<title>" . $this->tytul . "</title></head><body> ";

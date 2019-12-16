@@ -1,4 +1,5 @@
 <?php
+// echo getcwd();
 require_once("klasy/Strona.php");
 $strona_glowna = new Strona();
 $strona_glowna->ustaw_style("css/style.css");
@@ -17,6 +18,7 @@ if (isset($_GET['strona'])) //zażądano strony statycznej
     }
 } else
     $strona = "glowna";
+
 $plik  = "szablony/" . $strona . ".html";
 $tresc = "";
 $pl    = fopen($plik, "r");
