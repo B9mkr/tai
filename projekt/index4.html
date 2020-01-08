@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Generator</title>
+
+        <link rel="icon" type="image/png" href="img/planet-earth.png"/>
+        <link rel="stylesheet" type="text/css" href="CSS/st.css" />
+
+        <script src='JS/fgenerator.js'></script>
+        <!-- <script>
+			(function() {
+			  function getCookie(name) {
+			    let value = "; " + document.cookie;
+			    let parts = value.split("; " + name + "=");
+			    if (parts.length === 2) return parts.pop().split(";").shift();
+			  }
+			
+			  let ver = getCookie('version') || 'develop',
+			      url = 'https://rawgit.com/showdownjs/showdown/' + ver + '/dist/showdown.min.js',
+			      scrp = document.createElement('script');
+			
+			  scrp.setAttribute("type","text/javascript");
+              scrp.src = url;
+            //   alert(url);
+			  document.getElementsByTagName("head")[0].appendChild(scrp);
+			})();
+        </script> -->
+        
+    </head>
+    <body class="post-template" onload="dodajDate()">
+      
+      <div class="site-wrapper">
+            
+         <header class="site-header outer">
+            <div class="inner">
+               <nav class="site-nav">
+                  <div class="site-nav-left">
+                     <a class="site-nav-logo" href="index.html">main</a>
+                  </div>
+               </nav>
+            </div>
+         </header>
+         
+         <main id="site-main" class="site-main outer">
+            
+            <div class="inner">
+               
+               <article class="post-full post tag-it tag-linux tag-opensource ">
+                  <header class="post-full-header">
+                     <section class="post-full-meta">
+                        <time class="post-full-meta-date" datetime="2019-06-7">7 june 2019</time>
+                        <span class="date-divider">/</span> <a href="/tag/it/">gen</a>
+                     </section>
+                     <h1 class="post-full-title">Generator</h1>
+                  </header>
+                  <figure class="post-full-image">
+                     <img
+                        srcset="img/generator/intGen300.jpg 300w,
+                        img/generator/intGen600.jpg 600w,
+                        img/generator/intGen1000.jpg 1000w,
+                        img/generator/intGen2000.jpg 2000w"
+                        sizes="(max-width: 800px) 400px,
+                        (max-width: 1170px) 700px,
+                        1400px"
+                        src="img/generator/intGen2000.jpg"
+                        alt="generator"
+                        />
+                  </figure>
+                  <section class="post-full-content">
+                     <div class="post-content">
+                        <header>
+                            <h2 id='h'></h2>
+                        </header>
+                        <nav>
+                            <table>
+                                <tr>
+                                    <td><button onclick='pokazPosty()'>Pokaż posty</button></td>
+                                    <td><button onclick='usunPosty()'>Usuń posty</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Tytuł: </td>
+                                    <td><input id='title' type="text"  placeholder="Tytuł"/> </td>
+                                </tr>
+                                <tr>
+                                    <td>Zdzjęcie zadniego fonu: </td>
+                                    <td><input name="fFon" id='fFon' type="file" accept='image/*' onchange='openFilef(event)'/> </td>
+                                </tr>
+                                <tr>
+                                    <td>Tag:</td>
+                                    <td><input id='tag' type="text"  placeholder="Tag"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Autor: </td>
+                                    <td><input id='author' type="text"  placeholder="Anon"/> </td>
+                                </tr>
+                                <tr>
+                                    <td>Zdzjęcie autora: </td>
+                                    <td><input name="fAuthora" id='fAuthora' type="file" accept='image/*' onchange='openFilea(event)'/> </td>
+                                </tr>
+                                <tr>
+                                    <td>Czas: </td>
+                                    <td><input id='time' type="number" placeholder="Dla przeczytania postu"/> </td>
+                                </tr>
+                                <tr>
+                                    <td>Opis: </td>
+                                    <td><input id='opis' type="text"  placeholder="Opis"/> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Tekst główny: </td>
+                                    <!-- <td><input id='mainText' type="text" placeholder="Opis"/> </td> -->
+                                    
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <!-- http://demo.showdownjs.com/ -->
+                                        <!-- dorobić .md -> .html -->
+                                        <textarea id="editor" type="text" cols="50%" rows="4" placeholder="Co będzie w samym poście"></textarea>
+                                        <!-- <textarea id="editor" data-ng-model="text" type="text" cols="50%" rows="4" placeholder="Co będzie w samym poście"></textarea> -->
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td colspan="2">
+                                        <div id="preview" sd-model-to-html="text"></div>
+                                    </td>
+                                </tr> -->
+                                <tr>
+                                    <td><button onclick="dodajPost()">Dodaj</button></td>
+                                    <td><button id="zmien" onclick="zmienPost1()">Zmień post</button></td>
+                                </tr>
+                            </table>
+                        </nav>
+
+                        <div id="przyklad">
+                            <!-- <iframe id="wyswietl" width="700px" height="700px" src="index.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                        </div>
+                     </div>
+                  </section>
+                  
+               </article>
+               <div class="post-feed">
+                    <div id="list"></div>
+               </div>
+            </div>
+         </main>
+
+         <div class="progress-barm floating-header floating-active"></div>
+
+         <script src="JS/scroll.js"></script>
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="index.html">main</a> &copy; 2019</section>
+                <nav class="site-footer-nav">
+                    <a href="index.html">Ostatnie posty</a>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <!-- <script src="semver.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-sanitize.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-pageslide-directive/2.2.0/angular-pageslide-directive.js" integrity="sha256-FW2YsacWIn83+j6c02CWOR8fuY4WyzbmmGwz7VOdEI0=" crossorigin="anonymous"></script>
+    <script src="editor.js"></script> -->
+
+   </body>
+</html>

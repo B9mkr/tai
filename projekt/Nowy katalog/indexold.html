@@ -1,0 +1,58 @@
+<!-- projekt NI
+responsywność RWD(bootstrap)
+dwie strony statyczne np. kontakt, regulamin, galeria zdjęć
+elementy animacji w JS(jQuery)
+rozbudowany formularz(walidowane)
+    komunikaty o błędach
+    umożliwiać ich przeglądanie(sessionStorage, localStorage)
+    umożliwiać ich edytowanie(sessionStorage, localStorage)
+Będzie oceniana jakość i przejrzystość kodu. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>projekt</title>
+
+        <link rel="icon" type="image/png" href="planet-earth.png"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+        <link rel="stylesheet" href="style.css" />
+        <script src="fun.js"></script>
+
+    </head>
+	<body onload="menu()">
+		<div class="manga-bg" style="background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8)), url(#)">
+			<div class="manga-bg__head container container_responsive">
+				<h1 class="manga-bg__title"> projekt </h1>
+				<h4 class="manga-bg__subtitle">Semestr 4 </h4>
+			</div>
+		</div>
+        <header class="fon">
+            <div id="zd1"></div>
+            <nav>
+                <button onclick="pokaz(1)">O mnie </button>
+                <button onclick="pokaz(2)">Moja galeria</button>
+                <button onclick="pokaz(3)">Dodaj post</button>
+                <button onclick="pokaz(4)">Kontakt</button>
+            </nav>
+        </header>
+
+        <section id="blok">
+            <h2><br />Dodaj post</h2>
+            <article class="srodek" >
+                <form action="#" method="post" onsubmit="return pokazDane();">
+                    <!-- Twój email:<br /> 
+                    <input type="email" name="email" id="email" required /><br />
+
+                    Komentarz: <br />
+                    <textarea rows="3" cols="20" id="wiadomosc" name="wiadomosc" required></textarea> -->
+                    
+                    <br /> <input type="submit" name="wyslij" value="Wyślij" />
+                </form>
+            </article>
+        </section>
+
+        <footer>&copy;BM</footer>
+    </body>
+</html>
