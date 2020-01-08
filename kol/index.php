@@ -88,12 +88,12 @@ http://localhost/www/tai/kol/index.php
         }
         
 function test($dane){
-    echo getcwd()."</br>";
-    echo $dane->create_url("htdocs");
-    echo "</br>";
-    echo $dane->create_url();
-    echo "</br>";
-    echo $dane->create_url("ktdocs");
+echo getcwd()."</br>";
+echo $dane->create_url("htdocs");
+echo "</br>";
+echo $dane->create_url();
+echo "</br>";
+echo $dane->create_url("ktdocs");
 }
         ?>
 	</div>
