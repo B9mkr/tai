@@ -1,13 +1,17 @@
 <?php
 include_once("User.php");
+// include_once("Post.php");
+include('parsedown/Parsedown.php');
+
 class Strona
 {
     private $user;
+    private $title;
     function __construct()
     {
-        $this->user= new User("", "", "");
+        $this->title="Projekt";
+        $this->user= new User("", "", "");// ($userName, $email, $passwd)
         $this->show_Strona();
-        // ($userName, $email, $passwd)
     } //koniec funkcji konstruktora
     
     //show
@@ -21,30 +25,28 @@ class Strona
     function create_Strona()
     {
         $strona="<!DOCTYPE html><html>";
-        $strona.=$this->create_head("Projekt","CSS/st.css");
-        $strona.=$this->create_body("Projekt");
+        $strona.=$this->create_head();
+        $strona.=$this->create_body();
         // $strona.=$this->create_registration();
         
-        
-
         $strona.="</html>";
         return $strona;
     }
-    function create_head($title, $css)
+    function create_head($css="css/st.css")
     {
         $head="<head>
             <meta charset=\"utf-8\" />
-            <title>$title</title>
+            <title>$this->title</title>
 
             <link rel=\"icon\" type=\"image/png\" href=\"img/planet-earth.png\"/>
-            <link rel=\"stylesheet\" type=\"text/css\" href=\"$css\" />
+            <link rel=\"stylesheet\" type=\"text/css\" href=\"$css\"/>
         </head>";
         return $head;
     }
-    function create_body($title)
+    function create_body()
     {
         $body="<body class=\"home-template\"><div class=\"site-wrapper\">";
-        $body.=$this->create_header($title);
+        $body.=$this->create_header();
         $body.="<main id=\"site-main\" class=\"site-main outer\">
                 <div class=\"inner\">";
         $body.=$this->create_tresc();
@@ -53,13 +55,13 @@ class Strona
         $body.="</div></body>";
         return $body;
     }
-    function create_header($title)
+    function create_header()
     {
         $header="<header class=\"site-header outer no-image\">
         <div class=\"inner\">
             <div class=\"site-header-content\">
                 <h1 class=\"site-title\">
-                    $title
+                    $this->title
                 </h1>
                 <h2 class=\"site-description\">Tworzenie aplikacj internetowych 2019-2020</h2>
             </div>
@@ -128,9 +130,12 @@ class Strona
             //     </form>
             // </p>";
             
-            $tresc.= $this->user->show(); $tresc.="</br>";
-            $this->user->set_date();
-            $tresc.= $this->user->show(); $tresc.="</br>";
+            // $tresc .= $this->file_get_tresc('inf.md');
+            $tresc .= $this->user->answer_b_add();
+            
+            // $tresc.= $this->user->show(); $tresc.="</br>";
+            // $this->user->set_date();
+            // $tresc.= $this->user->show(); $tresc.="</br>";
             $tresc.="</div></section></article>";
             /*
             $tresc.="<div class=\"post-feed\" id=\"post-feed\">
@@ -203,6 +208,11 @@ class Strona
         //     $this->user->show();
         // }
         // }
+    }
+    function file_get_tresc($url){
+        $contents = file_get_contents($url);
+        $Parsedown = new Parsedown();
+        return "".$Parsedown->text($contents);
     }
 } //koniec klasy Strona
 ?>

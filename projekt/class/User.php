@@ -1,5 +1,16 @@
 <?php
 // include_once("Baza.php");
+
+// CREATE TABLE IF NOT EXISTS `User` (
+//     `id_user` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+//     `username` varchar(40) NOT NULL,
+//     `email` varchar(11) NOT NULL,
+//     `date` date NOT NULL,
+//     `status` tinyint(1) NOT NULL DEFAULT 2,
+//     `passwd` varchar(60) NOT NULL,
+//     PRIMARY KEY (`id_user`)
+// ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 class User {
     const STATUS_ADMIN = 0;
     const STATUS_USER = 1;
@@ -7,7 +18,6 @@ class User {
 
     protected $userName;
     protected $passwd;
-    // protected $fullName;//imie i nazwisko
     protected $email;
     protected $date;
     protected $status;
@@ -23,6 +33,11 @@ class User {
         $this->passwd=md5($passwd);
         // $this->passwd=password_hash($passwd, PASSWORD_DEFAULT);
         
+    }
+    public function answer_b_add(){
+        $answer = "INSERT INTO `User` (`id_user`, `username`, `email`, `date`, `status`, `paswd`) VALUES ";
+        $answer .= "(NULL, '$this->userName', '$this->email', '$this->date', $this->status, '$this->passwd');";
+        return $answer;
     }
 
     public function show() {
