@@ -27,53 +27,65 @@
 CREATE TABLE IF NOT EXISTS `User` (
     `id_user` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `username` varchar(40) NOT NULL,
-    `email` varchar(11) NOT NULL,
+    `email` varchar(50) NOT NULL,
     `date` date NOT NULL,
+    `img` varchar(50) NOT NULL DEFAULT "img/anon.jpg",
     `status` tinyint(1) NOT NULL DEFAULT 2,
     `passwd` varchar(60) NOT NULL,
     PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- INSERT INTO `User` (`id_user`, `username`, `email`, `date`, `status`, `paswd`) VALUES 
--- (NULL, '', '', '', 2, '');
-
 CREATE TABLE IF NOT EXISTS `Post` (
     `id_post` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `id_user` int(10) UNSIGNED NOT NULL,
+    `title` varchar(50) NOT NULL,
     `datetime` date NOT NULL,
     `tag` varchar(40) NOT NULL,
-    `post_full_title` varchar(20) NOT NULL,
+    `post_full_title` varchar(50) NOT NULL,
     `post_full_image` varchar(50) NOT NULL,
-    `access` int(2) NOT NULL,
+    `access` varchar(2) NOT NULL,
     `content` varchar(60) NOT NULL,
     PRIMARY KEY (`id_post`),
     KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- INSERT INTO `Post` (`id_post`, `id_user`, `datetime`, `tag`, `post_full_title`, `post_full_image`, `access`, `content`) VALUES 
--- (NULL, '', '', '', '', '', '', '');
-
--- access:
--- 4-r, 2-w, 0, 6-rw
--- user, all:
 
 ALTER TABLE `Post`
   ADD CONSTRAINT `Post_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 
 ```
+-- INSERT INTO `Post` (`id_post`, `id_user`, `title`, `datetime`, `tag`, `post_full_title`, `post_full_image`, `access`, `content`) VALUES 
+-- (NULL, '', '', '', '', '', '', '', '');
+
+-- access:
+-- 4-r, 2-w, 1-NULL, 6-rw
+-- user, all:
+
 44
-22
-0 00
 42
-40
-24
-20
-4 04
-2 02
+41
 46
-64
+
+24
+22
+21
 26
+
+14
+12
+11
+16
+
+64
 62
-60
-6 06
+61
+66
+
+---
+
+strona:
+
+$s_head_title 65
+$s_head_css 68
+$s_header_title 90
+143

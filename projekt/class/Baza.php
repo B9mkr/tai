@@ -38,16 +38,35 @@ class Baza
                 }
                 $tresc .= "</td></tr>";
             }
-            $tresc .= "</table></tbody>";
+            $tresc .= "</tbody></table>";
             $result->close();
             /* zwolnij pamięć */
         }
         return $tresc;
     }
+    function dane_z_bazy($sql)
+    //$pola zawiera tablicę z nazwami pol w bazie
+    {
+        $i=0;
+        if ($result = $this->mysqli->query($sql)) 
+        {
+            $dane;
+            while($obj = $result->fetch_object()){
+                $dane[$i]=$obj;
+                $i++;
+            }
+            // var_dump($obj);
+            $result->close();
+            /* zwolnij pamięć */
+            
+            return $dane;
+        }
+        else return NULL;
+    }
     public function answer($sql)
     {
         if ($this->mysqli->query($sql)) {
-            echo "Successfully answer";
+            // echo "Successfully answer";
             return true;
         } else {
             echo "Error: " . $sql . "</br>" . $this->mysqli->error;
@@ -56,3 +75,4 @@ class Baza
     }
 } //koniec klasy Baza
 ?>
+

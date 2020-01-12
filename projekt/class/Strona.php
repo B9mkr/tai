@@ -1,47 +1,123 @@
 <?php
-include_once("User.php");
-// include_once("Post.php");
-include('parsedown/Parsedown.php');
-
 class Strona
 {
-    private $user;
-    private $title;
-    function __construct()
-    {
-        $this->title="Projekt";
-        $this->user= new User("", "", "");// ($userName, $email, $passwd)
-        $this->show_Strona();
-    } //koniec funkcji konstruktora
+    //pola (własności) klasy:
+    private $title="Projekt";
+    protected $zawartosc;
+    protected $slowa_kluczowe = "narzędzia internetowe, php, formularz";
     
-    //show
-    function show_Strona()
+    protected $datetime;
+    protected $dateshow;
+    protected $img="img/text/lovew";
+
+    protected $user;
+    protected $post;
+
+    //interfejs klasy – metody modyfikujące fragmenty strony
+    public function set_title($new_title)
+    {
+        $this->title = $new_title;
+    }
+    public function set_slowa_kluczowe($new_slowa)
+    {
+        $this->slowa_kluczowe = $new_slowa;
+    }
+    public function set_zawartosc($new_zawartosc)
+    {
+        $this->zawartosc = $new_zawartosc;
+    }
+    public function set_datetime($new_date)
+    {
+        $this->datetime = $new_date;
+    }
+    public function set_dateshow($new_date)
+    {
+        $this->dateshow = $new_date;
+    }
+    public function set_img($img="img/text/lovew")
+    {
+        $this->img = $img;
+    }
+    public function set_user($user)
+    {
+        $this->user = $user;
+    }
+    public function set_post($post)
+    {
+        $this->post = $post;
+    }
+
+    public function get_title()
+    {
+        return $this->title;
+    }
+    public function get_slowa_kluczowe()
+    {
+        return $this->slowa_kluczowe;
+    }
+    public function get_zawartosc()
+    {
+        return $this->zawartosc;
+    }
+    public function get_datetime()
+    {
+        return $this->datetime;
+    }
+    public function get_dateshow()
+    {
+        return $this->dateshow;
+    }
+    public function get_img()
+    {
+        return $this->img;
+    }
+    public function get_user()
+    {
+        return $this->user;
+    }
+    public function get_post()
+    {
+        return $this->post;
+    }
+
+
+    public function get_style($url)
+    {
+        return '<link rel="stylesheet" href="' . $url . '" type="text/css" />';
+    }
+
+    //interfejs klasy – funkcje wyświetlające stronę
+    function show()
     {
         echo $this->create_Strona();
     }
-    
-    //create
-    
+
+    //interfejs klasy – funkcje generujące stronę
     function create_Strona()
     {
         $strona="<!DOCTYPE html><html>";
         $strona.=$this->create_head();
         $strona.=$this->create_body();
-        // $strona.=$this->create_registration();
-        
         $strona.="</html>";
         return $strona;
     }
-    function create_head($css="css/st.css")
+    function create_head()
     {
-        $head="<head>
+        $head = "<head>
             <meta charset=\"utf-8\" />
             <title>$this->title</title>
-
-            <link rel=\"icon\" type=\"image/png\" href=\"img/planet-earth.png\"/>
-            <link rel=\"stylesheet\" type=\"text/css\" href=\"$css\"/>
-        </head>";
+            <link rel=\"icon\" type=\"image/png\" href=\"img/planet-earth.png\"/>";
+        $head .= $this->create_css($css=["css/st.css"]);
+        $head .= "</head>";
         return $head;
+    }
+    function create_css($urls_css)
+    {
+        $css="";
+        foreach($urls_css as $cs){
+            $css .= $this->get_style($cs);
+        }
+        return $css;
     }
     function create_body()
     {
@@ -66,20 +142,26 @@ class Strona
                 <h2 class=\"site-description\">Tworzenie aplikacj internetowych 2019-2020</h2>
             </div>
             <nav class=\"site-nav\">
-                <div class=\"site-nav-left\"></div>
-                <div class=\"site-nav-right\">
-                    <div class=\"social-links\">
-                        <a class=\"social-link social-link-fb\" href=\"https://www.facebook.com\" title=\"Facebook\" target=\"_blank\" rel=\"noopener\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><path d=\"M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z\"/></svg></a>
-                        <a class=\"social-link social-link-tw\" href=\"https://twitter.com\" title=\"Twitter\" target=\"_blank\" rel=\"noopener\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><path d=\"M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z\"/></svg></a>
-                    </div class=\"other\">
-                        <a class=\"gener-button\" href=\"index4.html\" title=\"GEN\" rel=\"noopener\">
-                            <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"svg-icon\" viewBox=\"0 0 20 20\"><path d=\"M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10 M17.969,10c0,4.401-3.567,7.969-7.969,7.969c-4.402,0-7.969-3.567-7.969-7.969c0-4.402,3.567-7.969,7.969-7.969C14.401,2.031,17.969,5.598,17.969,10 M17.13,10c0-3.932-3.198-7.13-7.13-7.13S2.87,6.068,2.87,10c0,3.933,3.198,7.13,7.13,7.13S17.13,13.933,17.13,10\"></path></svg>
-                        </a>
-                        <a class=\"gener-button\" href=\"index4.html\" title=\"REG\" rel=\"noopener\">
-                            <svg class=\"svg-icon\" viewBox=\"0 0 20 20\"><path d=\"M12.075,10.812c1.358-0.853,2.242-2.507,2.242-4.037c0-2.181-1.795-4.618-4.198-4.618S5.921,4.594,5.921,6.775c0,1.53,0.884,3.185,2.242,4.037c-3.222,0.865-5.6,3.807-5.6,7.298c0,0.23,0.189,0.42,0.42,0.42h14.273c0.23,0,0.42-0.189,0.42-0.42C17.676,14.619,15.297,11.677,12.075,10.812 M6.761,6.775c0-2.162,1.773-3.778,3.358-3.778s3.359,1.616,3.359,3.778c0,2.162-1.774,3.778-3.359,3.778S6.761,8.937,6.761,6.775 M3.415,17.69c0.218-3.51,3.142-6.297,6.704-6.297c3.562,0,6.486,2.787,6.705,6.297H3.415z\"></path></svg>
-                        </a>
-                        
-                </div>
+                <div class=\"site-nav-left\"><div class=\"other\">";
+                // $header.="<a class=\"gener-button\" href=\"index4.html\" title=\"GEN\" rel=\"noopener\">
+                //     <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"svg-icon\" viewBox=\"0 0 20 20\"><path d=\"M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10 M17.969,10c0,4.401-3.567,7.969-7.969,7.969c-4.402,0-7.969-3.567-7.969-7.969c0-4.402,3.567-7.969,7.969-7.969C14.401,2.031,17.969,5.598,17.969,10 M17.13,10c0-3.932-3.198-7.13-7.13-7.13S2.87,6.068,2.87,10c0,3.933,3.198,7.13,7.13,7.13S17.13,13.933,17.13,10\"></path></svg>
+                // </a>";
+                $header.="</div></div><div class=\"site-nav-right\">";
+                // $header.="<div class=\"social-links\">
+                //         <a class=\"social-link social-link-fb\" href=\"https://www.facebook.com\" title=\"Facebook\" target=\"_blank\" rel=\"noopener\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><path d=\"M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z\"/></svg></a>
+                //         <a class=\"social-link social-link-tw\" href=\"https://twitter.com\" title=\"Twitter\" target=\"_blank\" rel=\"noopener\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><path d=\"M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z\"/></svg></a>
+                //     </div>";
+                $header.="<div class=\"other\">";
+                        // $header.="<a class=\"gener-button\" href=\"index4.html\" title=\"GEN\" rel=\"noopener\">
+                        //     <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"svg-icon\" viewBox=\"0 0 20 20\"><path d=\"M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10 M17.969,10c0,4.401-3.567,7.969-7.969,7.969c-4.402,0-7.969-3.567-7.969-7.969c0-4.402,3.567-7.969,7.969-7.969C14.401,2.031,17.969,5.598,17.969,10 M17.13,10c0-3.932-3.198-7.13-7.13-7.13S2.87,6.068,2.87,10c0,3.933,3.198,7.13,7.13,7.13S17.13,13.933,17.13,10\"></path></svg>
+                        // </a>";
+                        // $header.="<a class=\"gener-button\" href=\"?strona=log_in\" title=\"log in\" rel=\"noopener\">
+                        //     <svg class=\"svg-icon\" viewBox=\"0 0 20 20\"><path d=\"M12.075,10.812c1.358-0.853,2.242-2.507,2.242-4.037c0-2.181-1.795-4.618-4.198-4.618S5.921,4.594,5.921,6.775c0,1.53,0.884,3.185,2.242,4.037c-3.222,0.865-5.6,3.807-5.6,7.298c0,0.23,0.189,0.42,0.42,0.42h14.273c0.23,0,0.42-0.189,0.42-0.42C17.676,14.619,15.297,11.677,12.075,10.812 M6.761,6.775c0-2.162,1.773-3.778,3.358-3.778s3.359,1.616,3.359,3.778c0,2.162-1.774,3.778-3.359,3.778S6.761,8.937,6.761,6.775 M3.415,17.69c0.218-3.51,3.142-6.297,6.704-6.297c3.562,0,6.486,2.787,6.705,6.297H3.415z\"></path></svg>
+                        // </a>";
+                        $header.="<a class=\"gener-button\" href=\"?strona=log_in\" title=\"log in\" rel=\"noopener\">
+                        <img src=\"img/anon.jpg\"  width=\"50\" height=\"50\" alt=\"anon\"/>
+                        </a>";
+                $header.="</div></div></div>
             </nav>
         </div>
     </header>";
@@ -92,9 +174,9 @@ class Strona
     {
         $footer="<footer class=\"site-footer outer\">
         <div class=\"site-footer-content inner\">
-            <section class=\"copyright\"><a href=\"index.php\">main</a> &copy; 2020</section>
+            <section class=\"copyright\"><a href=\"?strona=glowna\">main</a> &copy; 2020</section>
             <nav class=\"site-footer-nav\">
-                <a href=\"index.php\">Ostatnie posty</a>
+                <a href=\"?strona=glowna\">Ostatnie posty</a>
                 <a href=\"https://www.facebook.com\" target=\"_blank\" rel=\"noopener\">Facebook</a>
                 <a href=\"https://twitter.com\" target=\"_blank\" rel=\"noopener\">Twitter</a>
             </nav>
@@ -108,78 +190,21 @@ class Strona
         <article class=\"post-full post tag-it\">
         <header class=\"post-full-header\">
            <section class=\"post-full-meta\">
-              <time class=\"post-full-meta-date\" datetime=\"".$this->user->get_date()."\">".($this->user->get_date_format("d F Y"))."</time>
-              <span class=\"date-divider\">/</span> <a href=\"\">tag</a>
+              <time class=\"post-full-meta-date\" datetime=\"".$this->datetime."\">".$this->dateshow."</time>
+              <span class=\"date-divider\">/</span> <a href=\"?tag=s\">tag</a>
            </section>
-           <h1 class=\"post-full-title\"></h1>
+           <h1 class=\"post-full-title\">$this->title</h1>
         </header>
         <figure class=\"post-full-image\">";
-        $tresc.=$this->create_img();
+        $tresc.=$this->create_img($this->img);
         $tresc.="</figure>
         <section class=\"post-full-content\">
            <div class=\"post-content\">";
             
-            // $tresc.="<h3>Formularz rejestracji</h3>
-            // <p>
-            //     <form action=\"index.php\" method=\"post\">
-            //         Nazwa użytkownika: <br/><input name=\"userName\" /><br/>
-            //         <!-- Imię i nazwisko: <br/><input name=\"fullName\" /><br/> -->
-            //         Email: <br/><input name=\"email\" /><br/>
-            //         Hasło: <br/><input name=\"passwd\" type=\"password\" /><br/>
-            //         <input type=\"submit\" name=\"wyslij\" value=\"Wyślij\" />
-            //     </form>
-            // </p>";
+        $tresc .= $this->zawartosc;
+        
+        $tresc.="</div></section></article>";
             
-            // $tresc .= $this->file_get_tresc('inf.md');
-            $tresc .= $this->user->answer_b_add();
-            
-            // $tresc.= $this->user->show(); $tresc.="</br>";
-            // $this->user->set_date();
-            // $tresc.= $this->user->show(); $tresc.="</br>";
-            $tresc.="</div></section></article>";
-            /*
-            $tresc.="<div class=\"post-feed\" id=\"post-feed\">
-                    <article class=\"post-card post\">
-                    <a class=\"post-card-image-link\" href=\"text.html\">
-                            <img
-                            srcset=\"img/text/lovew300.png 300w,
-                            img/text/lovew600.png 600w,
-                            img/text/lovew1000.png 1000w,
-                            img/text/lovew2000.png 2000w\"
-                            sizes=\"(max-width: 800px) 400px,
-                            (max-width: 1170px) 700px,
-                            1400px\"
-                            src=\"img/text/lovew2000.png\"
-                            alt=\"love\"
-                            />
-                    </a>
-                    <div class=\"post-card-content\">
-                        <a class=\"post-card-content-link\" href=\"text.html\">
-                            <header class=\"post-card-header\">
-                                <span class=\"post-card-tags\">Eng</span>
-                                <h2 class=\"post-card-title\">Text for english</h2>
-                            </header>
-                            <section class=\"post-card-excerpt\">
-                                <p>Ubuntu Basics</p>
-                            </section>
-                        </a>
-                        <footer class=\"post-card-meta\">
-                            <ul class=\"author-list\">
-                                <li class=\"author-list-item\">
-                                    <div class=\"author-name-tooltip\">
-                                        BM
-                                    </div>
-                                        <a href=\"#\" class=\"static-avatar\">
-                                            <img class=\"author-profile-image\" src=\"img/mf.jpg\" alt=\"author\" />
-                                        </a>
-                                </li>
-                            </ul>
-                            <span class=\"reading-time\">10 min</span>
-                        </footer>
-                    </div>
-                </article></div>";
-        // }
-        */
         return $tresc;
     }
     function create_img($url="img/text/lovew")
@@ -193,26 +218,6 @@ class Strona
             (max-width: 2000px) 700px, 1400px\"
             src=\"".$url."2000.png\"
             alt=\"img\"/>";
-    }
-    function create_registration()
-    {
-        // function __construct($userName, $email, $passwd )
-        
-        // $rf = new RegistrationForm(); //wyświetla formularz rejestracji
-        // if (filter_input(INPUT_POST, 'submit', FILTER_SANITIZE_FULL_SPECIAL_CHARS)) {
-        //     $this->user = $rf->checkUser(); //sprawdza poprawność danych
-        // if ($this->user === NULL)
-        //     echo "<p>Niepoprawne dane rejestracji.</p>";
-        // else{
-        //     echo "<p>Poprawne dane rejestracji:</p>";
-        //     $this->user->show();
-        // }
-        // }
-    }
-    function file_get_tresc($url){
-        $contents = file_get_contents($url);
-        $Parsedown = new Parsedown();
-        return "".$Parsedown->text($contents);
     }
 } //koniec klasy Strona
 ?>
