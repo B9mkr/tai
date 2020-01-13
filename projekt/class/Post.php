@@ -128,6 +128,11 @@ class Post {
         return $this->user;
     }
 
+    public function get_date_format($format="Y-m-d")
+    {
+        return ((new DateTime("".$this->datetime))->format($format));
+    }
+
     function help_access($liczba){
         switch($liczba){
             case 4: return Post::ACCESS_READ;

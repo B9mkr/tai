@@ -7,12 +7,25 @@
 
 $user       = new User("", "", "");
 $post       = new Post();
-$ob        = new Baza("localhost", "root", "", "projekt");
-$tytul     = "inf";
-$zawartosc = "".$post->get_id_post();//." ".file_get_tresc("".$post->get_content());//."<img src=\"img/anon.jpg\" alt=\"anon\"/>";
+$ob         = new Baza("localhost", "root", "", "projekt");
 
-$datetime  = $user->get_date();
-$dateshow  = $user->get_date_format("d F Y");
+$sql='SELECT * FROM `Post` p where p.id_post=1';
+$dane=$ob->dane_z_bazy($sql);
+if($dane == NULL)
+    echo "Nie poprawne zapytania </br>";
+else{
+    $post->set_z_bazy($dane);
+    // var_dump($dane);
+}
+
+
+$tytul     = $post->get_title();
+$zawartosc = "".file_get_tresc("".$post->get_content());//."<img src=\"img/anon.jpg\" alt=\"anon\"/>";
+
+$datetime  = $post->get_datetime();
+$dateshow  = $post->get_date_format("d F Y");
+
+
 
 // $dane=$ob->dane_z_bazy('SELECT * FROM `User` u WHERE u.email="'.$user->get_email().'" AND u.passwd="'.$user->get_passwd().'"');
 // if($dane == NULL)
@@ -25,14 +38,6 @@ function file_get_tresc($url="inf.md"){
 	return "".$Parsedown->text($contents);
 }
 
-$sql='SELECT * FROM `User`';
-    $dane=$ob->dane_z_bazy($sql);
-    if($dane == NULL)
-        echo "Nie poprawne zapytania </br>";
-    else{
-        // $user->set_z_bazy($dane);
-        // var_dump($dane);
-    }
 
 // object(stdClass)#7 (9) { 
 //     ["id_post"]=> string(1) "1" 

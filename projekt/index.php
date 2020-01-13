@@ -24,7 +24,7 @@ if (filter_input(INPUT_GET, 'strona')) {
     $strona = "glowna";
 }
 
-// $strona="glowna";
+$strona="glowna";
 
 // if (filter_input(INPUT_GET, 'tag')) {
 //     $tag = filter_input(INPUT_GET, 'tag');

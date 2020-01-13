@@ -6,6 +6,7 @@
 
 $post      = new Post();
 $ob        = new Baza("localhost", "root", "", "projekt");
+$user = new User("", "", "");
 $tytul     = "glowna";
 $zawartosc = get_tresc($post, $ob);//."<img src="img/anon.jpg" alt="anon"/>";
 
@@ -33,7 +34,7 @@ function get_tresc($post, $ob){
             // $post->set
             $tresc.='
                 <article class="post-card post">
-                <a class="post-card-image-link" href="?strona=post">'.create_img($post->get_post_full_image(), "jpg").'</a>
+                <a class="post-card-image-link" href="?strona=post">'.create_img($post->get_post_full_image(), "png").'</a>
                 <div class="post-card-content">
                     <a class="post-card-content-link" href="?strona=post">
                         <header class="post-card-header">
@@ -65,7 +66,7 @@ function get_tresc($post, $ob){
     return $tresc.'</div>';
 }
 
-function create_img($url="img/text/lovew", $k="jpg")
+function create_img($url="img/text/lovew", $k="png")
 {
     return "<img
         srcset=\"".$url."300.".$k." 300w,
