@@ -3,7 +3,7 @@
     include_once "class/Baza.php";
     include_once "class/User.php";
 
-$user      = new User("", "", "");
+$user      = $user_main->get_user();
 $ob        = new Baza("localhost", "root", "", "projekt");
 $tytul     = "Registration";
 $zawartosc = drukuj_form($user);
@@ -33,13 +33,11 @@ $dateshow  = $user->get_date_format("d F Y");
                 <td><label for = "paswd">Password:</label></td>
                 <td><input type="password" name="paswd"/></td>
             </tr>
-        </table>
-        </br>
+        </table> </br>
+        
         <input type="reset" name="reset" value="Wyczyść formularz" />
         
-        <input type="submit" value="Registration" name="dodaj"/>
-        <input type="submit" value="Pokaz" name="pokaz"/>
-        </br>
+        <input type="submit" value="Registration" name="dodaj"/> </br>
         <a href="?strona=log_in">Log in</a>
         </br>
     </form>';
@@ -91,7 +89,7 @@ function walidacja($user, $ob)
     }
     if ($errors === "")
     {
-        print("</br><p>GOOD walidation!</p>");
+        // print("</br><p>GOOD walidation!</p>");
         dobazy($dane, $user, $ob);
         // var_dump($dane);
     }
@@ -109,7 +107,7 @@ function dobazy($dane, $user, $ob)
     $user->set_date();
     $user->set_img("img/anon.jpg");
 
-    $ob->answer($user->answer_b_add());
+    $ob->answer($user->add_do_bazy());
 }
 
 

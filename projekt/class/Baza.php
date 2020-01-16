@@ -27,7 +27,7 @@ class Baza
             $ilepol = sizeof($pola);
             $ile    = $result->num_rows;
             // pętla po wyniku zapytania $results
-            $tresc .= "<table border><tbody>";
+            $tresc .= "<table><tbody>";
             while ($row = $result->fetch_object())
             {
                 $tresc .= "<tr><td class='blue'>";
@@ -45,23 +45,22 @@ class Baza
         return $tresc;
     }
     function dane_z_bazy($sql)
-    //$pola zawiera tablicę z nazwami pol w bazie
     {
         $i=0;
+        $dane=NULL;
         if ($result = $this->mysqli->query($sql)) 
         {
-            $dane;
-            while($obj = $result->fetch_object()){
-                $dane[$i]=$obj;
+            while($obj = $result->fetch_object())
+            {
+                $dane[$i] = $obj;
                 $i++;
             }
-            // var_dump($obj);
             $result->close();
-            /* zwolnij pamięć */
-            
-            return $dane;
         }
         else return NULL;
+        if($dane == NULL)
+            return NULL;
+        return $dane;
     }
     public function answer($sql)
     {

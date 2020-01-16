@@ -162,7 +162,7 @@ class Strona
             // </p>";
             
             // $tresc .= $this->file_get_tresc('inf.md');
-            $tresc .= $this->user->answer_b_add();
+            $tresc .= $this->user->add_do_bazy();
             
             // $tresc.= $this->user->show(); $tresc.="</br>";
             // $this->user->set_date();

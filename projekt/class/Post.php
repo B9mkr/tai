@@ -14,16 +14,17 @@ class Post {
     protected $tag;
     protected $post_full_title;
     protected $post_full_image;
-    protected $access = "".Post::ACCESS_ALL."".Post::ACCESS_ALL;
+    protected $access;
     protected $content;
     protected $user;
 
     // function __construct($datetime, $tag, $post_full_title, $post_full_image, $content, $access){
-    //     function __construct($user){
-    //     $this->access = "".Post::ACCESS_ALL."".Post::ACCESS_ALL;
-    //     $this->user = $user;
-    //     $this->datetime = (new DateTime()) -> format("Y-m-d");
-    // }
+    function __construct()
+    {
+        $this->access = "".Post::ACCESS_ALL."".Post::ACCESS_ALL;
+        // $this->datetime = (new DateTime()) -> format("Y-m-d");
+        $this->id_post=1;
+    }
     
     // $post->set_title();
     // $post->set_datetime();
@@ -36,7 +37,10 @@ class Post {
 
     public function answer_b_add(){
         $answer = "INSERT INTO `Post` (`id_post`, `id_user`, `title`, `datetime`, `tag`, `post_full_title`, `post_full_image`, `access`, `content`) VALUES ";
-        $answer .= "(NULL, '".$this->user->id_user."', '$this->title', '$this->datetime', '$this->tag', '$this->post_full_title', '$this->post_full_image', '$this->access', '$this->content')";
+        if($this->id_post == 1)
+            $answer .= "(NULL, '".$this->id_user."', '$this->title', '$this->datetime', '$this->tag', '$this->post_full_title', '$this->post_full_image', '$this->access', '$this->content')";
+        else
+        $answer .= "(".$this->id_post.", '".$this->id_user."', '$this->title', '$this->datetime', '$this->tag', '$this->post_full_title', '$this->post_full_image', '$this->access', '$this->content')";
         return $answer;
     }
 
@@ -45,6 +49,20 @@ class Post {
         return "Post:".$this->datetime.", ".$this->tag.", ".$this->post_full_title.", ".$this->post_full_image.", ".$this->access.", ".$this->content; 
     }
     // public function show_access($who, $){}
+
+    public function set_z_bazy($dane, $index=0){
+        // var_dump($dane);
+        $this->id_post = $dane[$index]->id_post;
+        $this->id_user = $dane[$index]->id_user;
+        $this->title = $dane[$index]->title;
+        $this->datetime = $dane[$index]->datetime;
+        $this->tag = $dane[$index]->tag;
+        $this->post_full_title = $dane[$index]->post_full_title;
+        $this->post_full_image = $dane[$index]->post_full_image;
+        $this->access=$dane[$index]->access;
+        $this->content=$dane[$index]->content;
+        // $this-> = $dane[$index]->;
+    }
 
     //interfejs klasy – metody modyfikujące fragmenty strony
     public function set_title($title){
@@ -140,20 +158,6 @@ class Post {
             case 1: return Post::ACCESS_NULL;
             default: return Post::ACCESS_ALL;
         }
-    }
-
-    public function set_z_bazy($dane, $index=0){
-        // var_dump($dane);
-        $this->id_post = $dane[$index]->id_post;
-        $this->id_user = $dane[$index]->id_user;
-        $this->title = $dane[$index]->title;
-        $this->datetime = $dane[$index]->datetime;
-        $this->tag = $dane[$index]->tag;
-        $this->post_full_title = $dane[$index]->post_full_title;
-        $this->post_full_image = $dane[$index]->post_full_image;
-        $this->access=$dane[$index]->access;
-        $this->content=$dane[$index]->content;
-        // $this-> = $dane[$index]->;
     }
 }
 ?> 
