@@ -35,6 +35,10 @@ CREATE TABLE IF NOT EXISTS `User` (
     PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `User` (`id_user`, `username`, `email`, `date`, `img`, `status`, `passwd`) VALUES 
+(1, 'borys', 'mushkaborys@gmail.com', '2020-01-15', 'img/mf.jpg', '1', 'c4ca4238a0b923820dcc509a6f75849b')
+(2, 'test', 'test@gmail.com', '2020-01-11', 'img/anon.jpg', '1', '098F6BCD4621D373CADE4E832627B4F6');
+
 CREATE TABLE IF NOT EXISTS `Post` (
     `id_post` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `id_user` int(10) UNSIGNED NOT NULL,
@@ -48,6 +52,11 @@ CREATE TABLE IF NOT EXISTS `Post` (
     PRIMARY KEY (`id_post`),
     KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `Post` (`id_post`, `id_user`, `title`, `datetime`, `tag`, `post_full_title`, `post_full_image`, `access`, `content`) VALUES 
+(1, '1', 'Test', '2020-01-06', 'information', 'Test info', 'img/standard/f', '66', 'md/text.md'),
+(2, '1', 'inf', '2020-01-10', 'information', 'inf', 'img/standard/f', '66', 'inf.md'),
+(3, '1', 'Text', '2020-01-09', 'text', 'text', 'img/generator/intGen', '66', 'md/text.md');
 
 ALTER TABLE `Post`
   ADD CONSTRAINT `Post_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
