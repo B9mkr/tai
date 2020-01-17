@@ -68,24 +68,24 @@ class Baza
             // echo "Successfully answer";
             return true;
         } else {
-            echo "Error: " . $sql . "</br>" . $this->mysqli->error;
+            // echo "Error: " . $sql . "</br>" . $this->mysqli->error;
             return false;
         }
     }
 
-    public function selectUser($email, $passwd, $tabela) 
+    public function selectUser($email, $passwd)
     {
         $id = -1;
-        $sql = "SELECT * FROM $tabela t WHERE t.email='$email'";
+        $sql = "SELECT * FROM User t WHERE t.email='$email'";
         if ($result = $this->mysqli->query($sql))
         {
             $ile = $result->num_rows;
             if ($ile == 1)
             {
                 $row = $result->fetch_object(); //pobierz rekord z użytkownikiem
-                $md5 = $row->passwd; //pobierz zahaszowane hasło użytkownika
+                $md5 = ''.$row->passwd; //pobierz zahaszowane hasło użytkownika
                 //sprawdź czy pobrane hasło pasuje do tego z tabeli bazy danych:
-                if ($md5 == md5($passwd))
+                if ($md5 == ''.$passwd)
                     $id = $row->id_user; //jeśli hasła się zgadzają - pobierz id użytkownika
             }
         }

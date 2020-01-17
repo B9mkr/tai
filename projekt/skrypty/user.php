@@ -3,6 +3,9 @@ $user       = $user_main->get_user();
 $post       = new Post();
 
 $sql='SELECT * FROM `User` u where u.id_user='.$this_user;
+
+// $sql='SELECT * FROM `User` WHERE `User`.`id_user`=(SELECT id_user FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1)';
+
 $dane = $ob->dane_z_bazy($sql);
 
 if($dane == NULL)
@@ -12,10 +15,10 @@ if($dane == NULL)
 }else{
     $user->set_z_bazy($dane, 0);
     $tytul     = "".$user->get_username();
-    $zawartosc = get_tresc($user);//."<img src=\"img/anon.jpg\" alt=\"anon\"/>";
+    $zawartosc = get_tresc($user, $ob, $this_user);
 }
 
-function get_tresc($user)
+function get_tresc($user, $ob, $this_user)
 {
     $tresc='
     <article class="post-full">
@@ -30,16 +33,21 @@ function get_tresc($user)
     // $tresc.='</figure>
     $tresc.='<section class="post-full-content"><div class="post-content">';
         
-    $tresc .= get_tresc_in($user);
+    $tresc .= get_tresc_in($user, $ob, $this_user);
     
     $tresc.='</div></section></article>';
         
     return $tresc;
 }
 
-function get_tresc_in($user){
+function get_tresc_in($user, $ob, $this_user){
     $tresc=
-    '<table>
+    '<form method="post" action="">
+    <table>
+        <tr>
+        <td><label>User id:</label></td>
+            <td><label>'.$user->get_id_user().'</label></td>
+        </tr>    
         <tr>
             <td><label>Adres e-mail:</label></td>
             <td><label>'.$user->get_email().'</label></td>
@@ -52,11 +60,27 @@ function get_tresc_in($user){
             <td><label>Zdjęcie:</label></td>
             <td><img src="'.$user->get_img().'" alt="author"/></td>
         </tr>
+        <tr>
+            <td colspan=2>';
 
-    </table>';
-    return $tresc;
+    $sql = 'SELECT * FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1';
+    if(($dane = $ob->dane_z_bazy($sql)) != NULL)
+    {
+        if($this_user == $dane[0]->id_user)
+        {
+            $tresc .= '<input type="submit" value="Wyłoguj" name="wyloguj"/>';
+        }
+    }
+    
+    return $tresc.'</td></tr></table></form>';
 }
 
+if (filter_input(INPUT_POST, "wyloguj"))
+{
+    $User_M->logout($ob);
+    header("Location: ?strona=glowna");
+    exit;
+}
 // $dane=$ob->dane_z_bazy('SELECT * FROM `User` u WHERE u.email="'.$user->get_email().'" AND u.passwd="'.$user->get_passwd().'"');
 // if($dane == NULL)
 //     echo "Nie poprawne zapytania </br>";
