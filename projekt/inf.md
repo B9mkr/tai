@@ -32,12 +32,21 @@ CREATE TABLE IF NOT EXISTS `User` (
     `img` varchar(50) NOT NULL DEFAULT "img/anon.jpg",
     `status` tinyint(1) NOT NULL DEFAULT 2,
     `passwd` varchar(60) NOT NULL,
-    PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    PRIMARY KEY (`id_user`),
+    UNIQUE KEY `username` (`username`,`email`) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 
+AUTO_INCREMENT=1 ;
 
 INSERT INTO `User` (`id_user`, `username`, `email`, `date`, `img`, `status`, `passwd`) VALUES 
 (1, 'borys', 'mushkaborys@gmail.com', '2020-01-15', 'img/mf.jpg', '1', 'c4ca4238a0b923820dcc509a6f75849b')
 (2, 'test', 'test@gmail.com', '2020-01-11', 'img/anon.jpg', '1', '098F6BCD4621D373CADE4E832627B4F6');
+
+CREATE TABLE IF NOT EXISTS `logged_in_users` (
+    `id_session` varchar(100) NOT NULL,
+    `id_user` int(11) NOT NULL,
+    `lastUpdate` datetime NOT NULL,
+    PRIMARY KEY (`id_session`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `Post` (
     `id_post` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,

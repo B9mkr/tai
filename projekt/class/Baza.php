@@ -72,6 +72,38 @@ class Baza
             return false;
         }
     }
+    // public function selectUser($email, $passwd)//, $tabela)
+    // {
+    //     $id=-1;
+    //     $sql='SELECT id_user FROM `User` u WHERE u.email="'.$email.'" AND u.passwd="'.$passwd.'"';
+    //     $dane=$ob->dane_z_bazy($sql);
+    //     if($dane == NULL)
+    //         echo "Nie poprawne zapytania </br>";
+    //     else{
+    //         $id = $dane->id_user;
+    //         // var_dump($user);        
+    //     }
+    //     return $id;
+    // }
+    public function selectUser($email, $passwd, $tabela="User") {
+        //parametry $login, $passwd , $tabela – nazwa tabeli z użytkownikami
+        //wynik – id użytkownika lub -1 jeśli dane logowania nie są poprawne
+        $id = -1;
+        $sql = "SELECT * FROM $tabela t WHERE t.email='$email'";
+        if ($result = $this->mysqli->query($sql))
+        {
+            $ile = $result->num_rows;
+            if ($ile == 1)
+            {
+                $row = $result->fetch_object()) //pobierz rekord z użytkownikiem
+                $md5 = $row->passwd; //pobierz zahaszowane hasło użytkownika
+                //sprawdź czy pobrane hasło pasuje do tego z tabeli bazy danych:
+                if ($md5 == md5($passwd))
+                    $id = $row->id_user; //jeśli hasła się zgadzają - pobierz id użytkownika
+            }
+        }
+        return $id; //id zalogowanego użytkownika(>0) lub -1
+       }
 } //koniec klasy Baza
 ?>
 
