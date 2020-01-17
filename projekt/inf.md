@@ -34,12 +34,7 @@ CREATE TABLE IF NOT EXISTS `User` (
     `passwd` varchar(60) NOT NULL,
     PRIMARY KEY (`id_user`),
     UNIQUE KEY `username` (`username`,`email`) 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 
-AUTO_INCREMENT=1 ;
-
-INSERT INTO `User` (`id_user`, `username`, `email`, `date`, `img`, `status`, `passwd`) VALUES 
-(1, 'borys', 'mushkaborys@gmail.com', '2020-01-15', 'img/mf.jpg', '1', 'c4ca4238a0b923820dcc509a6f75849b')
-(2, 'test', 'test@gmail.com', '2020-01-11', 'img/anon.jpg', '1', '098F6BCD4621D373CADE4E832627B4F6');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `logged_in_users` (
     `id_session` varchar(100) NOT NULL,
@@ -58,18 +53,34 @@ CREATE TABLE IF NOT EXISTS `Post` (
     `post_full_image` varchar(50) NOT NULL,
     `access` varchar(2) NOT NULL,
     `content` varchar(60) NOT NULL,
-    PRIMARY KEY (`id_post`),
-    KEY `id_user` (`id_user`)
+    PRIMARY KEY (`id_post`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `Post`
+ADD CONSTRAINT (id_user) REFERENCES User(id_user);
+
+ALTER TABLE `logged_in_users`
+ADD CONSTRAINT (id_user) REFERENCES User(id_user);
+
+ALTER TABLE `Post`
+  ADD CONSTRAINT `Post_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `logged_in_users`
+  ADD CONSTRAINT `Post_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+INSERT INTO `User` (`id_user`, `username`, `email`, `date`, `img`, `status`, `passwd`) VALUES 
+(1, 'borys', 'mushkaborys@gmail.com', '2020-01-15', 'img/mf.jpg', '1', 'c4ca4238a0b923820dcc509a6f75849b'),
+(2, 'test', 'test@gmail.com', '2020-01-11', 'img/anon.jpg', '1', '098F6BCD4621D373CADE4E832627B4F6');
 
 INSERT INTO `Post` (`id_post`, `id_user`, `title`, `datetime`, `tag`, `post_full_title`, `post_full_image`, `access`, `content`) VALUES 
 (1, '1', 'Test', '2020-01-06', 'information', 'Test info', 'img/standard/f', '66', 'md/text.md'),
 (2, '1', 'inf', '2020-01-10', 'information', 'inf', 'img/standard/f', '66', 'inf.md'),
 (3, '1', 'Text', '2020-01-09', 'text', 'text', 'img/generator/intGen', '66', 'md/text.md');
 
-ALTER TABLE `Post`
-  ADD CONSTRAINT `Post_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
+
+ALTER TABLE `logged_in_users`
+  ADD CONSTRAINT `logged_in_users_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ```
 -- INSERT INTO `Post` (`id_post`, `id_user`, `title`, `datetime`, `tag`, `post_full_title`, `post_full_image`, `access`, `content`) VALUES 
