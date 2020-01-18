@@ -27,12 +27,25 @@ class User {
     }
 
     // baza -----------------------------------------------------------
-    public function add_do_bazy()
+    public function add_do_bazy($id='')
     {
         $answer = "INSERT INTO `User` (`id_user`, `username`, `email`, `date`, `img`, `status`, `passwd`) VALUES ";
-        $answer .= "(NULL, '$this->username', '$this->email', '$this->date', '$this->img', $this->status, '$this->passwd');";
-        
+        if($id == '')
+            $answer .= "(NULL, '$this->username', '$this->email', '$this->date', '$this->img', $this->status, '$this->passwd');";
+        else
+            $answer .= "(".$this->id_user.", '$this->username', '$this->email', '$this->date', '$this->img', $this->status, '$this->passwd');";
         return $answer;
+    }
+    public function change_baze($baza)
+    {
+        // UPDATE `User` SET `username` = 'Test 4', `email` = 't4@gmail.c', `date` = '2019-12-18', `img` = 'img/map.jpg', `passwd` = 'd41d8cd98f00b204e9800998ecf8427e' WHERE `User`.`id_user` = 8;
+        $baza->answer('UPDATE `User` SET `username` = "'.$this->username.'", `email` = "'.$this->email.'", `date` = "'.$this->date.'", `img` = "'.$this->img.'", `passwd` = "'.$this->get_passwd().'" WHERE `User`.`id_user` = '.$this->id_user);
+
+        //$baza->answer($this->add_do_bazy($this->id_user));
+    }
+    public function delete_z_bazy($baza)
+    {
+        $baza->answer('DELETE FROM `User` WHERE `User`.`id_user` = '.$this->id_user);
     }
     public function set_z_bazy($dane, $index=0)
     {
@@ -45,6 +58,68 @@ class User {
         $this->passwd=$dane[$index]->passwd;
     }
 
+    // ----------------------------------------------------------------
+    function changeForm() 
+    {
+        $form='<form method="post" action="">
+            <table>
+                <tr>
+                    <td><label for = "username">User name:</label></td>
+                    <td><input type="text" value="'.$this->username.'" placeholder="'.$this->username.'" name="username"/></td>
+                </tr>
+                <tr>
+                    <td><label for = "adresmail">Adres e-mail:</label></td>
+                    <td><input type="text" value="'.$this->email.'" placeholder="'.$this->email.'" name="email"/></td>
+                </tr>
+                <tr>
+                    <td><label for = "img">Img:</label></td>
+                    <td><input type="text" value="'.$this->img.'" placeholder="'.$this->img.'" name="img"/></td>
+                </tr>
+                <tr>
+                    <td><label for = "passwd">Password:</label></td>
+                    <td><input type="password" name="passwd"/></td>
+                </tr>
+            </table> </br>
+            <input type="submit" value="Zmień" name="zmien"/> </br>
+            <input type="submit" value="Wyłoguj" name="wyloguj"/>
+            
+        </form>';
+
+        return $form; //wynik typu String – gotowy formularz
+    }
+
+    function zmien($db)
+    {
+        $args = array(
+            'username' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'email' => FILTER_VALIDATE_EMAIL,
+            'img' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'passwd' => FILTER_SANITIZE_MAGIC_QUOTES
+        );
+        $dane = filter_input_array(INPUT_POST, $args);
+        
+        $this->dobazy($dane, $db);
+    }
+
+    function dobazy($dane, $ob)
+    {
+        $this->set_username($dane["username"]);
+        $this->set_email($dane["email"]);
+        $this->set_passwd($dane["passwd"]);
+        $this->set_status(1);
+        $this->set_date();
+        $this->set_img($dane["img"]);
+
+        $dzb = $ob->dane_z_bazy("SELECT lastUpdate FROM `Session`  ORDER BY `Session`.`lastUpdate` DESC LIMIT 1");
+        $time = $dzb[0]->lastUpdate;
+
+        $ob->answer($this->change_baze($ob));
+        
+        $ob->answer("DELETE FROM `Session` WHERE `Session`.`id_user` = ".$this->id_user);
+
+        $ob->answer('INSERT INTO `Session` (`id_session`, `id_user`, `lastUpdate`) VALUES ("'.$this->id_user.' '.$time.'", '.$this->id_user.', "'.$time.'");');
+    }
+    
     // interfejsy klasy------------------------------------------------
 
     // $user
@@ -121,7 +196,7 @@ class User {
     // $img
     public function set_img($img)
     {
-        $this->img = $img;
+        $this->img = ''.$img;
     }
     public function get_img()
     {

@@ -147,7 +147,7 @@ class UserManager
         $user->set_passwd($dane["passwd"]);
         $user->set_status(1);
         $user->set_date();
-        $user->set_img("img/anon.jpg");
+        $user->set_img($dane["img"]);
 
         $ob->answer($user->add_do_bazy());
     }

@@ -1,117 +1,1258 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="utf-8" />
-      <title>glowna</title>
-      <link rel="icon" type="image/png" href="img/planet-earth.png"/>
-      <link rel="stylesheet" href="css/st.css" type="text/css" />
+      <meta charSet="utf-8"/>
+      <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      <style data-href="/0.2c6c77045bc3b4964d6a.css">
+      /*! sanitize.css v5.0.0 | CC0 License | github.com/jonathantneal/sanitize.css */
+      *,
+:after,
+:before {
+	background-repeat: no-repeat;
+	box-sizing: inherit
+}
+
+:after,
+:before {
+	text-decoration: inherit;
+	vertical-align: inherit
+}
+
+html {
+	box-sizing: border-box;
+	cursor: default;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+	display: block
+}
+
+body {
+	margin: 0
+}
+
+h1 {
+	font-size: 2em;
+	margin: .67em 0
+}
+
+figcaption,
+figure,
+main {
+	display: block
+}
+
+figure {
+	margin: 1em 40px
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible
+}
+
+nav ol,
+nav ul {
+	list-style: none
+}
+
+pre {
+	font-family: monospace, monospace;
+	font-size: 1em
+}
+
+a {
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects
+}
+
+abbr[title] {
+	border-bottom: none;
+	text-decoration: underline;
+	-webkit-text-decoration: underline dotted;
+	text-decoration: underline dotted
+}
+
+b,
+strong {
+	font-weight: inherit;
+	font-weight: bolder
+}
+
+code,
+kbd,
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em
+}
+
+dfn {
+	font-style: italic
+}
+
+mark {
+	background-color: #ff0;
+	color: #000
+}
+
+small {
+	font-size: 80%
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline
+}
+
+sub {
+	bottom: -.25em
+}
+
+sup {
+	top: -.5em
+}
+
+::selection {
+	background-color: #b3d4fc;
+	color: #000;
+	text-shadow: none
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle
+}
+
+audio,
+video {
+	display: inline-block
+}
+
+audio:not([controls]) {
+	display: none;
+	height: 0
+}
+
+img {
+	border-style: none
+}
+
+svg {
+	fill: currentColor
+}
+
+svg:not(:root) {
+	overflow: hidden
+}
+
+table {
+	border-collapse: collapse
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	margin: 0
+}
+
+button,
+input,
+select,
+textarea {
+	background-color: transparent;
+	color: inherit;
+	font-size: inherit;
+	line-height: inherit
+}
+
+button,
+input {
+	overflow: visible
+}
+
+button,
+select {
+	text-transform: none
+}
+
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
+	-webkit-appearance: button
+}
+
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner,
+button::-moz-focus-inner {
+	border-style: none;
+	padding: 0
+}
+
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring,
+button:-moz-focusring {
+	outline: 1px dotted ButtonText
+}
+
+legend {
+	box-sizing: border-box;
+	color: inherit;
+	display: table;
+	max-width: 100%;
+	padding: 0;
+	white-space: normal
+}
+
+progress {
+	display: inline-block;
+	vertical-align: baseline
+}
+
+textarea {
+	overflow: auto;
+	resize: vertical
+}
+
+[type=checkbox],
+[type=radio] {
+	box-sizing: border-box;
+	padding: 0
+}
+
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+	height: auto
+}
+
+[type=search] {
+	-webkit-appearance: textfield;
+	outline-offset: -2px
+}
+
+[type=search]::-webkit-search-cancel-button,
+[type=search]::-webkit-search-decoration {
+	-webkit-appearance: none
+}
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit
+}
+
+details,
+menu {
+	display: block
+}
+
+summary {
+	display: list-item
+}
+
+canvas {
+	display: inline-block
+}
+
+template {
+	display: none
+}
+
+[tabindex],
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea {
+	touch-action: manipulation
+}
+
+[hidden] {
+	display: none
+}
+
+[aria-busy=true] {
+	cursor: progress
+}
+
+[aria-controls] {
+	cursor: pointer
+}
+
+[aria-hidden=false][hidden]:not(:focus) {
+	clip: rect(0, 0, 0, 0);
+	display: inherit;
+	position: absolute
+}
+
+[aria-disabled] {
+	cursor: default
+}
+         /*!
+         Lato font.
+         */
+         @font-face {
+	font-family: Lato;
+	font-weight: 100;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-hairline-ada4458b361d5e72bcbd19da105afdc5.woff2) format("woff2"), url(/static/lato-hairline-482fe0a9e92d9c5ff7fec117ca54c8ae.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 100;
+	font-style: italic;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-hairline-italic-d9cf517802956cd88eadcb9158aa6dec.woff2) format("woff2"), url(/static/lato-hairline-italic-b4da0df63131b83ddeec1febb5b15374.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 200;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-thin-0faa1074c17a74a7f5e32cbe6f9d76f3.woff2) format("woff2"), url(/static/lato-thin-13fa4c60e0ee7ea5fe2bd84059fb8cac.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 200;
+	font-style: italic;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-thin-italic-880cffe4febaa7476b6aee71db68b7e4.woff2) format("woff2"), url(/static/lato-thin-italic-16d14ad314296a4644d550c8f20bd407.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 300;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-light-7244318390cc4d36aac4a613ff42d308.woff2) format("woff2"), url(/static/lato-light-90301aa07d780a09812229d6375c3b28.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 300;
+	font-style: italic;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-light-italic-314210a4825a7cc8ca7db893dfd9d283.woff2) format("woff2"), url(/static/lato-light-italic-b55e385f24f0f9f724dac935fe292ecf.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 400;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-normal-bd03a2cc277bbbc338d464e679fe9942.woff2) format("woff2"), url(/static/lato-normal-27bd77b9162d388cb8d4c4217c7c5e2a.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 400;
+	font-style: italic;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-normal-italic-4eb103b4d12be57cb1d040ed5e162e9d.woff2) format("woff2"), url(/static/lato-normal-italic-f28f2d6482446544ef1ea1ccc6dd5892.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato Medium;
+	font-weight: 400;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-medium-0996d39c4cf5d223a14559dfa37047fd.woff2) format("woff2"), url(/static/lato-medium-acbd6ecc97c80340e9bf00ea80063234.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato Medium;
+	font-weight: 400;
+	font-style: italic;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-medium-italic-4d295621045bd774d4beed9d6d5796e4.woff2) format("woff2"), url(/static/lato-medium-italic-aa1a75124661b40a6770dc0d8274ddaa.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 500;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-semibold-8b4f872c5de19974857328d06d3fe48f.woff2) format("woff2"), url(/static/lato-semibold-c2b50f4a7d908c8d06f5b05ec135e166.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 500;
+	font-style: italic;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-semibold-italic-80f6811f6c30735dab68a01372d8b78f.woff2) format("woff2"), url(/static/lato-semibold-italic-9fcec04cdba9253e002e740a7cd743fe.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 600;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-bold-cccb897485813c7c256901dbca54ecf2.woff2) format("woff2"), url(/static/lato-bold-d878b6c29b10beca227e9eef4246111b.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 600;
+	font-style: italic;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-bold-italic-0b6bb6725576b072c5d0b02ecdd1900d.woff2) format("woff2"), url(/static/lato-bold-italic-9c7e4e9eb485b4a121c760e61bc3707c.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 800;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-heavy-c9cbbdc3762c340d5d37073a54971487.woff2) format("woff2"), url(/static/lato-heavy-2ce4d82354fdf1be1788c526d94eefc1.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 800;
+	font-style: italic;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-heavy-italic-46f0461b6e19880fe446f094bbe787f4.woff2) format("woff2"), url(/static/lato-heavy-italic-38d2399f6c10d8ba1d8d45ba0c440ad5.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 900;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-black-33d5f0d956f3fc30bc51f81047a2c47d.woff2) format("woff2"), url(/static/lato-black-f80bda6afd19534368443a3d0323a140.woff) format("woff")
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 900;
+	font-style: italic;
+	text-rendering: optimizeLegibility;
+	src: url(/static/lato-black-italic-0f4fa9755f480e75463e74b3dce5a3ee.woff2) format("woff2"), url(/static/lato-black-italic-798eafdd87dc8f3174f76164f0685e02.woff) format("woff")
+}
+      </style>
+      <meta name="generator" content="Gatsby 2.0.77"/>
+      <link rel="shortcut icon" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/favicon.ico"/>
+      <link rel="icon" type="image/png" sizes="16x16" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/favicon-16x16.png"/>
+      <link rel="icon" type="image/png" sizes="32x32" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/favicon-32x32.png"/>
+      <link rel="manifest" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/manifest.json"/>
+      <meta name="mobile-web-app-capable" content="yes"/>
+      <meta name="theme-color" content="#fff"/>
+      <meta name="application-name" content="knpw.rs"/>
+      <link rel="apple-touch-icon" sizes="57x57" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-57x57.png"/>
+      <link rel="apple-touch-icon" sizes="60x60" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-60x60.png"/>
+      <link rel="apple-touch-icon" sizes="72x72" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-72x72.png"/>
+      <link rel="apple-touch-icon" sizes="76x76" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-76x76.png"/>
+      <link rel="apple-touch-icon" sizes="114x114" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-114x114.png"/>
+      <link rel="apple-touch-icon" sizes="120x120" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-120x120.png"/>
+      <link rel="apple-touch-icon" sizes="144x144" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-144x144.png"/>
+      <link rel="apple-touch-icon" sizes="152x152" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-152x152.png"/>
+      <link rel="apple-touch-icon" sizes="167x167" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-167x167.png"/>
+      <link rel="apple-touch-icon" sizes="180x180" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-180x180.png"/>
+      <link rel="apple-touch-icon" sizes="1024x1024" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-icon-1024x1024.png"/>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+      <meta name="apple-mobile-web-app-title" content="knpw.rs"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-320x460.png"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-640x920.png"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-640x1096.png"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-750x1294.png"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-1182x2208.png"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-1242x2148.png"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-748x1024.png"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-768x1004.png"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-1496x2048.png"/>
+      <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="/icons-7c1fbb88abb10f8599ac094a7a39d1dc/apple-touch-startup-image-1536x2008.png"/>
+      <title data-react-helmet="true">Raspberry Pi лучшие проекты · Devpew</title>
+      <meta data-react-helmet="true" charSet="utf-8"/>
+      <meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta data-react-helmet="true" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+      <meta data-react-helmet="true" name="HandheldFriendly" content="True"/>
+      <meta data-react-helmet="true" name="description" content="Devpew"/>
+      <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+      <link rel="canonical" href="https://devpew.com/blog/raspberry" data-baseprotocol="https:" data-basehost="devpew.com"/>
+      <link rel="alternate" type="application/rss+xml" href="/rss.xml"/>
+      <link as="script" rel="preload" href="/webpack-runtime-eeab332532d1c25cec19.js"/>
+      <link as="script" rel="preload" href="/app-f191c9ecf1d5ec6e3eeb.js"/>
+      <link as="script" rel="preload" href="/0-f9369ccffb44c6f6b08d.js"/>
+      <link as="script" rel="preload" href="/component---src-templates-blog-post-jsx-29bc9697feecdac06cdf.js"/>
+      <link as="fetch" rel="preload" href="/static/d/124/path---blog-raspberry-493-b00-9WJervj8cg4FX0djEnqLBigknqc.json" crossOrigin="use-credentials"/>
    </head>
-   <body class="home-template">
-      <div class="site-wrapper">
-         <header class="site-header outer no-image">
-            <div class="inner">
-               <div class="site-header-content">
-                  <h1 class="site-title">
-                     glowna
+   <body>
+      <div id="___gatsby">
+         <div style="outline:none" tabindex="-1" role="group">
+            <style data-emotion-css="15bv9z7">html,body{width:98vw;height:100vh;margin:0;padding:0;font-family:Lato;}h1,h2,h3,h4{text-transform:uppercase;margin-bottom:0;}a{-webkit-text-decoration:none;text-decoration:none;font-weight:bold;color:#333;-webkit-transition:color 250ms linear;transition:color 250ms linear;}a:hover{color:#ab4642;}blockquote{background:#F9F9F9;padding:20px;margin:0;}</style>
+            <main>
+               <style data-emotion-css="1uav0g7">.css-1uav0g7{padding:0 10px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:75px;line-height:75px;color:#333;}@media(max-width:680px){.css-1uav0g7{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;text-align:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:50px;line-height:20px;}}@media(min-width:960px){.css-1uav0g7{padding:0 10px;}@media(min-width:960px){.css-1uav0g7{padding-left:calc((98vw - 940px) / 2);padding-right:calc((98vw - 940px) / 2);}}}</style>
+               <header class="css-1uav0g7 eguvjk60">
+                  <style data-emotion-css="r0aeko">.css-r0aeko{font-size:1.25rem;margin:0;}@media(max-width:680px){.css-r0aeko{font-size:1rem;}}</style>
+                  <h1 class="css-r0aeko eguvjk61">
+                     <style data-emotion-css="yuq3on">.css-yuq3on{-webkit-text-decoration:none;text-decoration:none;color:#333;-webkit-transition:color 250ms linear;transition:color 250ms linear;}.css-yuq3on:hover{color:#ab4642;}</style>
+                     <a class="css-yuq3on e1e665zb0" href="/">Devpew</a> 
                   </h1>
-                  <h2 class="site-description">Tworzenie aplikacj internetowych 2019-2020</h2>
-               </div>
-               <nav class="site-nav">
-                  <div class="site-nav-left">
-                     <div class="other"></div>
-                  </div>
-                  <div class="site-nav-right">
-                     <div class="other"><a class="gener-button" href="?strona=log_in" title="log in" rel="noopener">
-                        <img src="img/anon.jpg"  width="50" height="50" alt="anon"/>
-                        </a>
-                     </div>
-                  </div>
-               </nav>
-            </div>
-         </header>
-         <main id="site-main" class="site-main outer">
-            <div class="inner">
-               <div class="post-feed" id="post-feed">
-                  <article class="post-card post">
-                     <a class="post-card-image-link" href="?strona=post"><img
-                        srcset="img/standard/f300.png 300w,
-                        img/standard/f600.png 600w,
-                        img/standard/f1000.png 1000w,
-                        img/standard/f2000.png 2000w"
-                        sizes="(max-width: 800px) 400px,
-                        (max-width: 2000px) 700px, 1400px"
-                        src="img/standard/f2000.png"
-                        alt="img"/></a>
-                     <div class="post-card-content">
-                        <a class="post-card-content-link" href="?strona=post">
-                           <header class="post-card-header">
-                              <span class="post-card-tags">information</span>
-                              <h2 class="post-card-title">inf</h2>
-                           </header>
-                           <section class="post-card-excerpt">
-                              <p>Ubuntu Basics</p>
-                           </section>
-                        </a>
-                        <footer class="post-card-meta">
-                           <ul class="author-list">
-                              <li class="author-list-item">
-                                 <div class="author-name-tooltip">borys</div>
-                                 <a href="#" class="static-avatar">
-                                 <img class="author-profile-image" src="img/anon.jpg" alt="author" />
-                                 </a>
-                              </li>
-                           </ul>
-                           <span class="reading-time">10 min</span>
-                        </footer>
-                     </div>
+                  <style data-emotion-css="3x6evm">.css-3x6evm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;text-transform:uppercase;}.css-3x6evm a{margin-left:10px;}</style>
+                  <nav class="css-3x6evm eguvjk63"><a class="css-yuq3on e1e665zb0" href="/">Blog</a><a class="css-yuq3on e1e665zb0" href="/about">About</a><a href="https://github.com/devpew" class="css-yuq3on e1e665zb1">GitHub</a><a href="https://twitter.com/devpew" class="css-yuq3on e1e665zb1">Twitter</a></nav>
+               </header>
+               <style data-emotion-css="1kwdcgo">code[class*="language-"],pre[class*="language-"]{background:none;text-shadow:0 1px rgba(0,0,0,0.3);font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;}pre[class*="language-"]{color:#f8f8f2;background:#272822;margin:.5em 0;overflow:auto;}:not(pre) > code[class*="language-"]{white-space:normal;}.token.comment,.token.prolog,.token.doctype,.token.cdata{color:slategray;}.token.punctuation{color:#f8f8f2;}.namespace{opacity:.7;}.token.property,.token.tag,.token.constant,.token.symbol,.token.deleted{color:#f92672;}.token.boolean,.token.number{color:#ae81ff;}.token.selector,.token.attr-name,.token.string,.token.char,.token.builtin,.token.inserted{color:#a6e22e;}.token.operator,.token.entity,.token.url,.language-css .token.string,.style .token.string,.token.variable{color:#f8f8f2;}.token.atrule,.token.attr-value,.token.function{color:#e6db74;}.token.keyword{color:#66d9ef;}.token.regex,.token.important{color:#fd971f;}.token.important,.token.bold{font-weight:bold;}.token.italic{font-style:italic;}.token.entity{cursor:help;}</style>
+               <style data-emotion-css="1yxu09j">.css-1yxu09j{color:#333;}</style>
+               <main class="css-1yxu09j e1s3xc650">
+                  <article>
+                     <style data-emotion-css="l09y01">.css-l09y01{padding:0 10px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}@media(min-width:960px){.css-l09y01{padding-left:calc((98vw - 940px) / 2);padding-right:calc((98vw - 940px) / 2);}}@media(max-width:680px){.css-l09y01{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;}}</style>
+                     <header class="css-l09y01 e1s3xc651">
+                        <style data-emotion-css="sfbmg4">.css-sfbmg4{width:85%;margin-bottom:10px;}@media(max-width:680px){.css-sfbmg4{width:100%;text-align:center;margin-bottom:0;}}</style>
+                        <h1 class="css-sfbmg4 e1s3xc652">Raspberry Pi лучшие проекты</h1>
+                        <style data-emotion-css="1co9xus">.css-1co9xus{width:15%;text-align:right;}@media(max-width:680px){.css-1co9xus{width:100%;text-align:center;}}</style>
+                        <time dateTime="2020-01-17T00:00:00+0000" class="css-1co9xus e1s3xc653">January 17, 2020</time>
+                        <style data-emotion-css="1lejymi">.css-1lejymi{text-transform:uppercase;}</style>
+                        <small class="css-1lejymi e1czrcx60">
+                           Topics:<!-- --> 
+                           <span>
+                              <style data-emotion-css="152sgpq">.css-152sgpq{-webkit-text-decoration:none;text-decoration:none;color:#333;-webkit-transition:color 250ms linear;transition:color 250ms linear;}.css-152sgpq:hover{-webkit-text-decoration:underline;text-decoration:underline;color:#ab4642;}</style>
+                              <a class="css-152sgpq e1czrcx61" href="/tag/hardware/">hardware</a>, 
+                           </span>
+                           <span><a class="css-152sgpq e1czrcx61" href="/tag/open source/">open source</a>, </span><span><a class="css-152sgpq e1czrcx61" href="/tag/services/">services</a></span>
+                        </small>
+                     </header>
+                     <style data-emotion-css="ek9l86">
+                        .css-ek9l86 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.css-ek9l86>* {
+	width: 98vw;
+	word-wrap: break-word;
+}
+
+.css-ek9l86>*:not(.gatsby-highlight) {
+	padding: 0 10px;
+}
+
+@media(min-width:960px) {
+	.css-ek9l86>*:not(.gatsby-highlight) {
+		padding-left: calc((98vw - 940px) / 2);
+		padding-right: calc((98vw - 940px) / 2);
+	}
+}
+
+.css-ek9l86>.gatsby-highlight>pre {
+	padding: 0 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+@media(min-width:960px) {
+	.css-ek9l86>.gatsby-highlight>pre {
+		padding-left: calc((98vw - 940px) / 2);
+		padding-right: calc((98vw - 940px) / 2);
+	}
+}
+
+.css-ek9l86>ul,
+.css-ek9l86>ol {
+	margin-left: 40px;
+	width: calc(100% - 40px);
+}
+                     </style>
+                     <section class="css-ek9l86 e1s3xc655">
+                        <h2>Intro</h2>
+                        <p>Мне очень нравится концепция одноплатников и я очень люблю Raspberry Pi. На нем можно сделать огромное количество интересных проектов. С момента выхода Raspberry Pi у меня были практически все модели. Сейчас у меня дома постоянно включены пять малинок. И я расскажу о таких вещах для которых я использую Raspberry Pi.</p>
+                        <h2>Distro</h2>
+                        <p>Если вы думаете, какой дистрибурив лучше всего подойдет для Raspberry Pi, то выбор совсем не большой. Raspbian работает стабильнее всего. Если он у вас будет работать как сервер, без монитора, то смело устанавливайте Lite версию. Если будете использовать монитор, то ставьте Full. Можно, кстати, использовать и ARM Manjaro XFCE, работает тоже довольно стабильно, выглядит гораздо лучше, но при этом немного сильнее греется.</p>
+                        <p>Записать на флешку из винды легче всего с помощью Etcher.</p>
+                        <p>А из Linux еще проще:</p>
+                        <div class="gatsby-highlight" data-language="bash">
+                           <pre class="language-bash"><code class="language-bash"><span class="token function">dd</span> bs<span class="token operator">=</span>4M if<span class="token operator">=</span>2019-09-26-raspbian-buster.img of<span class="token operator">=</span>/dev/sdX status<span class="token operator">=</span>progress conv<span class="token operator">=</span>fsync</code></pre>
+                        </div>
+                        <h2>Models and Frames</h2>
+                        <p>Сейчас, конечно же, разумнее всего покупать самую последнюю, четвертую модель, хотя для большинства задач это оверкилл. Я расскажу о некоторых кейсах в которых я использую Raspberry Pi и вот только в кейсе с медиапроигрывателем нужна четвертая версия и желательно с четырьмя гигабайтами оперативки. Кстати, если вы будете покупать четвертую версию, то настоятельно рекомендую вам купить сразу и охлаждение к ней.</p>
+                        <p>А вот несколько моих корпусов для Raspberry Pi и мое мнение о них:</p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/e48a7e2664b2bb2c40d6ed919a18b3d1/b324a/1.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAgP/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAv/aAAwDAQACEAMQAAAB2k3LiuhTD//EABkQAQEAAwEAAAAAAAAAAAAAAAIBAAMTEf/aAAgBAQABBQLZAc6WZ2yg0U+3WIR//8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8BSf/EABcRAQADAAAAAAAAAAAAAAAAAAABESH/2gAIAQIBAT8BimP/xAAbEAACAgMBAAAAAAAAAAAAAAAAARExAhAhIv/aAAgBAQAGPwKXl3VDbPNEI//EABwQAQACAQUAAAAAAAAAAAAAAAEAESExQVFhof/aAAgBAQABPyHwyNWILxLvOBn3MUktvDgT/9oADAMBAAIAAwAAABAcz//EABcRAAMBAAAAAAAAAAAAAAAAAAABEUH/2gAIAQMBAT8QdhWf/8QAFxEBAAMAAAAAAAAAAAAAAAAAAAFBcf/aAAgBAgEBPxCVmH//xAAeEAEAAwABBQEAAAAAAAAAAAABABEhUTFBYXGBwf/aAAgBAQABPxApp6Kt8BLCCev2WlCL6gzMrbbcL4gOl4Hf2HYo7pq8z//Z'); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="1"
+                              title="1"
+                              src="/static/e48a7e2664b2bb2c40d6ed919a18b3d1/53025/1.jpg"
+                              srcset="/static/e48a7e2664b2bb2c40d6ed919a18b3d1/e7722/1.jpg 163w,
+                              /static/e48a7e2664b2bb2c40d6ed919a18b3d1/bdb37/1.jpg 325w,
+                              /static/e48a7e2664b2bb2c40d6ed919a18b3d1/53025/1.jpg 650w,
+                              /static/e48a7e2664b2bb2c40d6ed919a18b3d1/3164d/1.jpg 975w,
+                              /static/e48a7e2664b2bb2c40d6ed919a18b3d1/8d861/1.jpg 1300w,
+                              /static/e48a7e2664b2bb2c40d6ed919a18b3d1/b324a/1.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/e9d7ec5167fe75bc9ffa63a98bdbdf8c/b324a/2.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAFKb86WstJf/8QAGRAAAgMBAAAAAAAAAAAAAAAAAgMAARES/9oACAEBAAEFAsyDcyAulUzs2gA8/wD/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPwFJ/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQIBAT8BJ//EABkQAAIDAQAAAAAAAAAAAAAAAAEQAgMREv/aAAgBAQAGPwJ9WHZF/wD/xAAbEAEAAgMBAQAAAAAAAAAAAAABABEhMUEQYf/aAAgBAQABPyHBuyONOnznIGuS7BoW8cJQ/J//2gAMAwEAAgADAAAAELTf/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAERIf/aAAgBAwEBPxBmMp//xAAXEQADAQAAAAAAAAAAAAAAAAAAAREh/9oACAECAQE/EI1EP//EABsQAQEAAwADAAAAAAAAAAAAAAERACFBMVGh/9oACAEBAAE/EALNDzl+rr3xyPWO4sUFDwM1YUlTh8mTKpEO5//Z'); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="2"
+                              title="2"
+                              src="/static/e9d7ec5167fe75bc9ffa63a98bdbdf8c/53025/2.jpg"
+                              srcset="/static/e9d7ec5167fe75bc9ffa63a98bdbdf8c/e7722/2.jpg 163w,
+                              /static/e9d7ec5167fe75bc9ffa63a98bdbdf8c/bdb37/2.jpg 325w,
+                              /static/e9d7ec5167fe75bc9ffa63a98bdbdf8c/53025/2.jpg 650w,
+                              /static/e9d7ec5167fe75bc9ffa63a98bdbdf8c/3164d/2.jpg 975w,
+                              /static/e9d7ec5167fe75bc9ffa63a98bdbdf8c/8d861/2.jpg 1300w,
+                              /static/e9d7ec5167fe75bc9ffa63a98bdbdf8c/b324a/2.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p>Крайне не рекомендую просто пластмассовые кейсы, которые просто защелкиваются. Они обычно ужасно хлипкие и совершенно бесполезные.</p>
+                        <p>Так же не рекомендую и кейс из тонкой жести, или как это можно назвать, в общем из тонкого металла. Кейс как на моем фото ниже я купил в амперке. И он ужасен. Во первых он весь гнется в руках, во-вторых даже когда его полностью закрываешь и закручиваешь со всех сторон он проминается и прогибается. В третьих тут маленький и очень шумный кулер, даже если вешаешь его на 3.5в</p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/a51e4d1cf6bc9b9159fc8662f3d8533f/b324a/3.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAAF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAYi82V0ql//EABsQAAICAwEAAAAAAAAAAAAAAAABAgMEERIi/9oACAEBAAEFAuBXLrRkRdhClsjX5//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABwQAAEDBQAAAAAAAAAAAAAAAAAQIUEBERIiMf/aAAgBAQAGPwLKC0JV+GzJ/8QAGxAAAgMBAQEAAAAAAAAAAAAAAAERITFhUXH/2gAIAQEAAT8hmpx7dEyy5Zexei+I0UoPOlKMR//aAAwDAQACAAMAAAAQtx//xAAWEQEBAQAAAAAAAAAAAAAAAAABABH/2gAIAQMBAT8QdLS//8QAFxEAAwEAAAAAAAAAAAAAAAAAAAERQf/aAAgBAgEBPxCLSM//xAAbEAEAAwEBAQEAAAAAAAAAAAABABEhMWFxwf/aAAgBAQABPxBtCdlaEWAF9T18jxaPEYjvV24lciMOoGo/JkvCi2f/2Q=='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="3"
+                              title="3"
+                              src="/static/a51e4d1cf6bc9b9159fc8662f3d8533f/53025/3.jpg"
+                              srcset="/static/a51e4d1cf6bc9b9159fc8662f3d8533f/e7722/3.jpg 163w,
+                              /static/a51e4d1cf6bc9b9159fc8662f3d8533f/bdb37/3.jpg 325w,
+                              /static/a51e4d1cf6bc9b9159fc8662f3d8533f/53025/3.jpg 650w,
+                              /static/a51e4d1cf6bc9b9159fc8662f3d8533f/3164d/3.jpg 975w,
+                              /static/a51e4d1cf6bc9b9159fc8662f3d8533f/8d861/3.jpg 1300w,
+                              /static/a51e4d1cf6bc9b9159fc8662f3d8533f/b324a/3.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/f7c7c07a03c14b5698a6065631e12596/b324a/4.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAAD/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgD/2gAMAwEAAhADEAAAAS5vAVpPjf/EABoQAAEFAQAAAAAAAAAAAAAAAAEAAgMREyP/2gAIAQEAAQUCfTFoqUkejcugiJH/xAAWEQADAAAAAAAAAAAAAAAAAAABEBH/2gAIAQMBAT8BNX//xAAVEQEBAAAAAAAAAAAAAAAAAAAQIf/aAAgBAgEBPwGH/8QAGRAAAgMBAAAAAAAAAAAAAAAAABEBEDEh/9oACAEBAAY/AjK7om4r/8QAGxABAAMBAAMAAAAAAAAAAAAAAQARITFBUWH/2gAIAQEAAT8hGo3fPsBWxov3ADwcY0GZ0qCGf//aAAwDAQACAAMAAAAQsD//xAAXEQEBAQEAAAAAAAAAAAAAAAABABEh/9oACAEDAQE/EAHlpf/EABcRAAMBAAAAAAAAAAAAAAAAAAABIRH/2gAIAQIBAT8QUUxn/8QAHBABAAMAAgMAAAAAAAAAAAAAAQARIVFhMUFx/9oACAEBAAE/ENonxpXZ+QTzA1GBIGC468APUt07MG8dwwVpP//Z'); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="4"
+                              title="4"
+                              src="/static/f7c7c07a03c14b5698a6065631e12596/53025/4.jpg"
+                              srcset="/static/f7c7c07a03c14b5698a6065631e12596/e7722/4.jpg 163w,
+                              /static/f7c7c07a03c14b5698a6065631e12596/bdb37/4.jpg 325w,
+                              /static/f7c7c07a03c14b5698a6065631e12596/53025/4.jpg 650w,
+                              /static/f7c7c07a03c14b5698a6065631e12596/3164d/4.jpg 975w,
+                              /static/f7c7c07a03c14b5698a6065631e12596/8d861/4.jpg 1300w,
+                              /static/f7c7c07a03c14b5698a6065631e12596/b324a/4.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p>Кулер ниже мне очень понравился. Возможно, это больше чем нужно, и крошечный распберри с ним уже не такой уж и крошечный, но этот кейс хорошо собран и сам кулер тут добротный, он с ним полностью холодный. Конструктивно он сделан так, что он очень плотно прилегает к процессору, в комплекте с ним идет термополоска. Кстати, я пробовал и с термополоской и с термопастой и разницы в температуре нет вообще.</p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/e264b3955f78a0d3667787c4708b26d6/b324a/6.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwAE/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgH/2gAMAwEAAhADEAAAAcobDCCai//EABoQAQEAAgMAAAAAAAAAAAAAAAECAxMSISP/2gAIAQEAAQUCtA2dEKVPljg5ZV2f/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Bh//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABoQAAMAAwEAAAAAAAAAAAAAAAABERAhMWH/2gAIAQEABj8C1WNTpYX3Dh//xAAaEAEBAQEAAwAAAAAAAAAAAAABEQAhQXGh/9oACAEBAAE/Ib1e7AFaBBo+ZubjFGlvzSDgc3//2gAMAwEAAgADAAAAEEwv/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAh/9oACAEDAQE/EFtl/8QAFhEBAQEAAAAAAAAAAAAAAAAAARAR/9oACAECAQE/EByf/8QAGxABAQACAwEAAAAAAAAAAAAAAREAMSFRcWH/2gAIAQEAAT8QIIKELx42ON5dR69wYRUG2REKt5PkwiE99YuLOAYZ/9k='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="6"
+                              title="6"
+                              src="/static/e264b3955f78a0d3667787c4708b26d6/53025/6.jpg"
+                              srcset="/static/e264b3955f78a0d3667787c4708b26d6/e7722/6.jpg 163w,
+                              /static/e264b3955f78a0d3667787c4708b26d6/bdb37/6.jpg 325w,
+                              /static/e264b3955f78a0d3667787c4708b26d6/53025/6.jpg 650w,
+                              /static/e264b3955f78a0d3667787c4708b26d6/3164d/6.jpg 975w,
+                              /static/e264b3955f78a0d3667787c4708b26d6/8d861/6.jpg 1300w,
+                              /static/e264b3955f78a0d3667787c4708b26d6/b324a/6.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/6f9c087d1eb6fff5dc733982ba87e117/b324a/7.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAEDBAX/xAAWAQEBAQAAAAAAAAAAAAAAAAACAAH/2gAMAwEAAhADEAAAAc8kr5MQX//EABkQAQACAwAAAAAAAAAAAAAAAAEAEAIREv/aAAgBAQABBQJmZzTpCv/EABYRAQEBAAAAAAAAAAAAAAAAAAEQEf/aAAgBAwEBPwFHZ//EABYRAAMAAAAAAAAAAAAAAAAAAAEQMf/aAAgBAgEBPwERf//EABoQAAICAwAAAAAAAAAAAAAAAAABEBExYYH/2gAIAQEABj8CNOGsFvkf/8QAGxAAAgIDAQAAAAAAAAAAAAAAAREAIRAxQWH/2gAIAQEAAT8hNcgVIfpKhEGlsS/YaB4//9oADAMBAAIAAwAAABBUL//EABcRAQEBAQAAAAAAAAAAAAAAAAEAETH/2gAIAQMBAT8QQUeW3//EABYRAQEBAAAAAAAAAAAAAAAAAAEREP/aAAgBAgEBPxBFXP/EABwQAQACAwADAAAAAAAAAAAAAAEAESExYUGBwf/aAAgBAQABPxAauhdys2sYZQynI8E01Fw8fYaZltKx31Fn/9k='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="7"
+                              title="7"
+                              src="/static/6f9c087d1eb6fff5dc733982ba87e117/53025/7.jpg"
+                              srcset="/static/6f9c087d1eb6fff5dc733982ba87e117/e7722/7.jpg 163w,
+                              /static/6f9c087d1eb6fff5dc733982ba87e117/bdb37/7.jpg 325w,
+                              /static/6f9c087d1eb6fff5dc733982ba87e117/53025/7.jpg 650w,
+                              /static/6f9c087d1eb6fff5dc733982ba87e117/3164d/7.jpg 975w,
+                              /static/6f9c087d1eb6fff5dc733982ba87e117/8d861/7.jpg 1300w,
+                              /static/6f9c087d1eb6fff5dc733982ba87e117/b324a/7.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/c7b52f6a7266ef90a634d1861458a2e1/b324a/5.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEAQL/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAABnRQiK5MB/8QAGRAAAwEBAQAAAAAAAAAAAAAAAAECAxEi/9oACAEBAAEFAm6SV+e0bQRnLGf/xAAXEQADAQAAAAAAAAAAAAAAAAABAhAR/9oACAEDAQE/ASuz/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8Bp//EABoQAAIDAQEAAAAAAAAAAAAAAAABESExEJH/2gAIAQEABj8Ctv0d2axTkDnn/8QAGxABAAMAAwEAAAAAAAAAAAAAAQARIVFhccH/2gAIAQEAAT8huwPYA0b5ij952FUQQAC5puf/2gAMAwEAAgADAAAAEJj/AP/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAgBAwEBPxChj//EABYRAQEBAAAAAAAAAAAAAAAAAAEAEf/aAAgBAgEBPxABbf/EABwQAQADAAIDAAAAAAAAAAAAAAEAETEhQVFxsf/aAAgBAQABPxAAMcUJpV6q925bGz3hDz0BT2HP2NtMCryJfyn/2Q=='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="5"
+                              title="5"
+                              src="/static/c7b52f6a7266ef90a634d1861458a2e1/53025/5.jpg"
+                              srcset="/static/c7b52f6a7266ef90a634d1861458a2e1/e7722/5.jpg 163w,
+                              /static/c7b52f6a7266ef90a634d1861458a2e1/bdb37/5.jpg 325w,
+                              /static/c7b52f6a7266ef90a634d1861458a2e1/53025/5.jpg 650w,
+                              /static/c7b52f6a7266ef90a634d1861458a2e1/3164d/5.jpg 975w,
+                              /static/c7b52f6a7266ef90a634d1861458a2e1/8d861/5.jpg 1300w,
+                              /static/c7b52f6a7266ef90a634d1861458a2e1/b324a/5.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p>Проверить температуру процессора в распберри, кстати, можно довольно просто, для этого не нужно ставить какой-то дополнительный софт:</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">cat /sys/class/thermal/thermal_zone0/temp</code></pre>
+                        </div>
+                        <p>и видеочип:</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">/opt/vc/bin/vcgencmd measure_temp</code></pre>
+                        </div>
+                        <p>Если вы планируете использовать распберри как медиасервер, то рекомендую именно этот корпус. Хотя с ним распберри становится довольно большим, у меня например не получается запихнуть с распберри в этом корпусе за телевизор, так как телевизор прикручен к стене очень близко. И кстати когда будете подключать кулер, то подключайте к питанию 3.5 а не к 5, так как если подключите к 5, то будет довольно сильно шуметь.</p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/257befb4c71a3cc51f0c0c397d0e24b2/b324a/9.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQCAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAv/aAAwDAQACEAMQAAABpQ1VJqI0H//EABoQAAIDAQEAAAAAAAAAAAAAAAECAxESABP/2gAIAQEAAQUCnvyiDB2ssw0rrkZEvf/EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAEDAQE/AYf/xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPwGn/8QAGRAAAwADAAAAAAAAAAAAAAAAAAESESEx/9oACAEBAAY/AnvRmR10wJ0Vw//EABsQAQACAgMAAAAAAAAAAAAAAAEAESFxQVFh/9oACAEBAAE/IS0NVQpk3iX7ZLDtHsCsDBb8ns//2gAMAwEAAgADAAAAEHcP/8QAGBEAAgMAAAAAAAAAAAAAAAAAAAERITH/2gAIAQMBAT8QccKP/8QAFxEBAAMAAAAAAAAAAAAAAAAAAAERUf/aAAgBAgEBPxCNrf/EABkQAQADAQEAAAAAAAAAAAAAAAEAESExUf/aAAgBAQABPxAVgKU1ve32C5EQR03msaFtgk3xHQuCgoo2WswojKdZ/9k='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="9"
+                              title="9"
+                              src="/static/257befb4c71a3cc51f0c0c397d0e24b2/53025/9.jpg"
+                              srcset="/static/257befb4c71a3cc51f0c0c397d0e24b2/e7722/9.jpg 163w,
+                              /static/257befb4c71a3cc51f0c0c397d0e24b2/bdb37/9.jpg 325w,
+                              /static/257befb4c71a3cc51f0c0c397d0e24b2/53025/9.jpg 650w,
+                              /static/257befb4c71a3cc51f0c0c397d0e24b2/3164d/9.jpg 975w,
+                              /static/257befb4c71a3cc51f0c0c397d0e24b2/8d861/9.jpg 1300w,
+                              /static/257befb4c71a3cc51f0c0c397d0e24b2/b324a/9.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/7904c388efcf994b35ef4b4f5d5db516/b324a/10.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgH/2gAMAwEAAhADEAAAAWTqzFWokf8A/8QAGRABAQEAAwAAAAAAAAAAAAAAAQMCABES/9oACAEBAAEFAqucTm8xR8XO5mMEzSH/xAAWEQEBAQAAAAAAAAAAAAAAAAABABH/2gAIAQMBAT8BSwv/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPwGq/8QAGBAAAwEBAAAAAAAAAAAAAAAAAAERIRD/2gAIAQEABj8CjV6x4Yf/xAAaEAEAAwEBAQAAAAAAAAAAAAABABEhQTFR/9oACAEBAAE/IW1L8lCyoCwMKYVjIz+uPZSME//aAAwDAQACAAMAAAAQ+8//xAAWEQEBAQAAAAAAAAAAAAAAAAAAUWH/2gAIAQMBAT8Qgwf/xAAXEQEAAwAAAAAAAAAAAAAAAAAAARFR/9oACAECAQE/EI0u/8QAGxABAQADAQEBAAAAAAAAAAAAAREAITFBcYH/2gAIAQEAAT8QQnOp1W6qYGlpqh5jh9CQh+fcraEKhvTnlFa9cmEnh53P/9k='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="10"
+                              title="10"
+                              src="/static/7904c388efcf994b35ef4b4f5d5db516/53025/10.jpg"
+                              srcset="/static/7904c388efcf994b35ef4b4f5d5db516/e7722/10.jpg 163w,
+                              /static/7904c388efcf994b35ef4b4f5d5db516/bdb37/10.jpg 325w,
+                              /static/7904c388efcf994b35ef4b4f5d5db516/53025/10.jpg 650w,
+                              /static/7904c388efcf994b35ef4b4f5d5db516/3164d/10.jpg 975w,
+                              /static/7904c388efcf994b35ef4b4f5d5db516/8d861/10.jpg 1300w,
+                              /static/7904c388efcf994b35ef4b4f5d5db516/b324a/10.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/4067118e908aa2500f6f57eded35109e/b324a/11.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAC/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAclNGitGU3//xAAcEAACAgIDAAAAAAAAAAAAAAABAhESAAMEEzL/2gAIAQEAAQUC5E9S+i8ZuWwooJMn/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/AbGP/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAECAQE/AY1//8QAGRABAQADAQAAAAAAAAAAAAAAAQARMYEh/9oACAEBAAY/AsjyLbyBcEbvb//EABoQAQEBAAMBAAAAAAAAAAAAAAERACExQWH/2gAIAQEAAT8hIaQewQd6eqbgkfihgbqcpipVS57Ku//aAAwDAQACAAMAAAAQpM//xAAXEQADAQAAAAAAAAAAAAAAAAAAARFB/9oACAEDAQE/EJOIh4f/xAAXEQADAQAAAAAAAAAAAAAAAAAAAREh/9oACAECAQE/EGq0s//EABwQAQACAwADAAAAAAAAAAAAAAEAESExQVFxkf/aAAgBAQABPxBkIUFYfvPMqNnlD7miFLBEW8i5BiLdTbhymqbiS8dn/9k='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="11"
+                              title="11"
+                              src="/static/4067118e908aa2500f6f57eded35109e/53025/11.jpg"
+                              srcset="/static/4067118e908aa2500f6f57eded35109e/e7722/11.jpg 163w,
+                              /static/4067118e908aa2500f6f57eded35109e/bdb37/11.jpg 325w,
+                              /static/4067118e908aa2500f6f57eded35109e/53025/11.jpg 650w,
+                              /static/4067118e908aa2500f6f57eded35109e/3164d/11.jpg 975w,
+                              /static/4067118e908aa2500f6f57eded35109e/8d861/11.jpg 1300w,
+                              /static/4067118e908aa2500f6f57eded35109e/b324a/11.jpg 4000w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p>И вот еще один корпус, который мне очень нравится, он полностью пассивный, при этом он очень хорошо справляется с охлаждением. Сам этот корпус довольно массивный и тяжелый. Он очень продуманый, довольно удобно и легко сюда помещается распберри, закрутил все за пол минуты, когда как в прошлом тут пришлось повозиться, из-за не очень удобного крепления. И когда он собран тут вообще нет никак люфтов, абсолютно. С этим корпусом распберри становится будто бы бронированным. </p>
+                        <p>Температура максимальная которую мне удавалось нагнать, когда распберри был в этом корпусе, и при этом игрался какой-то фулл хд ролик на ютубе была 55 градусов. Думаю, что довольно не плохо. Конечно, в предыдущем корпусе, температура в таких же условиях держится в районе 46 градусов. И, кстати, температура может быть разная в зависимости от дистрибутива. ARM Manjaro c XFCE греет распберри градусов на пять сильнее чем Raspbian. При этом 55 градусов, наверное, все-таки нормальная температура, при этом у вас ничего не шумит и не моргает. В общем могу рекомендовать этот корпус.</p>
+                        <h2>How to use</h2>
+                        <h3>Dashboard</h3>
+                        <p>Самый очевидный и самый полезный кейс для одноплатников это дашборд. Для этого можно использовать большое количество различных инструментов, мой любимый это Grafana. Все что от вас нужно так это установить ее и законнектить к базой данных, все остальное это обычные sql запросы. </p>
+                        <p>Сейчас я использую графану с расбери на одном из моих проеков и это очень удобно.</p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/220a6914418e8672c95ee74765b46e7b/ecc2d/grafana.png"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 47.103410936654036%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsSAAALEgHS3X78AAABvUlEQVQozx2QWUscURCF+zWzdc/dl751l+7pdbQdx6A4sZVkNJBITAjMg4EQogQk//8910BR9b3UOZyTGOOUzBnjlAsmJCGMEsaYQJjGjTGNg5a0DroGudK8teA4KxRTlCYA3kFoh67f9utt3512rgirtmo2bbfpmqFphloq+/zn8rAv6rL9OH4ed/0umDNOEmdD8Ctro782xnKuGBV5DlJqZ70xERTG8vvPy6ev/XD66Wb368fL+ePNbpvNXp09OMp4LqXkArTmXAgucq3iUVFDyWWGtdaFs8744CswUBeFoDzpLFzVJc7I2FS11JTL4DxCJKYRmLMSXPAoIxIcSSlrwXY+S3FUElQkjTHv6pIRenUSXPT2EKoi1uaHSjEp/z8TRHcnIeRymmXpIpsv0nS5XMzTJORQKkgXqACZzTEyr51nS0KtRguM8hhFMkxaLykikzezyWQ+my4iTCfzpK3gpNcXG3/c6Lo0Ngfn8rYvV5UFa0ApRrhSBiFOMLfOG2eLepVbULlJxvPq6bB+/NL8Pqxvx+boqHm/Px6vu/3dsH3bVqUvYwfWRNASzsbNw8vt/fOHb3/vrh8u/gF//0cF7L3r7gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="grafana"
+                              title="grafana"
+                              src="/static/220a6914418e8672c95ee74765b46e7b/dc2fe/grafana.png"
+                              srcset="/static/220a6914418e8672c95ee74765b46e7b/fc8b9/grafana.png 163w,
+                              /static/220a6914418e8672c95ee74765b46e7b/d53b1/grafana.png 325w,
+                              /static/220a6914418e8672c95ee74765b46e7b/dc2fe/grafana.png 650w,
+                              /static/220a6914418e8672c95ee74765b46e7b/6251f/grafana.png 975w,
+                              /static/220a6914418e8672c95ee74765b46e7b/72325/grafana.png 1300w,
+                              /static/220a6914418e8672c95ee74765b46e7b/ecc2d/grafana.png 1847w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p>Для того чтобы показывать дашборд мы должны просто открывать какой-нибудь браузер в kiosk mode</p>
+                        <p>Для того чтобы автоматически запускать браузер нам надо отредактировать файл</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">/home/pi/.config/lxsession/LXDE-pi/autostart</code></pre>
+                        </div>
+                        <p>Мой выглядит следующим образом</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+@point-rpi
+@xset s off
+@xset -dpms
+@xset s noblank
+@sed -i &#39;s/&quot;exited_cleanly&quot;: false/&quot;exited_cleanly&quot;: true/&#39; ~/.config/chromium Default/Preferences
+@/home/pi/chrome.sh
+@/home/pi/chau.sh</code></pre>
+                        </div>
+                        <p>Предпоследняя строчка открывает хром со страницей при запуске
+                           Последняя делает автообновления
+                        </p>
+                        <p>Так выглядит chau.sh</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">#!/bin/bash
+while true; #create an infinite loop
+do 
+sleep 600
+xdotool key = &quot;ctrl+F5&quot; &amp; #you need to xdotool installed
+done</code></pre>
+                        </div>
+                        <p>А так chrome.sh</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">#!/bin/sh  
+sed -i &#39;s/&quot;exited_cleanly&quot;:false/&quot;exited_cleanly&quot;:true/&#39; ~/.config/chromium/&#39;Local State&#39;
+sed -i &#39;s/&quot;exited_cleanly&quot;:false/&quot;exited_cleanly&quot;:true/; s/&quot;exit_type&quot;:&quot;[^&quot;]\+&quot;/&quot;exit_type&quot;:&quot;Normal&quot;/&#39; ~/.config/chromium/Default/Preferences 
+chromium-browser --kiosk --no-default-browser-check --no-first-run --disable-infobars --disable-session-crashed-bubble &quot;OURURL&quot;</code></pre>
+                        </div>
+                        <p>В последней строке замените "OURURL" на актуальный URL вашей страницы</p>
+                        <p>И кстати, если вы используете Grafana, то вам не нужно запускать файл, который занимается автообновлением страницы. Графана это умеет делать сама.</p>
+                        <h3>Термостанция</h3>
+                        <p>С помощью распберри можно довольно просто мониторить температуру, влажность и уровень CO2. </p>
+                        <p>Датчик температуры и влажности можно взять DHT22 или DHT11. Для начала нужно подключить три провода от датчика в Raspberry. Питание я повесил на 3.3v, а не на 5v. GND на землю. Ну а управляющий вешаем на любой из свободных GPIO. Выглядит это следующим образом:</p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 650px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/d9b8abc22dee721635dcc98f666e915b/46142/rasp.jpg"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEAf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAGdc+jRYv8A/8QAFxABAQEBAAAAAAAAAAAAAAAAAREAEv/aAAgBAQABBQJTiwhpoa7/xAAVEQEBAAAAAAAAAAAAAAAAAAAQEv/aAAgBAwEBPwGT/8QAFREBAQAAAAAAAAAAAAAAAAAAEBL/2gAIAQIBAT8Bo//EABkQAAEFAAAAAAAAAAAAAAAAAAABICExQf/aAAgBAQAGPwJKJMZ//8QAGxABAAICAwAAAAAAAAAAAAAAAQARIUEQMVH/2gAIAQEAAT8hFku7u4FTbvjAMShHyUn/2gAMAwEAAgADAAAAEFgP/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQAB/9oACAEDAQE/EMGsX//EABYRAQEBAAAAAAAAAAAAAAAAAAEAEf/aAAgBAgEBPxBTbf/EABsQAQEAAwADAAAAAAAAAAAAAAERACFBMWGB/9oACAEBAAE/EBgV6uxqyGzmSi2K3R4l13wZ6FhkUpJcGAejfcUen3P/2Q=='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="rasp"
+                              title="rasp"
+                              src="/static/d9b8abc22dee721635dcc98f666e915b/53025/rasp.jpg"
+                              srcset="/static/d9b8abc22dee721635dcc98f666e915b/e7722/rasp.jpg 163w,
+                              /static/d9b8abc22dee721635dcc98f666e915b/bdb37/rasp.jpg 325w,
+                              /static/d9b8abc22dee721635dcc98f666e915b/53025/rasp.jpg 650w,
+                              /static/d9b8abc22dee721635dcc98f666e915b/3164d/rasp.jpg 975w,
+                              /static/d9b8abc22dee721635dcc98f666e915b/8d861/rasp.jpg 1300w,
+                              /static/d9b8abc22dee721635dcc98f666e915b/46142/rasp.jpg 4608w"
+                              sizes="(max-width: 650px) 100vw, 650px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <p>Для начала нужно сделать апдейт системы</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">sudo apt-get update</code></pre>
+                        </div>
+                        <p>После чего нужно установить необходимые библиотеки</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">sudo apt-get install build-essential python-dev python-openssl</code></pre>
+                        </div>
+                        <p>Клонируем репозиторий</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">git clone https://github.com/adafruit/Adafruit_Python_DHT</code></pre>
+                        </div>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">cd Adafruit_Python_DHT</code></pre>
+                        </div>
+                        <p>Запускаем скрипт. Выполниться все должно без ошибок.</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">sudo python setup.py install</code></pre>
+                        </div>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">cd /home/pi/Adafruit_Python_DHT/examples</code></pre>
+                        </div>
+                        <p>Теперь запускаем программу. Первым параметром мы должны передать идентификатор устройства.</p>
+                        <p>11 если используем модель DHT11
+                           22 если используем модель DHT22
+                        </p>
+                        <p>Вторым параметром передаем номер порта GPIO к которому подключено наше устройство. Я повесил на четвертый.</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">./AdafruitDHT.py 22 4</code></pre>
+                        </div>
+                        <p>Вывод должен быть примерно такой</p>
+                        <p>Temp=27.1* Humidity=35.4%</p>
+                        <p>Ура! Все работает</p>
+                        <h5>Сохраняем данные</h5>
+                        <p>Сделаем пустой текстовый файлик в который мы будем записывать показания, нужен он, например, для того чтобы строить график. </p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">cd /home/pi</code></pre>
+                        </div>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">touch temphum.txt</code></pre>
+                        </div>
+                        <p>Кроме того сделаем скрипт, который будет автоматически опрашивать наш датчик и записывать показания в текстовый файл.</p>
+                        <p>Создаем файл</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">touch temphum.sh</code></pre>
+                        </div>
+                        <p>Даем ему права на запуск</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">chmod +x temphum.sh</code></pre>
+                        </div>
+                        <p>Наш скрипт выглядит следующим образом</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">#!/bin/bash
+MYTEMP=$(/home/pi/Adafruit_Python_DHT/examples/AdafruitDHT.py 22 4) 
+MYDATE=$(date +&quot;%d-%m-%y-%T&quot;)
+
+second=&#39;&#39;
+first=${MYTEMP//Temp=/$second}
+first=${first/Humidity=/$second}
+
+echo $MYDATE $first &gt;&gt; /home/pi/temphum.txt</code></pre>
+                        </div>
+                        <p>В этом скрипте мы добавляем дату
+                           Удаляем из строки "Temp=" и "Humidity="
+                           Конкатинируем и записываем все в новую строку
+                        </p>
+                        <h5>Cron</h5>
+                        <p>Теперь заставим крон запускать наш скрипт каждые 10 минут.</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">crontab -e</code></pre>
+                        </div>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">*/10 * * * * /home/pi/temphum.sh</code></pre>
+                        </div>
+                        <p>Теперь мы можем любым удобным нам способом брать даныне из этого файла и показывать их. Как это сделал я описано ниже.</p>
+                        <h5>Отображение</h5>
+                        <p>Я хочу всегда видеть текущие значения температуры и влажности в своей панели.</p>
+                        <p>Для этого я сделал небольшой скрипт. Скрипт просто берет у распберри тестовый файл, смотрит на последнюю строку, забирает из нее только температуру и влажность.</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">#!/bin/bash
+
+DIR=$(ssh -o LogLevel=QUIET -tt pi@192.168.1.5 tail -2 /home/pi/temphum.txt | head -1 | sed &#39;s/[^ ]* //&#39;)  
+
+if [[ &quot;${DIR}&quot; ]]; then
+  echo &quot;${DIR}&quot;
+fi</code></pre>
+                        </div>
+                        <p>У меня это выглядит следующим образом. </p>
+                        <p><span
+                           class="gatsby-resp-image-wrapper"
+                           style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 632px;"
+                           >
+                           <a
+                              class="gatsby-resp-image-link"
+                              href="/static/f0e54c4d05f493a3c3917f4c87675c3c/8dee7/i3wm.png"
+                              style="display: block"
+                              target="_blank"
+                              rel="noopener"
+                              >
+                           <span
+                              class="gatsby-resp-image-background-image"
+                              style="padding-bottom: 3.6392405063291138%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAIAAABR8BlyAAAACXBIWXMAAAsSAAALEgHS3X78AAAAQ0lEQVQI12Ng0DJVcA0QtXaVsPNQ9QwSsHCSsPdU8woStnIRBzI8g7iN7ZTcA2SdvDmNbAQsnHnNHAQtnLhN7HlM7AFuDwvRPd1zhgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+                              ></span>
+                           <img
+                              class="gatsby-resp-image-image"
+                              alt="image"
+                              title="image"
+                              src="/static/f0e54c4d05f493a3c3917f4c87675c3c/8dee7/i3wm.png"
+                              srcset="/static/f0e54c4d05f493a3c3917f4c87675c3c/fc8b9/i3wm.png 163w,
+                              /static/f0e54c4d05f493a3c3917f4c87675c3c/d53b1/i3wm.png 325w,
+                              /static/f0e54c4d05f493a3c3917f4c87675c3c/8dee7/i3wm.png 632w"
+                              sizes="(max-width: 632px) 100vw, 632px"
+                              style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+                              loading="lazy"
+                              />
+                           </a>
+                           </span>
+                        </p>
+                        <h3>Pi-hole</h3>
+                        <p>Наверное, самая полезная вещь, которую можно поднять на Raspberry PI. Это блокировщик рекламы на уровне DNS. Мне нравится это решение тем, что если у вас дома есть локальная сеть, то вы можете блокировать рекламу полностью для всех ваших устройств. Да и интернет будет работать быстрее, так как вообще не будут грузиться картинки ил видео с заблокированных адресов и это очень удобно.</p>
+                        <p>Развернуть Pi-Hole можно за две минуты. Все что нужно, так это выполнить всего одну команду:</p>
+                        <div class="gatsby-highlight" data-language="text">
+                           <pre class="language-text"><code class="language-text">curl -sSL https://install.pi-hole.net | bash</code></pre>
+                        </div>
+                        <p>С помощью Pi-hole можно не только блокировать рекламу, но и самостоятельно заблокировать некоторые домены. У меня например, мой Smart TV очень часто ходит на свой китайский сервер. Можно просто заблокировать все домены, на которые он пытается что-то отправлять.</p>
+                        <p>В общем если хотите блокировать рекламу или просто внимательнее смотреть за своей локальной сетью, то рекомендую.</p>
+                        <h3>Media Server</h3>
+                        <p>Мне очень нравится то как можно использовать Raspberry Pi как медиасервер, последняя версия может проигрывать даже 4к видео, но при этом важно хорошо его охлаждать, так как он может сгореть. Но 4к это то, что заявлено, по факту, у меня не получилось нормально смотреть на нем 4к видео, но Full-HD или 2k воспроизводятся нормально.</p>
+                        <p>Есть много различных специализированных штуковин для телевизора: Google Chromecast, Apple TV, есть какая-то штука и от Amazon. Но мне не нравится некоторые моменты в этих устройствах. Там я не могу посмотреть с них все, что я хочу, не всегда есть контент, который мне нужен. Во-вторых, с точки зрения интерфейса, оно все выиглядит не очень.</p>
+                        <p>Мне больше нравится использовать Raspberry Pi как медиасервер в связке с сервером. Мой домашний сервер довольно простой. Обычный комп, который стоит в кладовке, к нему подключен очень большой рейд-массив. Пространство которое не нужно в этом рейд массиве я сдаю в STORJ и немного на этом зарабатываю. Я кстати <a href="https://www.youtube.com/watch?v=1KV8-FXKmjo">делал про это ролик</a>. Сервер подключен по Ethernet к роутеру, там 1гигабит.</p>
+                        <p>На сервере кроме STORJ есть еще и Transmission, который следит за определенной папкой, и если в эту папку попадает какой-нибудь *.torrent файл, то он автоматически начинает его скачивать. То есть я могу как с ноутбука так и со смартфона довольно быстро скачать все что нужно и сервер автоматически начнет скачивать это.</p>
+                        <p>На Raspberry Pi у меня установлен Raspbian и VLC. А на смартфоне установлен VLC Remote. Так же на Raspberry Pi настроен sshfs, который видит все, что есть на сервере. И через смартфон я вижу все, что у меня скачано. </p>
+                        <p>Когда я включаю что-то у меня никогда нет никаких лагов, тормозов и вообще каких-либо пауз перед тем как видео начнет проигрываться. </p>
+                        <p>А управлять воспроизведением, паузами, громкостью, выбрать субтитры или звуковую дорожку, а так же выбрать сам файл для проигрывания можно в программе VLC Remote Pro. Программа просто отличная, ей очень удобно пользоваться. И что самое классное, тут очень удобно реализована прокрутка, довольно легко можно найти любой момент в фильме.</p>
+                        <h3>Homebridge</h3>
+                        <p>Homebridge это легкий сервер написанный на Node.js, который эмулирует HomeKit API от эпла.</p>
+                        <p><a href="https://homebridge.io/">https://homebridge.io/</a></p>
+                        <p><a href="https://github.com/nfarina/homebridge">https://github.com/nfarina/homebridge</a></p>
+                        <p>С помощью него вы сможете легко сделать умный дом. Он поддерживает огромное количество плагинов, которые могут работать с различными девайсами от умного дома.</p>
+                        <p>Когда я был на инфраструкруте от эпла, и жил в прошлой квартире я во всей квартире заменил выключатели света на выключатели Xiaomi Auara. И так же там нужен Xiaomi Auara Hub. </p>
+                        <p>После чего настроив это все в HomeBridge вы можете отдавать команды сири.</p>
+                        <p>Сири, включи свет в ванной.</p>
+                        <p>Сири, выключи свет в кухне. </p>
+                        <p>Сири. выключи свет везде.</p>
+                        <p>Так же можно писать свои собственные модули. Например, я взял модуль у какого-то человека, который писал его для открывания/закрывания дверей гаража и на его основе писал свои различные сценарии.</p>
+                        <p>Можно написать модуль, который будет просто выполнять какой-нибудь sh файл. Ну и я думаю вы сами понимаете возможности.</p>
+                        <p>На этом все. Если у вас Raspberry лежит без дела, то надеюсь, что теперь вы знаете куда его можно применить.</p>
+                     </section>
+                     <style data-emotion-css="spomey">.css-spomey{padding:0 10px;}@media(min-width:960px){.css-spomey{padding-left:calc((98vw - 940px) / 2);padding-right:calc((98vw - 940px) / 2);}}</style>
+                     <footer class="css-spomey e1s3xc654">
+                        <div>
+                           <div id="disqus_thread"></div>
+                        </div>
+                     </footer>
                   </article>
-                  <article class="post-card post">
-                     <a class="post-card-image-link" href="?strona=post"><img
-                        srcset="img/generator/intGen300.png 300w,
-                        img/generator/intGen600.png 600w,
-                        img/generator/intGen1000.png 1000w,
-                        img/generator/intGen2000.png 2000w"
-                        sizes="(max-width: 800px) 400px,
-                        (max-width: 2000px) 700px, 1400px"
-                        src="img/generator/intGen2000.png"
-                        alt="img"/></a>
-                     <div class="post-card-content">
-                        <a class="post-card-content-link" href="?strona=post">
-                           <header class="post-card-header">
-                              <span class="post-card-tags">test</span>
-                              <h2 class="post-card-title">Text</h2>
-                           </header>
-                           <section class="post-card-excerpt">
-                              <p>Ubuntu Basics</p>
-                           </section>
-                        </a>
-                        <footer class="post-card-meta">
-                           <ul class="author-list">
-                              <li class="author-list-item">
-                                 <div class="author-name-tooltip"></div>
-                                 <a href="#" class="static-avatar">
-                                 <img class="author-profile-image" src="img/anon.jpg" alt="author" />
-                                 </a>
-                              </li>
-                           </ul>
-                           <span class="reading-time">10 min</span>
-                        </footer>
+                  <style data-emotion-css="1q4sk5a">.css-1q4sk5a{padding:0 10px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:10px;}@media(min-width:960px){.css-1q4sk5a{padding-left:calc((98vw - 940px) / 2);padding-right:calc((98vw - 940px) / 2);}}</style>
+                  <div class="css-1q4sk5a e1s3xc656">
+                     <style data-emotion-css="dds93r">.css-dds93r{text-align:left;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;text-transform:uppercase;}</style>
+                     <div class="css-dds93r e647e9g0">
+                        <style data-emotion-css="wetgyb">.css-wetgyb{color:#333;-webkit-text-decoration:none;text-decoration:none;font-weight:bold;-webkit-transition:color 250ms linear;transition:color 250ms linear;}.css-wetgyb:hover{color:#ab4642;}</style>
+                        <a class="css-wetgyb e647e9g2" href="/blog/lenovo-lte">Previous Post</a><small>Lenovo X1 Carbon 6th + EM7455</small>
                      </div>
-                  </article>
-               </div>
-            </div>
-         </main>
-         <footer class="site-footer outer">
-            <div class="site-footer-content inner">
-               <section class="copyright"><a href="?strona=glowna">main</a> &copy; 2020</section>
-               <nav class="site-footer-nav">
-                  <a href="?strona=glowna">Ostatnie posty</a>
-                  <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
-               </nav>
-            </div>
-         </footer>
-         :
+                     <style data-emotion-css="f84kku">.css-f84kku{text-align:right;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;text-transform:uppercase;}</style>
+                     <div class="css-f84kku e647e9g0">
+                        <style data-emotion-css="1xahrv2">.css-1xahrv2{color:#333;opacity:0.35;font-weight:bold;}</style>
+                        <span class="css-1xahrv2 e647e9g1">Next Post</span><small></small>
+                     </div>
+                  </div>
+               </main>
+               <style data-emotion-css="1kt5np3">.css-1kt5np3{color:#333;height:75px;text-transform:uppercase;text-align:center;opacity:0.35;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}</style>
+               <footer class="css-1kt5np3 egib3pf0">
+                  <style data-emotion-css="1m4wy5f">.css-1m4wy5f{margin:5px 0;}</style>
+                  <p class="css-1m4wy5f egib3pf1">
+                     <small>
+                        Give me a star on<!-- --> 
+                        <style data-emotion-css="yuq3on">.css-yuq3on{-webkit-text-decoration:none;text-decoration:none;color:#333;-webkit-transition:color 250ms linear;transition:color 250ms linear;}.css-yuq3on:hover{color:#ab4642;}</style>
+                        <a href="https://www.github.com/devpew" class="css-yuq3on e1e665zb1">GitHub</a>. You can help me on<!-- --> <a href="https://patreon.com/johenews" class="css-yuq3on e1e665zb1">Patreon</a>.
+                     </small>
+                  </p>
+               </footer>
+            </main>
+         </div>
       </div>
+      <script>
+         if(true) {
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+           })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+         }
+         if (typeof ga === "function") {
+           ga('create', 'UA-97382160-1', 'auto', {});
+             
+             }
+             
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.page={"componentChunkName":"component---src-templates-blog-post-jsx","jsonName":"blog-raspberry-493","path":"/blog/raspberry"};window.dataPath="124/path---blog-raspberry-493-b00-9WJervj8cg4FX0djEnqLBigknqc";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-f191c9ecf1d5ec6e3eeb.js"],"component---src-templates-tags-jsx":["/component---src-templates-tags-jsx-5f8f4cc9a5dafc210e33.js"],"component---src-templates-blog-post-jsx":["/component---src-templates-blog-post-jsx-29bc9697feecdac06cdf.js"],"component---src-pages-404-jsx":["/component---src-pages-404-jsx-e7121bbe4030771d326e.js"],"component---src-pages-about-jsx":["/component---src-pages-about-jsx-761765c396f4bee81663.js"],"component---src-pages-index-jsx":["/component---src-pages-index-jsx-ab6d3c4db8e17e86db1e.js"],"pages-manifest":["/pages-manifest-5e19998ac5790d82f680.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-jsx-29bc9697feecdac06cdf.js" async=""></script><script src="/0-f9369ccffb44c6f6b08d.js" async=""></script><script src="/app-f191c9ecf1d5ec6e3eeb.js" async=""></script><script src="/webpack-runtime-eeab332532d1c25cec19.js" async=""></script>
    </body>
 </html>

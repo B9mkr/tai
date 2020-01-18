@@ -41,38 +41,37 @@ function get_tresc($user, $ob, $this_user)
 }
 
 function get_tresc_in($user, $ob, $this_user){
-    $tresc=
-    '<form method="post" action="">
-    <table>
-        <tr>
-        <td><label>User id:</label></td>
-            <td><label>'.$user->get_id_user().'</label></td>
-        </tr>    
-        <tr>
-            <td><label>Adres e-mail:</label></td>
-            <td><label>'.$user->get_email().'</label></td>
-        </tr>
-        <tr>
-            <td><label>User name:</label></td>
-            <td><label>'.$user->get_username().'</label></td>
-        </tr>
-        <tr>
-            <td><label>Zdjęcie:</label></td>
-            <td><img src="'.$user->get_img().'" alt="author"/></td>
-        </tr>
-        <tr>
-            <td colspan=2>';
+    $tresc='';
 
     $sql = 'SELECT * FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1';
     if(($dane = $ob->dane_z_bazy($sql)) != NULL)
     {
         if($this_user == $dane[0]->id_user)
         {
-            $tresc .= '<input type="submit" value="Wyłoguj" name="wyloguj"/>';
+            if (filter_input(INPUT_POST, "zmien")) 
+            {
+                $user->zmien($ob);
+                header("Location: ?strona=user&user=".$this_user); 
+            } else {
+                //pierwsze uruchomienie skryptu processLogin
+                $tresc .= $user->changeForm();
+            }
+        }
+        else{
+            $tresc.=
+            '<form method="post" action=""><table>
+                <tr>
+                    <td><img src="'.$user->get_img().'" width="100" height="100" alt="author"/></td>
+                    <td><label>'.$user->get_username().'</label></td>
+                </tr>    
+                <tr>
+                    <td><label>Adres e-mail:</label></td>
+                    <td><label>'.$user->get_email().'</label></td>
+                </tr></table></form>';
         }
     }
     
-    return $tresc.'</td></tr></table></form>';
+    return $tresc;
 }
 
 if (filter_input(INPUT_POST, "wyloguj"))
