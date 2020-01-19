@@ -651,6 +651,14 @@ body {
 	overflow-y: hidden
 }
 
+.site-nav-left,
+.other{
+	position: relative;
+	margin-left: 20px;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
 .site-nav-left {
 	-ms-flex-align: center;
 	align-items: center;
@@ -718,6 +726,14 @@ body {
 
 .site-nav-right {
 	height: 40px
+}
+
+.site-nav-right,
+.other{
+	position: relative;
+	margin-left: 20px;
+	-ms-flex-align: center;
+	align-items: center;
 }
 
 .site-nav-right,
@@ -1373,7 +1389,9 @@ body {
 	color: #e5eff5;
 	font-size: 1.4rem;
 	line-height: 1.5em;
-	background: #0e0f11;
+	/* background: #0e0f11; */
+	background: rgb(38, 80, 134);
+	/* background: #377cd1; */
 	border-radius: 5px
 }
 

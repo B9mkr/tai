@@ -59,6 +59,22 @@ class User {
     }
 
     // ----------------------------------------------------------------
+    function standardForm() 
+    {
+        $form=
+        '<form method="post" action=""><table>
+            <tr>
+                <td><img src="'.$this->img.'" width="100" height="100" alt="'.$this->username.'"/></td>
+                <td><label>'.$this->username.'</label></td>
+            </tr>    
+            <tr>
+                <td><label>Adres e-mail:</label></td>
+                <td><label>'.$this->email.'</label></td>
+            </tr></table></form>';
+
+        return $form; //wynik typu String – gotowy formularz
+    }
+
     function changeForm() 
     {
         $form='<form method="post" action="">
@@ -72,7 +88,10 @@ class User {
                     <td><input type="text" value="'.$this->email.'" placeholder="'.$this->email.'" name="email"/></td>
                 </tr>
                 <tr>
-                    <td><label for = "img">Img:</label></td>
+                    <td rowspan=2><label for = "img">Img:</label></td>
+                    <td><img src="'.$this->img.'" width="200" height="200" alt="'.$this->username.'"/></td>
+                </tr>
+                <tr>
                     <td><input type="text" value="'.$this->img.'" placeholder="'.$this->img.'" name="img"/></td>
                 </tr>
                 <tr>
@@ -80,9 +99,9 @@ class User {
                     <td><input type="password" name="passwd"/></td>
                 </tr>
             </table> </br>
-            <input type="submit" value="Zmień" name="zmien"/> </br>
+             
             <input type="submit" value="Wyłoguj" name="wyloguj"/>
-            
+            <input type="submit" value="Zmień" name="zmien"/>
         </form>';
 
         return $form; //wynik typu String – gotowy formularz

@@ -119,16 +119,13 @@ class UserManager
         //przefiltruj dane z GET (lub z POST) zgodnie z ustawionymi w $args filtrami:
         $dane = filter_input_array(INPUT_POST, $args);
         
-        $email = $dane["email"];
-        $passwd = ''.md5(''.$dane["passwd"]);
-        
         $this->dobazy($dane, $user, $db);
 
-        $userId = $db->selectUser($email, $passwd);
+        $userId = $db->selectUser($dane["email"], ''.md5(''.$dane["passwd"]));
         
-        if ($userId >= 0) //Poprawne dane
+        if ($userId > 0) //Poprawne dane
         { 
-            $db->answer("DELETE FROM `Session` WHERE `Session`.`id_user` = ".$userId);
+            // $db->answer("DELETE FROM `Session` WHERE `Session`.`id_user` = ".$userId);
 
             $time = ''.(new DateTime()) -> format("Y-m-d H:i:s");
             

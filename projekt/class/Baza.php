@@ -73,10 +73,10 @@ class Baza
         }
     }
 
-    public function selectUser($email, $passwd)
+    public function selectUser($email, $passwd)//$passwd = md5($string);
     {
         $id = -1;
-        $sql = "SELECT * FROM User t WHERE t.email='$email'";
+        $sql = "SELECT * FROM User t WHERE t.email='$email' limit 1";
         if ($result = $this->mysqli->query($sql))
         {
             $ile = $result->num_rows;
@@ -88,6 +88,18 @@ class Baza
                 if ($md5 == ''.$passwd)
                     $id = $row->id_user; //jeśli hasła się zgadzają - pobierz id użytkownika
             }
+        }
+        return $id; //id zalogowanego użytkownika(>0) lub -1
+    }
+
+    public function selectPost($content)
+    {
+        $id = -1;
+        $sql = "SELECT * FROM Post WHERE Post.content='$content' limit 1";
+        if ($result = $this->mysqli->query($sql))
+        {
+            $row = $result->fetch_object();
+            $id = $row->id_post;
         }
         return $id; //id zalogowanego użytkownika(>0) lub -1
     }

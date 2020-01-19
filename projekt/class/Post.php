@@ -12,43 +12,29 @@ class Post {
     protected $title;
     protected $datetime;
     protected $tag;
-    protected $post_full_title;
+    protected $opis;
     protected $post_full_image;
     protected $access;
     protected $content;
     protected $user;
 
-    // function __construct($datetime, $tag, $post_full_title, $post_full_image, $content, $access){
+    // function __construct($datetime, $tag, $opis, $post_full_image, $content, $access){
     function __construct()
     {
         $this->access = "".Post::ACCESS_ALL."".Post::ACCESS_ALL;
-        // $this->datetime = (new DateTime()) -> format("Y-m-d");
+        $this->datetime = (new DateTime()) -> format("Y-m-d");
         $this->id_post=1;
     }
-    
-    // $post->set_title();
-    // $post->set_datetime();
-    // $post->set_tag();
-    // $post->set_post_full_title();
-    // $post->set_post_full_image();
-    // $post->set_access();
-    // $post->set_content();
-    // $post->set_user();
 
-    public function answer_b_add(){
-        $answer = "INSERT INTO `Post` (`id_post`, `id_user`, `title`, `datetime`, `tag`, `post_full_title`, `post_full_image`, `access`, `content`) VALUES ";
-        if($this->id_post == 1)
-            $answer .= "(NULL, '".$this->id_user."', '$this->title', '$this->datetime', '$this->tag', '$this->post_full_title', '$this->post_full_image', '$this->access', '$this->content')";
-        else
-        $answer .= "(".$this->id_post.", '".$this->id_user."', '$this->title', '$this->datetime', '$this->tag', '$this->post_full_title', '$this->post_full_image', '$this->access', '$this->content')";
+    // ----------------------------------------------------------------
+    public function add_do_bazy(){
+        $answer = "INSERT INTO `Post` (`id_post`, `id_user`, `title`, `datetime`, `tag`, `opis`, `post_full_image`, `access`, `content`) VALUES ";
+        // if($this->id_post == 1)
+            $answer .= "(NULL, '".$this->id_user."', '$this->title', '$this->datetime', '$this->tag', '$this->opis', '$this->post_full_image', '$this->access', '$this->content')";
+        // else
+        // $answer .= "(".$this->id_post.", '".$this->id_user."', '$this->title', '$this->datetime', '$this->tag', '$this->opis', '$this->post_full_image', '$this->access', '$this->content')";
         return $answer;
     }
-
-    public function show() {
-        // echo "User:".$this->userName.", ".$this->fullName.", ".$this->email.
-        return "Post:".$this->datetime.", ".$this->tag.", ".$this->post_full_title.", ".$this->post_full_image.", ".$this->access.", ".$this->content; 
-    }
-    // public function show_access($who, $){}
 
     public function set_z_bazy($dane, $index=0){
         // var_dump($dane);
@@ -57,13 +43,176 @@ class Post {
         $this->title = $dane[$index]->title;
         $this->datetime = $dane[$index]->datetime;
         $this->tag = $dane[$index]->tag;
-        $this->post_full_title = $dane[$index]->post_full_title;
+        $this->opis = $dane[$index]->opis;
         $this->post_full_image = $dane[$index]->post_full_image;
         $this->access=$dane[$index]->access;
         $this->content=$dane[$index]->content;
         // $this-> = $dane[$index]->;
     }
 
+    // ----------------------------------------------------------------
+    function getForm()
+    {
+        // <tr>
+        //         <td colspan=2>
+        //             <input type="submit" value="Pokaż posty" name="pokaz_posty"/>
+        //         </td>
+        //     </tr>
+        $form='<form method="post" action="?strona=gen_postow" >
+        <table>
+            <tr>
+                <td>Tytuł: </td>
+                <td><input name="title" id="title" type="text" value="Title" placeholder="Tytuł"/> </td>
+            </tr>
+            <tr>
+                <td>Zdzjęcie zadniego fonu: </td>
+                <td><input name="post_full_image" id="post_full_image" type="text" value="img/standard/f" placeholder="url do zdjęcia"/> </td>
+            </tr>
+            <tr>
+                <td>Tag:</td>
+                <td><input name="tag" id="tag" type="text" value="tag" placeholder="Tag"/></td>
+            </tr>
+            <tr>
+                <td>Opis: </td>
+                <td><input name="opis" id="opis" type="text" value="Opis" placeholder="Opis"/> </td>
+            </tr>
+            <tr>
+                <td>Tekst główny: </td>
+                <td><input name="content" id="content" type="text" value="inf.md" placeholder="url na tekst w formacie .md"/> </td>
+            </tr>
+            <tr>
+                <td colspan=2><input type="submit" value="Dodaj" name="dodaj_post"/></td>
+            </tr>
+        </table>
+        </form>';
+        return $form;
+    }
+
+    function walidacja_danych($db, $user)
+    {
+        $args = array(
+            'title' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'post_full_image' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'tag' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'opis' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'content' => FILTER_SANITIZE_MAGIC_QUOTES
+        );
+        
+        $dane = filter_input_array(INPUT_POST, $args);
+        
+        $this->dobazy($dane, $user, $db);
+
+        $postId = $db->selectPost($dane["content"]);
+        
+        if ($postId > 0) //Poprawne dane
+        { 
+            return $postId;
+        } else {
+            return -1;
+        }   
+    }
+
+    function dobazy($dane, $user, $ob)
+    {
+        $this->title = $dane["title"];
+        $this->post_full_image = $dane["post_full_image"];
+        $this->tag = $dane["tag"];
+        $this->opis = $dane["opis"];
+        $this->content = $dane["content"];
+        $this->id_user = $user->get_id_user();
+        // $this->access = $dane["access"];
+
+        $ob->answer($this->add_do_bazy());
+    }
+
+    // ----------------------------------------------------------------
+    function get_tresc($Parsedown)
+    {
+        $tresc='
+        <article class="post-full post tag-it">
+        <header class="post-full-header">
+            <section class="post-full-meta">
+                <time class="post-full-meta-date" datetime="'.$this->get_datetime().'">'.$this->get_date_format("d F Y").'</time>
+                <span class="date-divider">/</span> <a href="?strona=glowna&tag='.$this->get_tag().'">'.$this->get_tag().'</a>
+            </section>
+            <h1 class="post-full-title">'.$this->get_title().'</h1>
+        </header>
+        <figure class="post-full-image">';
+        
+        $tresc.=$this->create_img($this->get_post_full_image(), "jpg");
+        
+        $tresc.='</figure>
+        <section class="post-full-content"><div class="post-content">';
+            
+        $tresc.=$this->file_get_tresc("".$this->get_content(), $Parsedown);
+        
+        $tresc.='</div></section></article>';
+
+        $tresc.='<div class="progress-barm floating-header floating-active"></div>
+        <script src="JS/scroll.js"></script>'; // scroll in the top
+
+        return $tresc;
+    }
+    function file_get_tresc($url, $Parsedown)
+    {
+        $contents = file_get_contents($url);
+        return "".$Parsedown->text($contents);
+    }
+
+    // Dla strony glównej ---------------------------------------------
+    function get_tresc_g($user){
+        $tresc = '
+                <article class="post-card post">
+                    <a class="post-card-image-link" href="?strona=post&this_post='.$this->get_id_post().'">'.$this->create_img($this->get_post_full_image(), "jpg").'</a>
+                    <div class="post-card-content">
+                        <a class="post-card-content-link" href="?strona=post&this_post='.$this->get_id_post().'">
+                            <header class="post-card-header">
+                                <span class="post-card-tags">'.$this->get_tag().'</span>
+                                <h2 class="post-card-title">'.$this->get_title().'</h2>
+                            </header>
+                            <section class="post-card-excerpt">
+                                <p>'.$this->get_opis().'</p>
+                            </section>
+                        </a>
+                        <footer class="post-card-meta">
+                            <ul class="author-list">
+                                <li class="author-list-item">
+                                    <div class="author-name-tooltip">'.
+                                        $user->get_username()
+                                    .'</div>
+                                        <a href="?strona=user&user='.$user->get_id_user().'" class="static-avatar">
+                                            <img class="author-profile-image" src="'.$user->get_img().'" alt="author" />
+                                        </a>
+                                </li>
+                            </ul>';
+
+        $reading_time = (int)(str_word_count(file_get_contents($this->get_content()))/200);
+        if($reading_time != 0)
+            $tresc.='<span class="reading-time">'.$reading_time.' min</span>';
+        else
+            $tresc.='<span class="reading-time">do 1 min</span>';
+
+               $tresc.='</footer>
+                    </div>
+                </article>';
+        return $tresc;
+    }
+
+    // Ogulne ---------------------------------------------------------
+    function create_img($url, $k)
+    {
+        return "<img
+            srcset=\"".$url."300.".$k." 300w,
+            ".$url."600.".$k." 600w,
+            ".$url."1000.".$k." 1000w,
+            ".$url."2000.".$k." 2000w\"
+            sizes=\"(max-width: 800px) 400px,
+            (max-width: 2000px) 700px, 1400px\"
+            src=\"".$url."2000.".$k."\"
+            alt=\"img\"/>";
+    }
+
+    // ----------------------------------------------------------------
     //interfejs klasy – metody modyfikujące fragmenty strony
     public function set_title($title){
         $this->title = $title;
@@ -77,8 +226,8 @@ class Post {
     public function set_tag($tag){
         $this->tag = $tag;
     }
-    public function set_post_full_title($post_full_title){
-        $this->post_full_title = $post_full_title;
+    public function set_opis($opis){
+        $this->opis = $opis;
     }
     public function set_post_full_image($post_full_image){
         $this->post_full_image = $post_full_image;
@@ -130,8 +279,8 @@ class Post {
     public function get_tag(){
         return $this->tag;
     }
-    public function get_post_full_title(){
-        return $this->post_full_title;
+    public function get_opis(){
+        return $this->opis;
     }
     public function get_post_full_image(){
         return $this->post_full_image;

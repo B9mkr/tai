@@ -1,6 +1,6 @@
 <?php
 $user       = $user_main->get_user();
-$post       = new Post();
+// $post       = new Post();
 
 $sql='SELECT * FROM `User` u where u.id_user='.$this_user;
 
@@ -58,27 +58,34 @@ function get_tresc_in($user, $ob, $this_user){
             }
         }
         else{
-            $tresc.=
-            '<form method="post" action=""><table>
-                <tr>
-                    <td><img src="'.$user->get_img().'" width="100" height="100" alt="author"/></td>
-                    <td><label>'.$user->get_username().'</label></td>
-                </tr>    
-                <tr>
-                    <td><label>Adres e-mail:</label></td>
-                    <td><label>'.$user->get_email().'</label></td>
-                </tr></table></form>';
+            $tresc .= $user->standardForm();
         }
+    }
+    else{
+        $tresc .= $user->standardForm();
+        // $tresc.=
+        // '<form method="post" action=""><table>
+        //     <tr>
+        //         <td><img src="'.$user->get_img().'" width="100" height="100" alt="author"/></td>
+        //         <td><label>'.$user->get_username().'</label></td>
+        //     </tr>    
+        //     <tr>
+        //         <td><label>Adres e-mail:</label></td>
+        //         <td><label>'.$user->get_email().'</label></td>
+        //     </tr></table></form>';
     }
     
     return $tresc;
 }
 
+// if (filter_input(INPUT_GET, "akcja")=="wyloguj") {
+//  $um->logout($db);
+//  }
+
 if (filter_input(INPUT_POST, "wyloguj"))
 {
     $User_M->logout($ob);
     header("Location: ?strona=glowna");
-    exit;
 }
 // $dane=$ob->dane_z_bazy('SELECT * FROM `User` u WHERE u.email="'.$user->get_email().'" AND u.passwd="'.$user->get_passwd().'"');
 // if($dane == NULL)

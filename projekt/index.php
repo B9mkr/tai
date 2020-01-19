@@ -8,13 +8,13 @@ include_once('class/UserManager.php');
 $ob         = new Baza("localhost", "root", "", "projekt");
 $User_M     = new UserManager();
 
-// $dane = $ob->dane_z_bazy("SELECT * FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1");
+    // $dane = $ob->dane_z_bazy("SELECT * FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1");
 
 $user_main = new User("", "", "");
 
-$sql = "SELECT * FROM `User` WHERE `User`.`id_user`=(SELECT id_user FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1)";
-if(($dane = $ob->dane_z_bazy($sql)) != NULL)
-    $user_main->set_z_bazy($dane, 0);
+    $sql = "SELECT * FROM `User` WHERE `User`.`id_user`=(SELECT id_user FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1)";
+    if(($dane = $ob->dane_z_bazy($sql)) != NULL)
+        $user_main->set_z_bazy($dane, 0);
 
 $strona_akt = new Strona($ob);
 
@@ -32,7 +32,7 @@ if(($dane = $ob->dane_z_bazy('SELECT id_post FROM `Post`')) != NULL)
                 $this_post = $tp;
         }
     } else {
-        $this_post = 1;
+        $this_post = -1;
     }
 }
 
@@ -47,7 +47,7 @@ if(($dane = $ob->dane_z_bazy('SELECT id_user FROM `User`')) != NULL)
                 $this_user = $us;
         }
     } else {
-        $this_user = 1;
+        $this_user = -1;
     }
 }
 
@@ -69,6 +69,9 @@ if (filter_input(INPUT_GET, 'strona')) {
             case 'user':
                 $strona = 'user';
                 break;
+            case 'zmien_post':
+                $strona = 'zmien_post';
+                break;
         default:
             $strona = 'glowna';
     }
@@ -78,6 +81,9 @@ if (filter_input(INPUT_GET, 'strona')) {
 
 // $strona="post";
 
+// echo $this_post.'</br>';
+// echo $this_user.'</br>';
+
 //dołącz wybrany plik z ustawioną zmienną $tytul i $zawartosc
 $plik = "skrypty/" . $strona . ".php";
 if (file_exists($plik)) {
@@ -85,10 +91,9 @@ if (file_exists($plik)) {
 
     $strona_akt->set_title($tytul);
     $strona_akt->set_zawartosc($zawartosc);
-    // $strona_akt->set_header($header);
-    // $strona_akt->set_datetime($datetime);
-    // $strona_akt->set_dateshow($dateshow);
-    // $strona_akt->set_img();
+    
+    $strona_akt->set_this_user($this_user);
+    $strona_akt->set_this_post($this_post);
 
     $user_main->set_user($user);
     
