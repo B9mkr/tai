@@ -4,7 +4,7 @@
 2. strona logowania userów
    1. datetime
    2. tag
-   3. post-full-title
+   3. opis
    4. post-fuul-image
       1. 300
       2. 1000
@@ -22,6 +22,8 @@
    2. zmiana dannych
 5. generowanie stron
 6. lista zadań
+
+# Baza
 
 ```sql
 --
@@ -159,26 +161,64 @@ ALTER TABLE `Session`
 COMMIT;
 ```
 
+---
+
+# co zostało do robić:
+
+##### 1.
+
 -- access:
 -- 4-r, 2-w, 1-NULL, 6-rw
 -- user, all:
 
-44
-42
-41
-46
+> 44, 42, 41, 46
+>
+> 24, 22, 21, 26
+>
+> 14, 12, 11, 16
+>
+> 64, 62, 61, 66
 
-24
-22
-21
-26
+posts:
 
-14
-12
-11
-16
+> 66 -> get_access_for(1) = 6
+> 64 -> get_access_for(1) = 4
+> 62 -> get_access_for(1) = 2
+> 61 -> get_access_for(1) = 1
 
-64
-62
-61
-66
+> 66 -> get_access_for(0) = 6
+> 64 -> get_access_for(0) = 6
+> 62 -> get_access_for(0) = 6
+> 61 -> get_access_for(0) = 6
+
+```
+object(stdClass)#12 (9) 
+{
+  ["id_post"]=> string(1) "2" 
+  ["id_user"]=> string(1) "2" 
+  ["title"]=> string(4) "Text" 
+  ["datetime"]=> string(10) "2020-01-12" 
+  ["tag"]=> string(4) "test" 
+  ["opis"]=> string(4) "Text" 
+  ["post_full_image"]=> string(20) "img/generator/intGen" 
+  ["access"]=> string(2) "66" 
+  ["content"]=> string(10) "md/text.md" 
+} 
+object(stdClass)#11 (9) 
+{ 
+  ["id_post"]=> string(1) "3" 
+  ["id_user"]=> string(1) "3" 
+  ["title"]=> string(3) "inf" 
+  ["datetime"]=> string(10) "2020-01-10" 
+  ["tag"]=> string(11) "information" 
+  ["opis"]=> string(11) "Karken info" 
+  ["post_full_image"]=> string(14) "img/standard/f" 
+  ["access"]=> string(2) "66" 
+  ["content"]=> string(6) "inf.md" 
+} 
+...
+```
+
+##### 2.
+
+Walidacja dla posta **email**.

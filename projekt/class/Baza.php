@@ -95,7 +95,7 @@ class Baza
     public function selectPost($content)
     {
         $id = -1;
-        $sql = "SELECT * FROM Post WHERE Post.content='$content' limit 1";
+        $sql = "SELECT * FROM `Post` WHERE `Post`.content='$content';";
         if ($result = $this->mysqli->query($sql))
         {
             $row = $result->fetch_object();

@@ -128,7 +128,7 @@ class Post {
     
     function getZForm()
     {
-        $form='<form method="post" action="?strona=zmien_post" >
+        $form='<form method="post" action="?strona=zmien_post&this_post='.$this->id_post.'" >
         <table>
             <tr>
                 <td>Tytuł: </td>
@@ -151,6 +151,16 @@ class Post {
                 <td><input name="content" id="content" type="text" value="'.$this->content.'" placeholder="url na tekst w formacie .md"/> </td>
             </tr>
             <tr>
+            <td><label for = "access">Dostęp:</label></td>
+                <td>
+                    <select name="access">
+                        <option value="r">read</option>
+                        <option value="a">read and write</option>
+                        <option value="n">nothing</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <td colspan=2><input type="submit" value="Zmień" name="zmien_post"/></td>
             </tr>
         </table>
@@ -165,7 +175,8 @@ class Post {
             'post_full_image' => FILTER_SANITIZE_MAGIC_QUOTES,
             'tag' => FILTER_SANITIZE_MAGIC_QUOTES,
             'opis' => FILTER_SANITIZE_MAGIC_QUOTES,
-            'content' => FILTER_SANITIZE_MAGIC_QUOTES
+            'content' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'access' => FILTER_DEFAULT
         );
         
         $dane = filter_input_array(INPUT_POST, $args);
@@ -176,11 +187,18 @@ class Post {
         $this->opis = $dane["opis"];
         $this->content = $dane["content"];
         $this->id_user = $user->get_id_user();
-        // $this->access = $dane["access"];
+        switch($dane["access"])
+        {
+            case "r":	$this->access ='64';         break;
+            // case "w":	$this->access ='62';         break; // <option value="w">write</option>
+            case "a":	$this->access ='66';         break;
+            case "n":	$this->access ='61';         break;
+            default:    $this->access ='66';
+        }
 
-        $ob->answer('UPDATE `Post` SET `title` = "'.$this->title.'", `post_full_image` = "'.$this->post_full_image.'", `tag` = "'.$this->tag.'", `opis` = "'.$this->opis.'", `content` = "'.$this->content.'" WHERE `User`.`id_post` = '.$this->id_post);
+        $db->answer('UPDATE `Post` SET `title` = "'.$this->title.'", `post_full_image` = "'.$this->post_full_image.'", `tag` = "'.$this->tag.'", `opis` = "'.$this->opis.'", `content` = "'.$this->content.'", `access` = "'.$this->access.'" WHERE `Post`.id_post = '.$this->id_post.';');
 
-        $postId = $db->selectPost($dane["content"]);
+        $postId = $db->selectPost($this->content);
         
         if ($postId > 0) //Poprawne dane
         { 
@@ -190,6 +208,28 @@ class Post {
         }   
     }
 
+    function get_access_for($kto, $ACCESS)
+    {
+        $access = str_split($ACCESS);
+        $ac;
+        switch($kto)
+        {
+            case 'u':
+            case 0:  $ac = $access[0]; break;
+            default: $ac = $access[1];
+        }
+
+        $wyn=1;
+        switch($ac)
+        {
+            case "2":	$wyn=2;         break;
+            case "4":	$wyn=4;         break;
+            case "6":	$wyn=6;         break;
+            default:    $wyn=1;
+        }
+
+        return $wyn;
+    }
     // ----------------------------------------------------------------
     function get_tresc($Parsedown)
     {

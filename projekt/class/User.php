@@ -59,8 +59,12 @@ class User {
     }
 
     // ----------------------------------------------------------------
-    function standardForm() 
+    function standardForm($ob) 
     {
+        
+        $sql='SELECT COUNT(*) AS co FROM `Post` WHERE Post.id_user='.$this->id_user.' GROUP BY `Post`.`id_user`';
+        $dane = $ob->dane_z_bazy($sql);
+        
         $form=
         '<form method="post" action=""><table>
             <tr>
@@ -70,7 +74,17 @@ class User {
             <tr>
                 <td><label>Adres e-mail:</label></td>
                 <td><label>'.$this->email.'</label></td>
-            </tr></table></form>';
+            </tr>';
+
+        if($dane != NULL)
+        {
+            $form.='<tr>
+                <td><label>Liczba postów:</label></td>
+                <td><label>'.$dane[0]->co.'</label></td>
+            </tr>';
+        }
+
+        $form.='</table></form>';
 
         return $form; //wynik typu String – gotowy formularz
     }

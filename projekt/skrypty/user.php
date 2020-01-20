@@ -58,11 +58,11 @@ function get_tresc_in($user, $ob, $this_user){
             }
         }
         else{
-            $tresc .= $user->standardForm();
+            $tresc .= $user->standardForm($ob);
         }
     }
     else{
-        $tresc .= $user->standardForm();
+        $tresc .= $user->standardForm($ob);
     }
     
     return $tresc;
