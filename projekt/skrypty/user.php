@@ -63,16 +63,6 @@ function get_tresc_in($user, $ob, $this_user){
     }
     else{
         $tresc .= $user->standardForm();
-        // $tresc.=
-        // '<form method="post" action=""><table>
-        //     <tr>
-        //         <td><img src="'.$user->get_img().'" width="100" height="100" alt="author"/></td>
-        //         <td><label>'.$user->get_username().'</label></td>
-        //     </tr>    
-        //     <tr>
-        //         <td><label>Adres e-mail:</label></td>
-        //         <td><label>'.$user->get_email().'</label></td>
-        //     </tr></table></form>';
     }
     
     return $tresc;

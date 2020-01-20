@@ -40,7 +40,7 @@ CREATE TABLE `Post` (
   `title` varchar(50) NOT NULL,
   `datetime` date NOT NULL,
   `tag` varchar(40) NOT NULL,
-  `post_full_title` varchar(255) NOT NULL,
+  `post` varchar(255) NOT NULL,
   `post_full_image` varchar(50) NOT NULL,
   `access` varchar(2) NOT NULL,
   `content` varchar(60) NOT NULL

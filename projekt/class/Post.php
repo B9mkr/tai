@@ -125,6 +125,71 @@ class Post {
         $ob->answer($this->add_do_bazy());
     }
 
+    
+    function getZForm()
+    {
+        $form='<form method="post" action="?strona=zmien_post" >
+        <table>
+            <tr>
+                <td>Tytuł: </td>
+                <td><input name="title" id="title" type="text" value="'.$this->title.'" placeholder="Tytuł"/> </td>
+            </tr>
+            <tr>
+                <td>Zdzjęcie zadniego fonu: </td>
+                <td><input name="post_full_image" id="post_full_image" type="text" value="'.$this->post_full_image.'" placeholder="url do zdjęcia"/> </td>
+            </tr>
+            <tr>
+                <td>Tag:</td>
+                <td><input name="tag" id="tag" type="text" value="'.$this->tag.'" placeholder="Tag"/></td>
+            </tr>
+            <tr>
+                <td>Opis: </td>
+                <td><input name="opis" id="opis" type="text" value="'.$this->opis.'" placeholder="Opis"/> </td>
+            </tr>
+            <tr>
+                <td>Tekst główny: </td>
+                <td><input name="content" id="content" type="text" value="'.$this->content.'" placeholder="url na tekst w formacie .md"/> </td>
+            </tr>
+            <tr>
+                <td colspan=2><input type="submit" value="Zmień" name="zmien_post"/></td>
+            </tr>
+        </table>
+        </form>';
+        return $form;
+    }
+
+    function walidacja_danych_z($db, $user)
+    {
+        $args = array(
+            'title' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'post_full_image' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'tag' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'opis' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'content' => FILTER_SANITIZE_MAGIC_QUOTES
+        );
+        
+        $dane = filter_input_array(INPUT_POST, $args);
+        
+        $this->title = $dane["title"];
+        $this->post_full_image = $dane["post_full_image"];
+        $this->tag = $dane["tag"];
+        $this->opis = $dane["opis"];
+        $this->content = $dane["content"];
+        $this->id_user = $user->get_id_user();
+        // $this->access = $dane["access"];
+
+        $ob->answer('UPDATE `Post` SET `title` = "'.$this->title.'", `post_full_image` = "'.$this->post_full_image.'", `tag` = "'.$this->tag.'", `opis` = "'.$this->opis.'", `content` = "'.$this->content.'" WHERE `User`.`id_post` = '.$this->id_post);
+
+        $postId = $db->selectPost($dane["content"]);
+        
+        if ($postId > 0) //Poprawne dane
+        { 
+            return $postId;
+        } else {
+            return -1;
+        }   
+    }
+
     // ----------------------------------------------------------------
     function get_tresc($Parsedown)
     {
