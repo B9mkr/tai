@@ -155,8 +155,10 @@ class Post {
     }
     function file_get_tresc($url, $Parsedown)
     {
-        $contents = file_get_contents($url);
-        return "".$Parsedown->text($contents);
+        if($contents = file_get_contents($url))
+            return "".$Parsedown->text($contents);
+        else
+            return "<h1>Nie poprawna ścieżka</h1>";
     }
 
     // Dla strony glównej ---------------------------------------------
@@ -167,7 +169,7 @@ class Post {
                     <div class="post-card-content">
                         <a class="post-card-content-link" href="?strona=post&this_post='.$this->get_id_post().'">
                             <header class="post-card-header">
-                                <span class="post-card-tags">'.$this->get_tag().'</span>
+                                <span class="post-card-tags"><a href="?strona=glowna&tag='.$this->get_tag().'">'.$this->get_tag().'</a></span>
                                 <h2 class="post-card-title">'.$this->get_title().'</h2>
                             </header>
                             <section class="post-card-excerpt">
