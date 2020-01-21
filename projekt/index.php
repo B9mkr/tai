@@ -10,16 +10,19 @@ $User_M     = new UserManager();
 
     // $dane = $ob->dane_z_bazy("SELECT * FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1");
 
+$this_post=-1;
+$this_user=-1;
+
 $user_main = new User("", "", "");
 
     $sql = "SELECT * FROM `User` WHERE `User`.`id_user`=(SELECT id_user FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1)";
     if(($dane = $ob->dane_z_bazy($sql)) != NULL)
+    {
         $user_main->set_z_bazy($dane, 0);
+        $this_user=$user_main->get_id_user();
+    }
 
 $strona_akt = new Strona($ob);
-
-$this_post=-1;
-$this_user=-1;
 
 if(($dane = $ob->dane_z_bazy('SELECT id_post FROM `Post`')) != NULL)
 {
@@ -47,7 +50,7 @@ if(($dane = $ob->dane_z_bazy('SELECT id_user FROM `User`')) != NULL)
                 $this_user = $us;
         }
     } else {
-        $this_user = -1;
+        $this_user=$user_main->get_id_user();
     }
 }
 
