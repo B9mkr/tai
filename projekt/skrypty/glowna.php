@@ -19,9 +19,9 @@ function get_tresc($post, $ob, $this_user)
     // ----------------------------------------------------------------
 
     if($this_tag == '')
-        $sql = 'SELECT * FROM `Post`';
+        $sql = 'SELECT * FROM `Post` ORDER BY `Post`.`datetime` DESC';
     else
-        $sql = 'SELECT * FROM `Post` WHERE `Post`.tag="'.$this_tag.'"';
+        $sql = 'SELECT * FROM `Post` WHERE `Post`.tag="'.$this_tag.'" ORDER BY `Post`.`datetime` DESC';
 
     $dane = $ob->dane_z_bazy($sql);
     

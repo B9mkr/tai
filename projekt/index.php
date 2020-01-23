@@ -3,24 +3,20 @@ include_once('class/Strona.php');
 include_once('class/User.php');
 include_once('class/Post.php');
 include_once('class/Baza.php');
-include_once('class/UserManager.php');
 
 $ob         = new Baza("localhost", "root", "", "projekt");
-$User_M     = new UserManager();
-
-    // $dane = $ob->dane_z_bazy("SELECT * FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1");
 
 $this_post=-1;
 $this_user=-1;
 
 $user_main = new User("", "", "");
 
-    $sql = "SELECT * FROM `User` WHERE `User`.`id_user`=(SELECT id_user FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1)";
-    if(($dane = $ob->dane_z_bazy($sql)) != NULL)
-    {
-        $user_main->set_z_bazy($dane, 0);
-        $this_user=$user_main->get_id_user();
-    }
+$sql = "SELECT * FROM `User` WHERE `User`.`id_user`=(SELECT id_user FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1)";
+if(($dane = $ob->dane_z_bazy($sql)) != NULL)
+{
+    $user_main->set_z_bazy($dane, 0);
+    $this_user=$user_main->get_id_user();
+}
 
 $strona_akt = new Strona($ob);
 
@@ -81,11 +77,6 @@ if (filter_input(INPUT_GET, 'strona')) {
 } else {
     $strona = "glowna";
 }
-
-// $strona="post";
-
-// echo $this_post.'</br>';
-// echo $this_user.'</br>';
 
 //dołącz wybrany plik z ustawioną zmienną $tytul i $zawartosc
 $plik = "skrypty/" . $strona . ".php";

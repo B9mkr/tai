@@ -50,8 +50,8 @@ class Post {
         // $this-> = $dane[$index]->;
     }
 
-    // ----------------------------------------------------------------
-    function getForm()
+    // Create form ----------------------------------------------------
+    function get_create_Form()
     {
         // <tr>
         //         <td colspan=2>
@@ -65,8 +65,13 @@ class Post {
                 <td><input name="title" id="title" type="text" value="Title" placeholder="Tytuł"/> </td>
             </tr>
             <tr>
-                <td>Zdzjęcie zadniego fonu: </td>
-                <td><input name="post_full_image" id="post_full_image" type="text" value="img/standard/f" placeholder="url do zdjęcia"/> </td>
+                <td>Zdjęcie zadniego fonu: </td>
+                <td>
+                    <select name="post_full_image">
+                        <option value="s">standard</option>
+                        <option value="g">generator</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Tag:</td>
@@ -74,11 +79,21 @@ class Post {
             </tr>
             <tr>
                 <td>Opis: </td>
-                <td><input name="opis" id="opis" type="text" value="Opis" placeholder="Opis"/> </td>
+                <td><textarea name="opis" id="opis" type="text" placeholder="Opis" maxlength="255">'.$this->opis.'</textarea></td>
             </tr>
             <tr>
                 <td>Tekst główny: </td>
                 <td><input name="content" id="content" type="text" value="inf.md" placeholder="url na tekst w formacie .md"/> </td>
+            </tr>
+            <tr>
+                <td><label for = "access">Dostęp dla innych urzytkowników:</label></td>
+                <td>
+                    <select name="access">
+                        <option value="r">Tylko czytać</option>
+                        <option value="a">Czytać i zmieniać</option>
+                        <option value="n">Bez dostępu</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td colspan=2><input type="submit" value="Dodaj" name="dodaj_post"/></td>
@@ -115,18 +130,29 @@ class Post {
     function dobazy($dane, $user, $ob)
     {
         $this->title = $dane["title"];
-        $this->post_full_image = $dane["post_full_image"];
+        switch($dane["post_full_image"])
+        {
+            case "g":	$this->post_full_image ='img/generator/intGen';   break;
+            default:    $this->post_full_image ='img/standard/f';
+        }
         $this->tag = $dane["tag"];
         $this->opis = $dane["opis"];
         $this->content = $dane["content"];
         $this->id_user = $user->get_id_user();
-        // $this->access = $dane["access"];
+        switch($dane["access"])
+        {
+            case "r":	$this->access ='64';         break;
+            case "a":	$this->access ='66';         break;
+            case "n":	$this->access ='61';         break;
+            default:    $this->access ='66';
+        }
 
         $ob->answer($this->add_do_bazy());
     }
 
-    
-    function getZForm()
+    // Change form ----------------------------------------------------
+
+    function get_change_Form()
     {
         $form='<form method="post" action="?strona=zmien_post&this_post='.$this->id_post.'" >
         <table>
@@ -135,8 +161,13 @@ class Post {
                 <td><input name="title" id="title" type="text" value="'.$this->title.'" placeholder="Tytuł"/> </td>
             </tr>
             <tr>
-                <td>Zdzjęcie zadniego fonu: </td>
-                <td><input name="post_full_image" id="post_full_image" type="text" value="'.$this->post_full_image.'" placeholder="url do zdjęcia"/> </td>
+                <td>Zdjęcie zadniego fonu: </td>
+                <td>
+                    <select name="post_full_image">
+                        <option value="s">standard</option>
+                        <option value="g">generator</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Tag:</td>
@@ -144,29 +175,53 @@ class Post {
             </tr>
             <tr>
                 <td>Opis: </td>
-                <td><input name="opis" id="opis" type="text" value="'.$this->opis.'" placeholder="Opis"/> </td>
+                <td><textarea name="opis" id="opis" type="text" placeholder="Opis" maxlength="255">'.$this->opis.'</textarea></td>
             </tr>
             <tr>
-                <td>Tekst główny: </td>
+                <td>Url do tekstu głównego: </td>
                 <td><input name="content" id="content" type="text" value="'.$this->content.'" placeholder="url na tekst w formacie .md"/> </td>
             </tr>
             <tr>
-            <td><label for = "access">Dostęp:</label></td>
+                <td><label for = "access">Dostęp dla innych urzytkowników:</label></td>
                 <td>
                     <select name="access">
-                        <option value="r">read</option>
-                        <option value="a">read and write</option>
-                        <option value="n">nothing</option>
+                        <option value="r">Tylko czytać</option>
+                        <option value="a">Czytać i zmieniać</option>
+                        <option value="n">Bez dostępu</option>
                     </select>
                 </td>
             </tr>
             <tr>
-                <td colspan=2><input type="submit" value="Zmień" name="zmien_post"/></td>
+                <td><input type="submit" value="Usuń" name="usun_post"/></td>
+                <td><input type="submit" value="Zmień" name="zmien_post"/></td>
             </tr>
         </table>
+        
         </form>';
         return $form;
     }
+
+    function get_format_Form($form)
+    {
+        $tresc='
+        <article class="post-full">
+        <header class="post-full-header">
+            <section class="post-full-meta">
+                <time class="post-full-meta-date" datetime="'.$this->get_datetime().'">'.$this->get_date_format("d F Y").'</time>
+            </section>
+            <h1 class="post-full-title">'.$this->get_title().'</h1>
+        </header>';
+        // <figure class="post-full-image">';
+        // $tresc.=create_img($post->get_post_full_image(), "png");
+        // $tresc.='</figure>
+        $tresc.='<section class="post-full-content"><div class="post-content">';
+        $tresc .= $form;
+        $tresc.='</div></section></article>';
+        return $tresc;
+    }
+    //-------------------------------------------
+
+    //-------------------------------------------
 
     function walidacja_danych_z($db, $user)
     {
@@ -176,17 +231,23 @@ class Post {
             'tag' => FILTER_SANITIZE_MAGIC_QUOTES,
             'opis' => FILTER_SANITIZE_MAGIC_QUOTES,
             'content' => FILTER_SANITIZE_MAGIC_QUOTES,
-            'access' => FILTER_DEFAULT
+            'access' => FILTER_SANITIZE_MAGIC_QUOTES
         );
         
         $dane = filter_input_array(INPUT_POST, $args);
         
         $this->title = $dane["title"];
-        $this->post_full_image = $dane["post_full_image"];
         $this->tag = $dane["tag"];
         $this->opis = $dane["opis"];
         $this->content = $dane["content"];
         $this->id_user = $user->get_id_user();
+
+        switch($dane["post_full_image"])
+        {
+            case "g":	$this->post_full_image ='img/generator/intGen';   break;
+            default:    $this->post_full_image ='img/standard/f';
+        }
+
         switch($dane["access"])
         {
             case "r":	$this->access ='64';         break;
@@ -267,6 +328,7 @@ class Post {
     }
 
     // Dla strony glównej ---------------------------------------------
+    // <span class="post-card-tags"><a href="?strona=glowna&tag='.$this->get_tag().'">'.$this->get_tag().'</a></span>
     function get_tresc_g($user){
         $tresc = '
                 <article class="post-card post">
@@ -274,7 +336,7 @@ class Post {
                     <div class="post-card-content">
                         <a class="post-card-content-link" href="?strona=post&this_post='.$this->get_id_post().'">
                             <header class="post-card-header">
-                                <span class="post-card-tags"><a href="?strona=glowna&tag='.$this->get_tag().'">'.$this->get_tag().'</a></span>
+                                <span class="post-card-tags">'.$this->get_tag().'</span>
                                 <h2 class="post-card-title">'.$this->get_title().'</h2>
                             </header>
                             <section class="post-card-excerpt">

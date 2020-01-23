@@ -58,6 +58,153 @@ class User {
         $this->passwd=$dane[$index]->passwd;
     }
 
+    // Login ----------------------------------------------------------
+    function login_Form() 
+    {
+        $form = '<form method="post" action="?strona=log_in" >';
+        $form .= '
+            <table>
+                <tr>
+                    <td><label for = "adresmail">Adres e-mail:</label></td>
+                    <td><input type="text" name="email" placeholder="anon@gmail.com"/></td>
+                </tr>
+                <tr>
+                    <td><label for = "password">Password:</label></td>
+                    <td><input type="password" name="passwd"/></td>
+                </tr>
+                <tr>
+                    <td><a href="?strona=registration">Registration</a></td>
+                    <td><input type="submit" value="Log in" name="log_in"/></td>
+                </tr>
+            </table>
+        </form>';
+        return $form; //wynik typu String – gotowy formularz
+    }
+    function login_walidation($db)
+    {
+        //funkcja sprawdza poprawność logowania
+        //wynik - id użytkownika zalogowanego lub -1
+        $args = [
+            'email' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'passwd' => FILTER_SANITIZE_MAGIC_QUOTES
+        ];
+        
+        $dane = filter_input_array(INPUT_POST, $args);
+        
+        $email = $dane["email"];
+        $passwd = ''.md5(''.$dane["passwd"]);
+        
+        $userId = $db->selectUser($email, $passwd);
+        
+        if ($userId >= 0) //Poprawne dane
+        { 
+            $db->answer("DELETE FROM `Session` WHERE `Session`.`id_user` = ".$userId);
+
+            $time = ''.(new DateTime()) -> format("Y-m-d H:i:s");
+            
+            $db->answer('INSERT INTO `Session` (`id_session`, `id_user`, `lastUpdate`) VALUES ("'.$userId.' '.$time.'", '.$userId.', "'.$time.'");');
+            return $userId;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    function logout($db)
+    {
+        $db->answer("DELETE FROM `Session` ORDER BY `Session`.`lastUpdate` DESC LIMIT 1");
+    }
+    function getLoggedInUser($db, $sessionId) {
+        $userId = -1;
+        //wynik $userId - znaleziono wpis z id sesji w tabeli Session
+        //wynik -1 - nie ma wpisu dla tego id sesji w tabeli Session
+        $sql = "SELECT * FROM Session WHERE `Session`.`id_session`='$sessionId'";
+        if ($result = $db->mysqli->query($sql))
+        {
+            $ile = $result->num_rows;
+            if ($ile == 1)
+            {
+                $row = $result->fetch_object(); //pobierz rekord z użytkownikiem
+                $userId = $row->id_user;
+            }
+        }
+        return $userId; //id zalogowanego użytkownika(>0) lub -1
+    }
+
+    // Registraion ----------------------------------------------------
+    function registration_Form() 
+    {
+        $form = '<form method="post" action="?strona=registration" >
+            <table>
+                <tr>
+                    <td><label for = "username">Nazwa nowego użytkownika:</label></td>
+                    <td><input type="text" name="username" placeholder="anon"/></td>
+                </tr>
+                <tr>
+                    <td><label for = "adresmail">Adres e-mail:</label></td>
+                    <td><input type="text" name="email" placeholder="anon@gmail.com"/></td>
+                </tr>
+                <tr>
+                    <td><label for = "img">Url do zdjęcia użytkownika:</label></td>
+                    <td><input type="text" name="img" value="img/anon.jpg" placeholder="img/anon.jpg"/></td>
+                </tr>
+                <tr>
+                    <td><label for = "passwd">Password:</label></td>
+                    <td><input type="password" name="passwd"/></td>
+                </tr>
+                <tr>
+                    <td><a href="?strona=log_in">Log in</a></td>
+                    <td><input type="submit" value="Registration" name="registration"/></td>
+                </tr>
+            </table>
+        </form>';
+        return $form; //wynik typu String – gotowy formularz
+    }
+    function registration_walidation($db, $user)
+    {
+        //funkcja sprawdza poprawność logowania
+        //wynik - id użytkownika zalogowanego lub -1
+        $args = array(
+            'username' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'email' => FILTER_VALIDATE_EMAIL,
+            'img' => FILTER_SANITIZE_MAGIC_QUOTES,
+            'passwd' => FILTER_SANITIZE_MAGIC_QUOTES
+        );
+        //przefiltruj dane z GET (lub z POST) zgodnie z ustawionymi w $args filtrami:
+        $dane = filter_input_array(INPUT_POST, $args);
+        
+        $this->dobazy_registration($dane, $user, $db);
+
+        $userId = $db->selectUser($dane["email"], ''.md5(''.$dane["passwd"]));
+        
+        if ($userId > 0) //Poprawne dane
+        { 
+            // $db->answer("DELETE FROM `Session` WHERE `Session`.`id_user` = ".$userId);
+
+            $time = ''.(new DateTime()) -> format("Y-m-d H:i:s");
+            
+            $db->answer('INSERT INTO `Session` (`id_session`, `id_user`, `lastUpdate`) VALUES ("'.$userId.' '.$time.'", '.$userId.', "'.$time.'");');
+            
+            return $userId;
+        }
+        else
+        {
+            return -1;
+        }   
+    }
+
+    function dobazy_registration($dane, $user, $ob)
+    {
+        $user->set_username($dane["username"]);
+        $user->set_email($dane["email"]);
+        $user->set_passwd($dane["passwd"]);
+        $user->set_status(1);
+        $user->set_date();
+        $user->set_img($dane["img"]);
+
+        $ob->answer($user->add_do_bazy());
+    }
+
     // ----------------------------------------------------------------
     function standardForm($ob) 
     {
@@ -66,12 +213,9 @@ class User {
         $dane = $ob->dane_z_bazy($sql);
         
         $form=
-        '<form method="post" action=""><table>
+        '<table>
             <tr>
-                <td><img src="'.$this->img.'" width="100" height="100" alt="'.$this->username.'"/></td>
-                <td><label>'.$this->username.'</label></td>
-            </tr>    
-            <tr>
+                <td rowspan="2"><div class=author-card"><img class="author-profile-image" src="'.$this->img.'" alt="'.$this->username.'"/></div></td>
                 <td><label>Adres e-mail:</label></td>
                 <td><label>'.$this->email.'</label></td>
             </tr>';
@@ -84,7 +228,7 @@ class User {
             </tr>';
         }
 
-        $form.='</table></form>';
+        $form.='</table>';
 
         return $form; //wynik typu String – gotowy formularz
     }
@@ -94,7 +238,7 @@ class User {
         $form='<form method="post" action="">
             <table>
                 <tr>
-                    <td><label for = "username">User name:</label></td>
+                    <td><label for = "username">Nazwa użytkownika:</label></td>
                     <td><input type="text" value="'.$this->username.'" placeholder="'.$this->username.'" name="username"/></td>
                 </tr>
                 <tr>
@@ -102,23 +246,50 @@ class User {
                     <td><input type="text" value="'.$this->email.'" placeholder="'.$this->email.'" name="email"/></td>
                 </tr>
                 <tr>
-                    <td rowspan=2><label for = "img">Img:</label></td>
-                    <td><img src="'.$this->img.'" width="200" height="200" alt="'.$this->username.'"/></td>
+                    <td rowspan=2><label for = "img">Zdjęcie użytkownika:</label></td>
+                    <td class="site-header-content"><img class="author-profile-image" src="'.$this->img.'" width="200" height="200" alt="'.$this->username.'"/></td>
                 </tr>
                 <tr>
                     <td><input type="text" value="'.$this->img.'" placeholder="'.$this->img.'" name="img"/></td>
                 </tr>
                 <tr>
-                    <td><label for = "passwd">Password:</label></td>
+                    <td><label for = "passwd">Nowy password:</label></td>
                     <td><input type="password" name="passwd"/></td>
                 </tr>
+                <tr>
+                    <td><input type="submit" value="Wyłoguj" name="wyloguj"/></td>
+                    <td><input type="submit" value="Zmień" name="zmien"/></td>
+                </tr>
             </table> </br>
-             
-            <input type="submit" value="Wyłoguj" name="wyloguj"/>
-            <input type="submit" value="Zmień" name="zmien"/>
+            <input type="submit" value="Usuń konto" name="usun_user"/>
         </form>';
 
         return $form; //wynik typu String – gotowy formularz
+    }
+
+    function get_format_Form($form)
+    {
+        $tresc='
+        <article class="post-full">
+        <header class="post-full-header">
+            <section class="post-full-meta">';
+        $now = (new DateTime()) -> format("Y-m-d");
+        
+        $tresc.='<time class="post-full-meta-date" datetime="'.$now.'">'.$this->get_date_format("d F Y", ''.$now).'</time>';
+        
+        $tresc.='</section>';
+
+        if($this->username != '')
+            $tresc.='<h1 class="post-full-title">'.$this->username.'</h1>';
+        
+        $tresc.='</header>';
+        // <figure class="post-full-image">';
+        // $tresc.=create_img($post->get_post_full_image(), "png");
+        // $tresc.='</figure>
+        $tresc.='<section class="post-full-content"><div class="post-content">';
+        $tresc .= $form;
+        $tresc.='</div></section></article>';
+        return $tresc;
     }
 
     function zmien($db)
@@ -153,6 +324,37 @@ class User {
         $ob->answer('INSERT INTO `Session` (`id_session`, `id_user`, `lastUpdate`) VALUES ("'.$this->id_user.' '.$time.'", '.$this->id_user.', "'.$time.'");');
     }
     
+    function walid($dane_this_user, $this_user)
+    {
+        $wyn = false;
+        switch($dane_this_user[0]->status)
+        {
+            case 0: $wyn = true; break; // admin
+            case 1:
+
+                // echo $this->this_user;
+                if (''.$this_user == ''.$dane_this_user[0]->id_user)
+                {
+                    $wyn = true;
+                }
+                else 
+                {
+                    $wyn = false;
+                }
+                break;
+            default: 
+                $wyn = false;
+                break;
+        }
+        return $wyn;
+    }
+
+    function usun_user($ob, $dane)
+    {
+        $ob->answer("DELETE FROM `Session` WHERE `Session`.`id_user` = ".$dane[0]->id_user);
+        $ob->answer('DELETE FROM `User` WHERE `User`.`id_user` = '.$dane[0]->id_user);
+    }
+
     // interfejsy klasy------------------------------------------------
 
     // $user
@@ -221,9 +423,11 @@ class User {
         return $this->date;
     }
 
-    public function get_date_format($format="Y-m-d")
+    public function get_date_format($format="Y-m-d", $time='')
     {
-        return ((new DateTime("".$this->date))->format($format));
+        if($time == '')
+            $time.=$this->date;
+        return ((new DateTime("".$time))->format($format));
     }
 
     // $img
