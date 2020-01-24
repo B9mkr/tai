@@ -162,7 +162,6 @@ class User {
     }
     function registration_walidation($db, $user)
     {
-        //funkcja sprawdza poprawność logowania
         //wynik - id użytkownika zalogowanego lub -1
         $args = array(
             'username' => FILTER_SANITIZE_MAGIC_QUOTES,
@@ -170,7 +169,7 @@ class User {
             'img' => FILTER_SANITIZE_MAGIC_QUOTES,
             'passwd' => FILTER_SANITIZE_MAGIC_QUOTES
         );
-        //przefiltruj dane z GET (lub z POST) zgodnie z ustawionymi w $args filtrami:
+        //przefiltruj dane z POST zgodnie z ustawionymi w $args filtrami:
         $dane = filter_input_array(INPUT_POST, $args);
         
         $this->dobazy_registration($dane, $user, $db);
@@ -178,11 +177,8 @@ class User {
         $userId = $db->selectUser($dane["email"], ''.md5(''.$dane["passwd"]));
         
         if ($userId > 0) //Poprawne dane
-        { 
-            // $db->answer("DELETE FROM `Session` WHERE `Session`.`id_user` = ".$userId);
-
+        {
             $time = ''.(new DateTime()) -> format("Y-m-d H:i:s");
-            
             $db->answer('INSERT INTO `Session` (`id_session`, `id_user`, `lastUpdate`) VALUES ("'.$userId.' '.$time.'", '.$userId.', "'.$time.'");');
             
             return $userId;
@@ -269,14 +265,13 @@ class User {
 
     function get_format_Form($form)
     {
-        $tresc='
-        <article class="post-full">
-        <header class="post-full-header">
-            <section class="post-full-meta">';
+        $tresc='<article class="post-full">
+            <header class="post-full-header">
+                <section class="post-full-meta">';
+
         $now = (new DateTime()) -> format("Y-m-d");
-        
         $tresc.='<time class="post-full-meta-date" datetime="'.$now.'">'.$this->get_date_format("d F Y", ''.$now).'</time>';
-        
+
         $tresc.='</section>';
 
         if($this->username != '')
@@ -292,6 +287,7 @@ class User {
         return $tresc;
     }
 
+    // ----------------------------------------------------------------
     function zmien($db)
     {
         $args = array(
@@ -323,7 +319,8 @@ class User {
 
         $ob->answer('INSERT INTO `Session` (`id_session`, `id_user`, `lastUpdate`) VALUES ("'.$this->id_user.' '.$time.'", '.$this->id_user.', "'.$time.'");');
     }
-    
+
+    // ----------------------------------------------------------------
     function walid($dane_this_user, $this_user)
     {
         $wyn = false;
@@ -348,7 +345,8 @@ class User {
         }
         return $wyn;
     }
-
+    
+    // ----------------------------------------------------------------
     function usun_user($ob, $dane)
     {
         $ob->answer("DELETE FROM `Session` WHERE `Session`.`id_user` = ".$dane[0]->id_user);

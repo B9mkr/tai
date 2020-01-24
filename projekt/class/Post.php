@@ -79,11 +79,11 @@ class Post {
             </tr>
             <tr>
                 <td>Opis: </td>
-                <td><textarea name="opis" id="opis" type="text" placeholder="Opis" maxlength="255">'.$this->opis.'</textarea></td>
+                <td><textarea name="opis" id="opis" type="text" placeholder="Opis" maxlength="255">Opis</textarea></td>
             </tr>
             <tr>
                 <td>Tekst główny: </td>
-                <td><input name="content" id="content" type="text" value="inf.md" placeholder="url na tekst w formacie .md"/> </td>
+                <td><input name="content" id="content" type="text" value="README.md" placeholder="url na tekst w formacie .md"/> </td>
             </tr>
             <tr>
                 <td><label for = "access">Dostęp dla innych urzytkowników:</label></td>
@@ -96,7 +96,8 @@ class Post {
                 </td>
             </tr>
             <tr>
-                <td colspan=2><input type="submit" value="Dodaj" name="dodaj_post"/></td>
+                <td><a href="?strona=glowna">Anuluj</a></td>
+                <td><input type="submit" value="Dodaj" name="dodaj_post"/></td>
             </tr>
         </table>
         </form>';
@@ -365,6 +366,11 @@ class Post {
                     </div>
                 </article>';
         return $tresc;
+    }
+
+    function usun_post($ob)
+    {
+        $ob->answer('DELETE FROM `Post` WHERE `Post`.`id_post` = '.$this->id_post);
     }
 
     // Ogulne ---------------------------------------------------------

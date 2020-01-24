@@ -9,6 +9,12 @@ if(($dane2=$ob->dane_z_bazy($sql)) != NULL)
 {
     $post->set_z_bazy($dane2, 0);
 
+    if (filter_input(INPUT_POST, "usun_post")) 
+    {
+        $post->usun_post($ob);
+        header("Location: ?strona=glowna"); 
+    }
+    
     if (filter_input(INPUT_POST, "zmien_post"))
     {
         $postId = $post->walidacja_danych_z($ob, $user); //sprawdź parametry
