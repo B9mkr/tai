@@ -70,6 +70,9 @@ class Post {
                     <select name="post_full_image">
                         <option value="s">standard</option>
                         <option value="g">generator</option>
+                        <option value="c">code</option>
+                        <option value="se">security</option>
+                        <option value="i">software engineer</option>
                     </select>
                 </td>
             </tr>
@@ -134,6 +137,9 @@ class Post {
         switch($dane["post_full_image"])
         {
             case "g":	$this->post_full_image ='img/generator/intGen';   break;
+            case "c":	$this->post_full_image ='img/code/baza_danych';   break;
+            case "se":	$this->post_full_image ='img/security/security';   break;
+            case "i":	$this->post_full_image ='img/software_engineering/software_engineer';   break;
             default:    $this->post_full_image ='img/standard/f';
         }
         $this->tag = $dane["tag"];
@@ -164,10 +170,9 @@ class Post {
             <tr>
                 <td>Zdjęcie zadniego fonu: </td>
                 <td>
-                    <select name="post_full_image">
-                        <option value="s">standard</option>
-                        <option value="g">generator</option>
-                    </select>
+                    <select name="post_full_image">';
+                    $form.=$this->default_post_full_image();    
+                    $form.='</select>
                 </td>
             </tr>
             <tr>
@@ -185,11 +190,9 @@ class Post {
             <tr>
                 <td><label for = "access">Dostęp dla innych urzytkowników:</label></td>
                 <td>
-                    <select name="access">
-                        <option value="r">Tylko czytać</option>
-                        <option value="a">Czytać i zmieniać</option>
-                        <option value="n">Bez dostępu</option>
-                    </select>
+                    <select name="access">';
+                    $form.=$this->default_access();
+                    $form.='</select>
                 </td>
             </tr>
             <tr>
@@ -200,6 +203,75 @@ class Post {
         
         </form>';
         return $form;
+    }
+
+    function default_access()
+    {
+        $wyn='';
+        
+        switch($this->get_access_for(1, $this->access))
+        {
+            case 4:
+                $wyn.='<option value="r">Tylko czytać</option>
+                <option value="a">Czytać i zmieniać</option>
+                <option value="n">Bez dostępu</option>';
+                break;
+            case 6:
+                $wyn.='<option value="a">Czytać i zmieniać</option>
+                <option value="r">Tylko czytać</option>
+                <option value="n">Bez dostępu</option>';
+                break;
+            default:
+            $wyn.='<option value="n">Bez dostępu</option>
+                <option value="a">Czytać i zmieniać</option>
+                <option value="r">Tylko czytać</option>';
+                break;
+        }
+        return $wyn;
+    }
+
+    function default_post_full_image()
+    {
+        $wyn='';
+        
+        switch($this->post_full_image)
+        {
+            case 'img/generator/intGen':
+                $wyn.='<option value="g">generator</option>
+                <option value="s">standard</option>
+                <option value="c">code</option>
+                <option value="se">security</option>
+                <option value="i">software engineer</option>';
+                break;
+            case 'img/code/baza_danych':
+                $wyn.='<option value="c">code</option>
+                <option value="g">generator</option>
+                <option value="s">standard</option>
+                <option value="se">security</option>
+                <option value="i">software engineer</option>';
+                break;
+            case 'img/security/security':
+                $wyn.='<option value="se">security</option>
+                <option value="g">generator</option>
+                <option value="c">code</option>
+                <option value="s">standard</option>
+                <option value="i">software engineer</option>';
+                break;
+            case 'img/software_engineering/software_engineer':
+                $wyn.='<option value="i">software engineer</option>
+                <option value="g">generator</option>
+                <option value="c">code</option>
+                <option value="se">security</option>
+                <option value="s">standard</option>';
+                break;
+            default:
+                $wyn.='<option value="s">standard</option>
+                <option value="g">generator</option>
+                <option value="c">code</option>
+                <option value="se">security</option>
+                <option value="i">software engineer</option>';
+        }
+        return $wyn;
     }
 
     function get_format_Form($form)
@@ -220,8 +292,6 @@ class Post {
         $tresc.='</div></section></article>';
         return $tresc;
     }
-    //-------------------------------------------
-
     //-------------------------------------------
 
     function walidacja_danych_z($db, $user)
@@ -246,6 +316,9 @@ class Post {
         switch($dane["post_full_image"])
         {
             case "g":	$this->post_full_image ='img/generator/intGen';   break;
+            case "c":	$this->post_full_image ='img/code/baza_danych';   break;
+            case "se":	$this->post_full_image ='img/security/security';   break;
+            case "i":	$this->post_full_image ='img/software_engineering/software_engineer';   break;
             default:    $this->post_full_image ='img/standard/f';
         }
 
