@@ -318,7 +318,7 @@ hr {
 	padding: 0;
 	height: 1px;
 	border: 0;
-	border-top: 1px solid #e3e9ed
+	border-top: 1px solid #b1b8bd
 }
 
 audio,
@@ -557,6 +557,7 @@ body {
 	padding-bottom: 12px;
 	color: #fff;
 	background: #090a0b no-repeat 50%;
+	/* background: #6e9dcc no-repeat 50%; */
 	background-size: cover
 }
 
@@ -861,6 +862,7 @@ body {
 	margin: 0 20px 40px;
 	min-height: 300px;
 	background: #fff 50%;
+	/* background: #030814 50%; */
 	background-size: cover;
 	border-radius: 5px;
 	box-shadow: 8px 14px 38px rgba(39, 44, 49, .06), 1px 3px 8px rgba(39, 44, 49, .03);

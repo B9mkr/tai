@@ -429,7 +429,7 @@ class Post {
                                 </li>
                             </ul>';
 
-        $reading_time = (int)((str_word_count(file_get_contents($this->get_content()))/200)+0.5);
+        $reading_time = (int)((str_word_count(file_get_contents($this->get_content()))/100)+0.5);
         if($reading_time != 0)
             $tresc.='<span class="reading-time">'.$reading_time.' min</span>';
         else
